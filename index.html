@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e7">
+  <title>AussieGo · 两周生活手帖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">行</span><strong>AussieGo <span>生活手帖</span></strong></a>
+    <nav class="route-line" aria-label="页面导航"><a href="#workspace">两周安排</a><i></i><a href="#visa">澳洲签证</a><i></i><span>2026 · 北京</span></nav>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">BEIJING DAYS / AUSTRALIA AHEAD</p><h1 id="page-title">两周生活手帖</h1><p class="intro-copy">开题、实验与下一段旅程。<br>把重要的事安放好，也给生活留一点空。</p></div>
+      <div class="trip-meta"><div><small>这一程</small><strong>10.26 — 11.08</strong></div><div><small>年度</small><strong>2026 · 秋</strong></div><div><small>本周关键节点</small><strong>开题答辩 / 签证</strong></div><div><small>今日之外</small><strong>蓝色眼影与朋友</strong></div></div>
+    </section>
+    <div class="overview"><div><span class="section-index">01 / THE NEXT FORTNIGHT</span><h2>去看考拉的路上</h2></div><div class="progress-wrap"><span id="progress-label"></span><progress id="progress" max="100" value="0" aria-label="事项完成进度"></progress></div></div>
+    <section class="workspace" id="workspace" aria-label="两周计划">
+      <div class="planner">
+        <div class="section-head"><div><h2>两周安排</h2><p>10 月 26 日，周一启程</p></div><div class="legend"><span><i></i>固定时间</span><span><i></i>灵活安排</span></div></div>
+        <div class="week-tabs" role="group" aria-label="周筛选"><button type="button" data-week="all" class="active" aria-pressed="true">全部 14 天</button><button type="button" data-week="1" aria-pressed="false">第一周 · 10.26—11.01</button><button type="button" data-week="2" aria-pressed="false">第二周 · 11.02—11.08</button></div>
+        <div class="filter-row"><label for="category">事项</label><select id="category"><option value="all">全部分类</option><option>学业 / 实验</option><option>求职</option><option>签证</option><option>生活</option></select><label class="hide-done"><input id="hide-done" type="checkbox"> 隐藏已完成</label></div>
+        <div id="days" class="days"></div><p id="empty-list" class="muted" hidden>没有符合筛选的事项。</p>
+      </div>
+      <aside class="detail-panel" aria-label="当天详情">
+        <div class="detail-top"><span class="section-index">DAY <span id="day-number">01</span> / 14</span><div class="day-nav"><button id="prev-day" class="icon-button" aria-label="前一天" title="前一天"><i data-lucide="arrow-left"></i></button><button id="next-day" class="icon-button" aria-label="后一天" title="后一天"><i data-lucide="arrow-right"></i></button></div></div>
+        <p id="detail-date" class="detail-date"></p><h2 id="detail-title"></h2><p id="detail-summary" class="muted"></p>
+        <div class="detail-section"><div class="section-head compact"><h3>当天清单</h3><button id="add-task" class="text-button"><i data-lucide="plus"></i> 添加事项</button></div><div id="tasks"></div></div>
+        <div class="detail-section"><div class="section-head compact"><h3>每日小事</h3><span class="small muted">每天各自记录</span></div><label class="routine"><input id="flight-check" type="checkbox"><span><strong>看看机票</strong><small>记录合适的航线和价格，不急着下单。</small></span><a href="https://flights.ctrip.com/" target="_blank" rel="noopener noreferrer" aria-label="在携程查看机票" title="查看机票"><i data-lucide="external-link"></i></a></label><label class="field-label" for="flight-note">机票观察</label><input id="flight-note" placeholder="航线 / 日期 / 价格 / 行李额度"><label class="field-label" for="day-note">当日笔记</label><textarea id="day-note" rows="4" placeholder="今天的进展、临时安排，或一点心情。"></textarea><p id="save-status" class="small muted" role="status">仅保存在当前浏览器</p></div>
+      </aside>
+    </section>
+    <section class="visa-section" id="visa"><div class="visa-inner"><div><p class="eyebrow">02 / AUSTRALIA AHEAD</p><h2>澳大利亚，准备中。</h2><p>本周目标：线上申请签证<br><span>材料要求与签证类别以官方说明为准。</span></p><a class="official-link" href="https://online.immi.gov.au/lusc/login" target="_blank" rel="noopener noreferrer">ImmiAccount <i data-lucide="arrow-up-right"></i></a></div><div class="visa-list"><div><b>26 OCT</b><span>派出所开户口证明</span></div><div><b>27 / 29 OCT</b><span>银行打印流水 · 29 日为备选</span></div><div><b>THIS WEEK</b><span>核对材料，完成线上申请</span></div><div><b>EVERY DAY</b><span>关注机票，记录航线与价格</span></div><p>已知文件：邀请函、论文注册收据、中英文在学证明。<br>仅作材料线索，尚未核验内容或完整性。</p></div></div></section>
+    <footer><div><strong>AussieGo</strong><span>2026.10.26 — 2026.11.08</span></div><div class="footer-actions"><button id="export" class="text-button"><i data-lucide="download"></i> 备份</button><button id="import" class="text-button"><i data-lucide="upload"></i> 恢复</button><button id="print" class="text-button"><i data-lucide="printer"></i> 打印</button><input id="import-file" type="file" accept="application/json,.json" hidden></div><p>本地手帖 · Mac 日历已读取（2026.10.25 快照，非自动同步）· 时间均为北京时间</p></footer>
+  </main>
+  <dialog id="task-dialog"><form id="task-form"><div class="section-head compact"><h2 id="dialog-title">添加事项</h2><button type="button" id="close-dialog" class="icon-button" aria-label="关闭" title="关闭"><i data-lucide="x"></i></button></div><label for="task-title">事项</label><input id="task-title" required maxlength="160"><div class="form-grid"><div><label for="task-date">日期</label><input id="task-date" type="date" min="2026-10-26" max="2026-11-08" required></div><div><label for="task-time">时间（可留空）</label><input id="task-time" type="time"></div><div><label for="task-category">分类</label><select id="task-category"><option>学业 / 实验</option><option>求职</option><option>签证</option><option>生活</option></select></div><div><label for="task-status">安排状态</label><select id="task-status"><option value="planned">已安排</option><option value="tentative">待定</option><option value="suggested">建议安排</option></select></div></div><label for="task-note">备注</label><textarea id="task-note" rows="3" maxlength="2000"></textarea><button class="primary-button" type="submit">保存事项</button></form></dialog>
+  <div id="notice" role="status" hidden></div>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
