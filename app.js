@@ -86,7 +86,7 @@ const seedTasks = [
   { id: "defense-rehearsal", date: "2026-10-27", title: "开题答辩排练计时", category: "学业 / 实验", note: "完整排练开题答辩并计时，记录总时长及需要调整的部分。" },
   { id: "print-report", date: "2026-10-27", title: "打印开题报告 7 份", category: "学业 / 实验", note: "确认最终版本、页码及学院装订要求。" },
   { id: "print-report-review-form", date: "2026-10-27", title: "打印开题报告审核表", category: "学业 / 实验", note: "确认使用学院要求的审核表版本。" },
-  { id: "defense", date: "2026-10-28", time: "14:00", title: "开题答辩", category: "学业 / 实验", note: "带好开题报告；答辩地点与提前到场时间待补充。" },
+  { id: "defense", date: "2026-10-28", time: "14:00", title: "开题答辩", category: "学业 / 实验", note: "带好开题报告；答辩地点与提前到场时间待补充。\n答辩提醒：用东北话人格，即使被喷了也能笑着面对。" },
   { id: "apple", date: "2026-10-29", title: "清华 Apple 开放日 · 带英文简历", category: "求职", note: "晚上参加，具体时间与场地待确认。出门前带好英文简历并核对入校要求。" },
   { id: "ant-interview-1029", date: "2026-10-29", time: "17:00", title: "蚂蚁集团面试 · 大模型智能体优化算法", category: "求职", note: "校园招聘视频面试，10.29（周四）17:00（北京时间）开始，结束时间未提供。面试入口及联系信息见原邮件；私人面试链接不在公开页面保存。提前检查设备、网络和邮件通知。" },
   { id: "ant-interview-review-1029", date: "2026-10-29", title: "复习八股 · 白天 · 准备蚂蚁面试", category: "求职", note: "提醒：千万认真！\n周四白天复习八股，为当天 17:00 的蚂蚁集团面试做准备，在面试前完成。具体复习钟点未定。" },
@@ -121,7 +121,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -339,6 +339,16 @@ if (!storageWarning && state.version === 19) {
 if (!storageWarning && state.version === 20) {
   if (!state.tasks.some(task => task.id === "ant-jd-preparation-1029")) state.tasks.push({ ...seedTasks.find(task => task.id === "ant-jd-preparation-1029") });
   state.version = 21;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 21) {
+  const defense = state.tasks.find(task => task.id === "defense");
+  if (defense) {
+    const reminder = "答辩提醒：用东北话人格，即使被喷了也能笑着面对。";
+    const note = `${defense.note}${defense.note ? "\n" : ""}${reminder}`;
+    if (!defense.note.includes(reminder) && note.length <= 2000) defense.note = note;
+  }
+  state.version = 22;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
