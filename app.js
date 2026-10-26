@@ -89,6 +89,7 @@ const seedTasks = [
   { id: "defense", date: "2026-10-28", time: "14:00", title: "开题答辩", category: "学业 / 实验", note: "带好开题报告；答辩地点与提前到场时间待补充。" },
   { id: "apple", date: "2026-10-29", title: "清华 Apple 开放日 · 带英文简历", category: "求职", note: "晚上参加，具体时间与场地待确认。出门前带好英文简历并核对入校要求。" },
   { id: "ant-interview-1029", date: "2026-10-29", time: "17:00", title: "蚂蚁集团面试 · 大模型智能体优化算法", category: "求职", note: "校园招聘视频面试，10.29（周四）17:00（北京时间）开始，结束时间未提供。面试入口及联系信息见原邮件；私人面试链接不在公开页面保存。提前检查设备、网络和邮件通知。" },
+  { id: "ant-interview-review-1029", date: "2026-10-29", title: "复习八股 · 白天 · 准备蚂蚁面试", category: "求职", note: "提醒：千万认真！\n周四白天复习八股，为当天 17:00 的蚂蚁集团面试做准备，在面试前完成。具体复习钟点未定。" },
   { id: "haiyou-group-meeting", date: "2026-10-29", time: "09:00", title: "海优组小组会", category: "学业 / 实验", note: "周四早上 09:00 参加海优组小组会（北京时间）。地点或会议链接、结束时间待确认。" },
   { id: "large-group-leave-1029", date: "2026-10-29", title: "给大组会请假", category: "学业 / 实验", note: "联系大组会负责人请假，并确认是否获批。具体会议时间待确认。" },
   { id: "baidu-followup-1029", date: "2026-10-29", title: "跟进上周百度面试结果 · 推进新流程", category: "求职", note: "跟进上周百度面试的反馈与结果，确认后续安排并推进新的招聘流程，记录回复和下一步。结果与新流程进度均待确认。" },
@@ -119,7 +120,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -327,6 +328,11 @@ if (!storageWarning && state.version === 17) {
 if (!storageWarning && state.version === 18) {
   state.core40 = state.core40 || [];
   state.version = 19;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 19) {
+  if (!state.tasks.some(task => task.id === "ant-interview-review-1029")) state.tasks.push({ ...seedTasks.find(task => task.id === "ant-interview-review-1029") });
+  state.version = 20;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
