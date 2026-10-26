@@ -39,6 +39,7 @@ const seedTasks = [
   { id: "experiment-progress-1027", date: "2026-10-27", title: "检查实验进度", category: "学业 / 实验", note: "检查实验运行进度，记录结果、报错和下一步。" },
   { id: "defense-rehearsal", date: "2026-10-27", title: "开题答辩排练计时", category: "学业 / 实验", note: "完整排练开题答辩并计时，记录总时长及需要调整的部分。" },
   { id: "print-report", date: "2026-10-27", title: "打印开题报告 7 份", category: "学业 / 实验", note: "确认最终版本、页码及学院装订要求。" },
+  { id: "print-report-review-form", date: "2026-10-27", title: "打印开题报告审核表", category: "学业 / 实验", note: "确认使用学院要求的审核表版本。" },
   { id: "defense", date: "2026-10-28", time: "14:00", title: "开题答辩", category: "学业 / 实验", note: "带好开题报告；答辩地点与提前到场时间待补充。" },
   { id: "apple", date: "2026-10-29", title: "清华 Apple 开放日 · 带英文简历", category: "求职", note: "晚上参加，具体时间与场地待确认。出门前带好英文简历并核对入校要求。" },
   { id: "kdd-submit-1029", date: "2026-10-29", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "打印济州岛 KDD 会议报销材料并交给 Y 老师。材料清单与具体交接时间待确认。" },
@@ -68,7 +69,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   const ids = new Set();
   for (const task of value.tasks) {
     if (!task || typeof task.id !== "string" || !/^[a-zA-Z0-9-]{1,100}$/.test(task.id) || ids.has(task.id) || !isDate(task.date) || typeof task.title !== "string" || !task.title.trim() || task.title.length > 160 || !categories.includes(task.category) || !Object.hasOwn(statuses, task.status) || typeof task.done !== "boolean" || typeof task.note !== "string" || task.note.length > 2000 || typeof task.time !== "string" || (task.time !== "" && !/^([01]\d|2[0-3]):[0-5]\d$/.test(task.time))) return false;
@@ -193,6 +194,11 @@ if (!storageWarning && state.version === 10) {
     if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
   }
   state.version = 11;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 11) {
+  if (!state.tasks.some(task => task.id === "print-report-review-form")) state.tasks.push({ ...seedTasks.find(task => task.id === "print-report-review-form") });
+  state.version = 12;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
