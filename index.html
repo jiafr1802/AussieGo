@@ -8,12 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=19">
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="#"><span class="brand-mark">行</span><strong>AussieGo <span>生活手帖</span></strong></a>
-    <nav class="route-line" aria-label="页面导航"><a href="#workspace">两周安排</a><i></i><a href="#visa">澳洲签证</a><i></i><span>2026 · 北京</span></nav>
+    <nav class="route-line" aria-label="页面导航"><a href="#workspace">两周安排</a><i></i><a href="#visa">澳洲签证</a><i></i><a href="#core40">核心40题</a><i></i><span>2026 · 北京</span></nav>
   </header>
   <main>
     <section class="intro" aria-labelledby="page-title">
@@ -36,11 +36,17 @@
       </aside>
     </section>
     <section class="visa-section" id="visa"><div class="visa-inner"><div><p class="eyebrow">02 / AUSTRALIA AHEAD</p><h2>澳大利亚，准备中。</h2><p>本周目标：线上申请签证<br><span>材料要求与签证类别以官方说明为准。</span></p><a class="official-link" href="https://online.immi.gov.au/lusc/login" target="_blank" rel="noopener noreferrer">ImmiAccount <i data-lucide="arrow-up-right"></i></a></div><div class="visa-list"><div><b>26 OCT</b><span>派出所开户口证明</span></div><div><b>27 / 29 OCT</b><span>银行打印流水 · 29 日为备选</span></div><div><b>THIS WEEK</b><span>核对材料，完成线上申请</span></div><div><b>EVERY DAY</b><span>关注机票，记录航线与价格</span></div><p>已知文件：邀请函、论文注册收据、中英文在学证明。<br>仅作材料线索，尚未核验内容或完整性。</p></div></div></section>
+    <section class="core40-section" id="core40" aria-labelledby="core40-title">
+      <div class="core40-inner">
+        <div class="section-head"><div><p class="eyebrow section-index">03 / INTERVIEW PRACTICE</p><h2 id="core40-title">核心40题</h2></div><div class="progress-wrap"><span id="core40-progress-label" role="status">0 / 40 已完成</span><progress id="core40-progress" max="40" value="0" aria-label="核心40题完成进度"></progress></div></div>
+        <table class="core40-table"><colgroup><col class="problem-check-col"><col class="problem-number-col"><col><col class="problem-category-col"></colgroup><thead><tr><th scope="col">完成</th><th scope="col">序号</th><th scope="col">题目</th><th scope="col">类型</th></tr></thead><tbody id="core40-rows"></tbody></table>
+      </div>
+    </section>
     <footer><div><strong>AussieGo</strong><span>2026.10.26 — 2026.11.08</span></div><div class="footer-actions"><button id="export" class="text-button"><i data-lucide="download"></i> 备份</button><button id="import" class="text-button"><i data-lucide="upload"></i> 恢复</button><button id="print" class="text-button"><i data-lucide="printer"></i> 打印</button><input id="import-file" type="file" accept="application/json,.json" hidden></div><p>本地手帖 · Mac 日历已读取（2026.10.25 快照，非自动同步）· 时间均为北京时间</p></footer>
   </main>
   <dialog id="task-dialog"><form id="task-form"><div class="section-head compact"><h2 id="dialog-title">添加事项</h2><button type="button" id="close-dialog" class="icon-button" aria-label="关闭" title="关闭"><i data-lucide="x"></i></button></div><label for="task-title">事项</label><input id="task-title" required maxlength="160"><div class="form-grid"><div><label for="task-date">日期</label><input id="task-date" type="date" min="2026-10-26" max="2026-11-08" required></div><div><label for="task-time">时间（可留空）</label><input id="task-time" type="time"></div><div><label for="task-category">分类</label><select id="task-category"><option>学业 / 实验</option><option>求职</option><option>签证</option><option>生活</option></select></div><div><label for="task-status">安排状态</label><select id="task-status"><option value="planned">已安排</option><option value="tentative">待定</option><option value="suggested">建议安排</option></select></div></div><label for="task-note">备注</label><textarea id="task-note" rows="3" maxlength="2000"></textarea><button class="primary-button" type="submit">保存事项</button></form></dialog>
   <div id="notice" role="status" hidden></div>
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-  <script src="app.js?v=18"></script>
+  <script src="app.js?v=19"></script>
 </body>
 </html>

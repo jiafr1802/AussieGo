@@ -117,6 +117,25 @@ textarea { resize: vertical; line-height: 1.8; }
 .visa-list > div { display: grid; grid-template-columns: 115px 1fr; gap: 14px; padding: 15px 0; border-bottom: 1px solid #ffffff26; font-size: 12px; line-height: 1.6; }
 .visa-list b { color: #e5b44d; font-size: 10px; }
 .visa-list p { font-size: 11px; }
+.core40-section { padding: 44px 4vw; border-bottom: 1px solid var(--line); background: var(--paper-strong); }
+.core40-inner { max-width: 1200px; margin: auto; }
+.core40-section .eyebrow { margin: 0 0 10px; }
+.core40-table { width: 100%; table-layout: fixed; border-collapse: collapse; text-align: left; }
+.problem-check-col { width: 54px; }
+.problem-number-col { width: 60px; }
+.problem-category-col { width: 110px; }
+.core40-table thead { color: var(--muted); font-size: 11px; }
+.core40-table th, .core40-table td { padding: 13px 8px; border-bottom: 1px solid var(--line); font-weight: 400; line-height: 1.7; overflow-wrap: anywhere; }
+.core40-table tbody tr:nth-child(10n + 1) > * { border-top: 2px solid var(--ink); }
+.core40-table tbody th { font-size: 13px; }
+.core40-table td { font-size: 12px; color: var(--muted); }
+.core40-table small { display: block; font-size: 10px; color: var(--muted); }
+.core40-table input { display: block; margin: 0; }
+.core40-table .problem-number { font-variant-numeric: tabular-nums; }
+.core40-table .done th a { text-decoration: line-through; color: var(--muted); }
+.core40-table tr:focus-within { background: var(--paper); }
+@media (max-width: 650px) { .core40-section { padding: 30px 5%; } .problem-check-col { width: 34px; } .problem-number-col { width: 34px; } .problem-category-col { width: 64px; } .core40-table th, .core40-table td { padding: 12px 4px; } .core40-table td, .core40-table thead { font-size: 10px; } .core40-section .section-head h2 { font-size: 23px; } }
+@media print { .core40-section { padding: 25px 0; background: white; } .core40-table tr { break-inside: avoid; } }
 footer { padding: 25px 4vw; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
 footer > div:first-child { display: flex; align-items: center; gap: 18px; }
 footer strong { font-family: "Noto Serif SC",serif; }

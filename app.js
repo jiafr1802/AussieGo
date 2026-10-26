@@ -1,6 +1,48 @@
 "use strict";
 
 const STORAGE_KEY = "aussiego-planner-v1";
+const coreProblems = [
+  [236, "二叉树的最近公共祖先", "二叉树", "lowest-common-ancestor-of-a-binary-tree"],
+  [79, "单词搜索", "回溯", "word-search"],
+  [23, "合并K个升序链表", "链表", "merge-k-sorted-lists"],
+  [139, "单词拆分", "动态规划", "word-break"],
+  [300, "最长递增子序列", "动态规划", "longest-increasing-subsequence"],
+  [5, "最长回文子串", "动态规划", "longest-palindromic-substring"],
+  [1143, "最长公共子序列", "动态规划", "longest-common-subsequence"],
+  [72, "编辑距离", "动态规划", "edit-distance"],
+  [131, "分割回文串", "回溯", "palindrome-partitioning"],
+  [437, "路径总和III", "二叉树", "path-sum-iii"],
+  [42, "接雨水", "双指针", "trapping-rain-water"],
+  [142, "环形链表II", "链表", "linked-list-cycle-ii"],
+  [102, "二叉树的层序遍历", "二叉树", "binary-tree-level-order-traversal"],
+  [121, "买卖股票的最佳时机", "动态规划", "best-time-to-buy-and-sell-stock"],
+  [22, "括号生成", "回溯", "generate-parentheses"],
+  [215, "数组中的第K个最大元素", "堆", "kth-largest-element-in-an-array"],
+  [105, "从前序与中序遍历序列构造二叉树", "二叉树", "construct-binary-tree-from-preorder-and-inorder-traversal"],
+  [25, "K个一组翻转链表", "链表", "reverse-nodes-in-k-group"],
+  [322, "零钱兑换", "动态规划", "coin-change"],
+  [347, "前K个高频元素", "堆", "top-k-frequent-elements"],
+  [15, "三数之和", "双指针", "3sum"],
+  [560, "和为K的子数组", "子串", "subarray-sum-equals-k"],
+  [141, "环形链表", "链表", "linked-list-cycle"],
+  [101, "对称二叉树", "二叉树", "symmetric-tree"],
+  [337, "打家劫舍III", "动态规划", "house-robber-iii"],
+  [39, "组合总和", "回溯", "combination-sum"],
+  [54, "螺旋矩阵", "矩阵", "spiral-matrix"],
+  [56, "合并区间", "普通数组", "merge-intervals"],
+  [234, "回文链表", "链表", "palindrome-linked-list"],
+  [239, "滑动窗口最大值", "子串", "sliding-window-maximum"],
+  [128, "最长连续序列", "哈希", "longest-consecutive-sequence"],
+  [11, "盛水最多的容器", "双指针", "container-with-most-water"],
+  [206, "反转链表", "链表", "reverse-linked-list"],
+  [94, "二叉树的中序遍历", "二叉树", "binary-tree-inorder-traversal"],
+  [70, "爬楼梯", "动态规划", "climbing-stairs"],
+  [200, "岛屿数量", "图论", "number-of-islands"],
+  [46, "全排列", "回溯", "permutations"],
+  [53, "最大子数组和", "普通数组", "maximum-subarray"],
+  [21, "合并两个有序链表", "链表", "merge-two-sorted-lists"],
+  [3, "无重复字符的最长子串", "滑动窗口", "longest-substring-without-repeating-characters"],
+].map(([id, title, category, slug]) => ({ id, title, category, slug }));
 const categories = ["学业 / 实验", "求职", "签证", "生活"];
 const statuses = { planned: "已安排", tentative: "待定", suggested: "建议安排" };
 const dayInfo = [
@@ -77,7 +119,8 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
     if (!task || typeof task.id !== "string" || !/^[a-zA-Z0-9-]{1,100}$/.test(task.id) || ids.has(task.id) || !isDate(task.date) || typeof task.title !== "string" || !task.title.trim() || task.title.length > 160 || !categories.includes(task.category) || !Object.hasOwn(statuses, task.status) || typeof task.done !== "boolean" || typeof task.note !== "string" || task.note.length > 2000 || typeof task.time !== "string" || (task.time !== "" && !/^([01]\d|2[0-3]):[0-5]\d$/.test(task.time))) return false;
@@ -281,6 +324,11 @@ if (!storageWarning && state.version === 17) {
   state.version = 18;
   needsMigration = true;
 }
+if (!storageWarning && state.version === 18) {
+  state.core40 = state.core40 || [];
+  state.version = 19;
+  needsMigration = true;
+}
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 let selectedDate = isDate(today) ? today : dates[0].iso;
 let week = "all";
@@ -293,6 +341,20 @@ function persist() {
   catch { element("save-status").textContent = "保存失败，请用底部备份导出数据"; notify("浏览器存储不可用，请及时导出备份。关闭页面可能丢失修改。"); }
 }
 function tasksFor(date) { return state.tasks.filter(task => task.date === date).sort((first, second) => (first.time || "99").localeCompare(second.time || "99")); }
+function renderCore40() {
+  const completed = state.core40 || [];
+  element("core40-progress-label").textContent = `${completed.length} / 40 已完成`;
+  element("core40-progress").value = completed.length;
+  element("core40-rows").innerHTML = coreProblems.map((problem, index) => `<tr class="${completed.includes(problem.id) ? "done" : ""}"><td><input type="checkbox" data-problem="${problem.id}" aria-label="完成 ${escapeHtml(problem.title)}" ${completed.includes(problem.id) ? "checked" : ""}></td><td class="problem-number">${String(index + 1).padStart(2, "0")}</td><th scope="row"><a href="https://leetcode.cn/problems/${problem.slug}/" target="_blank" rel="noopener noreferrer">${escapeHtml(problem.title)}</a><small>LC ${problem.id}</small></th><td>${escapeHtml(problem.category)}</td></tr>`).join("");
+}
+element("core40-rows").addEventListener("change", event => {
+  const id = Number(event.target.dataset.problem);
+  if (!coreProblems.some(problem => problem.id === id)) return;
+  const completed = new Set(state.core40 || []);
+  if (event.target.checked) completed.add(id); else completed.delete(id);
+  state.core40 = [...completed];
+  persist(); renderCore40();
+});
 function matches(task) { return (element("category").value === "all" || task.category === element("category").value) && (!element("hide-done").checked || !task.done); }
 function renderDays() {
   let count = 0;
@@ -402,11 +464,11 @@ element("import-file").addEventListener("change", async event => {
     if (file.size > 5000000) throw new Error("File too large");
     const imported = JSON.parse(await file.text());
     if (!validState(imported)) throw new Error("Invalid backup");
-    if (confirm("恢复备份会替换当前所有事项与笔记。继续吗？")) { state = imported; persist(); renderDays(); renderDetail(); notify("备份已恢复。"); }
+    if (confirm("恢复备份会替换当前所有事项与笔记。继续吗？")) { state = imported; persist(); renderDays(); renderDetail(); renderCore40(); notify("备份已恢复。"); }
   } catch { notify("无法恢复：请选择有效的 AussieGo JSON 备份（不超过 5 MB）。"); }
   event.target.value = "";
 });
 element("print").addEventListener("click", () => window.print());
-renderDays(); renderDetail();
+renderDays(); renderDetail(); renderCore40();
 if (needsMigration) persist();
 if (storageWarning) notify(storageWarning);
