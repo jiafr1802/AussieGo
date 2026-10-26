@@ -44,6 +44,9 @@ const seedTasks = [
   { id: "print-report-review-form", date: "2026-10-27", title: "打印开题报告审核表", category: "学业 / 实验", note: "确认使用学院要求的审核表版本。" },
   { id: "defense", date: "2026-10-28", time: "14:00", title: "开题答辩", category: "学业 / 实验", note: "带好开题报告；答辩地点与提前到场时间待补充。" },
   { id: "apple", date: "2026-10-29", title: "清华 Apple 开放日 · 带英文简历", category: "求职", note: "晚上参加，具体时间与场地待确认。出门前带好英文简历并核对入校要求。" },
+  { id: "haiyou-group-meeting", date: "2026-10-29", time: "09:00", title: "海优组小组会", category: "学业 / 实验", note: "周四早上 09:00 参加海优组小组会（北京时间）。地点或会议链接、结束时间待确认。" },
+  { id: "large-group-leave-1029", date: "2026-10-29", title: "给大组会请假", category: "学业 / 实验", note: "联系大组会负责人请假，并确认是否获批。具体会议时间待确认。" },
+  { id: "baidu-followup-1029", date: "2026-10-29", title: "跟进上周百度面试结果 · 推进新流程", category: "求职", note: "跟进上周百度面试的反馈与结果，确认后续安排并推进新的招聘流程，记录回复和下一步。结果与新流程进度均待确认。" },
   { id: "kdd-submit-1029", date: "2026-10-29", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "打印济州岛 KDD 会议报销材料并交给 Y 老师。材料清单与具体交接时间待确认。" },
   { id: "friends", date: "2026-10-30", title: "和 lyq、dsy 一起喝酒", category: "生活", status: "tentative", note: "周五可能相约，时间与地点待大家确认。" },
   { id: "kdd-submit-1030", date: "2026-10-30", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "周四未完成则今天提交给 Y 老师；若已提交，确认收件与反馈，按要求补交材料，避免重复提交。" },
@@ -71,7 +74,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   const ids = new Set();
   for (const task of value.tasks) {
     if (!task || typeof task.id !== "string" || !/^[a-zA-Z0-9-]{1,100}$/.test(task.id) || ids.has(task.id) || !isDate(task.date) || typeof task.title !== "string" || !task.title.trim() || task.title.length > 160 || !categories.includes(task.category) || !Object.hasOwn(statuses, task.status) || typeof task.done !== "boolean" || typeof task.note !== "string" || task.note.length > 2000 || typeof task.time !== "string" || (task.time !== "" && !/^([01]\d|2[0-3]):[0-5]\d$/.test(task.time))) return false;
@@ -219,6 +222,13 @@ if (!storageWarning && state.version === 13) {
     if (!report.note.includes(focus) && note.length <= 2000) report.note = note;
   }
   state.version = 14;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 14) {
+  for (const id of ["haiyou-group-meeting", "large-group-leave-1029", "baidu-followup-1029"]) {
+    if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
+  }
+  state.version = 15;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
