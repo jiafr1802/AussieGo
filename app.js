@@ -1,6 +1,7 @@
 "use strict";
 
 const STORAGE_KEY = "aussiego-planner-v1";
+const ANT_JD_URL = "https://talent.antgroup.com/campus-position?positionId=260721010991745";
 const coreProblems = [
   [236, "二叉树的最近公共祖先", "二叉树", "lowest-common-ancestor-of-a-binary-tree"],
   [79, "单词搜索", "回溯", "word-search"],
@@ -90,7 +91,7 @@ const seedTasks = [
   { id: "apple", date: "2026-10-29", title: "清华 Apple 开放日 · 带英文简历", category: "求职", note: "晚上参加，具体时间与场地待确认。出门前带好英文简历并核对入校要求。" },
   { id: "ant-interview-1029", date: "2026-10-29", time: "17:00", title: "蚂蚁集团面试 · 大模型智能体优化算法", category: "求职", note: "校园招聘视频面试，10.29（周四）17:00（北京时间）开始，结束时间未提供。面试入口及联系信息见原邮件；私人面试链接不在公开页面保存。提前检查设备、网络和邮件通知。" },
   { id: "ant-interview-review-1029", date: "2026-10-29", title: "复习八股 · 白天 · 准备蚂蚁面试", category: "求职", note: "提醒：千万认真！\n周四白天复习八股，为当天 17:00 的蚂蚁集团面试做准备，在面试前完成。具体复习钟点未定。" },
-  { id: "ant-jd-preparation-1029", date: "2026-10-29", title: "查看蚂蚁官网 JD · 白天 · 针对性准备面试", category: "求职", note: "周四白天去蚂蚁集团招聘官网查看“大模型智能体优化算法”岗位 JD，核对岗位职责与任职要求，再对应梳理项目经历、技术知识和面试准备重点。岗位信息以官网为准，不代表已完成查询或准备。安排在当天 17:00 蚂蚁面试前，具体钟点未定。" },
+  { id: "ant-jd-preparation-1029", date: "2026-10-29", title: "查看蚂蚁官网 JD · 白天 · 针对性准备面试", category: "求职", note: `周四白天去蚂蚁集团招聘官网查看“大模型智能体优化算法”岗位 JD，核对岗位职责与任职要求，再对应梳理项目经历、技术知识和面试准备重点。岗位信息以官网为准，不代表已完成查询或准备。安排在当天 17:00 蚂蚁面试前，具体钟点未定。\n蚂蚁官网 JD：${ANT_JD_URL}` },
   { id: "haiyou-group-meeting", date: "2026-10-29", time: "09:00", title: "海优组小组会", category: "学业 / 实验", note: "周四早上 09:00 参加海优组小组会（北京时间）。地点或会议链接、结束时间待确认。" },
   { id: "large-group-leave-1029", date: "2026-10-29", title: "给大组会请假", category: "学业 / 实验", note: "联系大组会负责人请假，并确认是否获批。具体会议时间待确认。" },
   { id: "baidu-followup-1029", date: "2026-10-29", title: "跟进上周百度面试结果 · 推进新流程", category: "求职", note: "跟进上周百度面试的反馈与结果，确认后续安排并推进新的招聘流程，记录回复和下一步。结果与新流程进度均待确认。" },
@@ -121,7 +122,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -351,6 +352,15 @@ if (!storageWarning && state.version === 21) {
   state.version = 22;
   needsMigration = true;
 }
+if (!storageWarning && state.version === 22) {
+  const preparation = state.tasks.find(task => task.id === "ant-jd-preparation-1029");
+  if (preparation && !preparation.note.includes(ANT_JD_URL)) {
+    const note = `${preparation.note}${preparation.note ? "\n" : ""}蚂蚁官网 JD：${ANT_JD_URL}`;
+    if (note.length <= 2000) preparation.note = note;
+  }
+  state.version = 23;
+  needsMigration = true;
+}
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 let selectedDate = isDate(today) ? today : dates[0].iso;
 let week = "all";
@@ -404,7 +414,7 @@ function renderDetail() {
   element("prev-day").disabled = index === 0;
   element("next-day").disabled = index === 13;
   const tasks = tasksFor(selectedDate);
-  element("tasks").innerHTML = tasks.length ? tasks.map(task => `<div class="task ${task.done ? "done" : ""}"><input type="checkbox" id="check-${task.id}" data-check="${task.id}" ${task.done ? "checked" : ""}><div class="task-body"><label class="task-heading" for="check-${task.id}">${escapeHtml(task.title)}</label><p class="task-meta ${task.time ? "fixed" : ""}">${task.time || "灵活安排"} · ${escapeHtml(task.category)}${task.status !== "planned" ? ` · ${statuses[task.status]}` : ""}</p>${task.note ? `<p class="task-note">${escapeHtml(task.note)}</p>` : ""}</div><div class="task-actions"><button class="icon-button" data-edit="${task.id}" title="编辑事项" aria-label="编辑 ${escapeHtml(task.title)}"><i data-lucide="pencil"></i></button><button class="icon-button" data-delete="${task.id}" title="删除事项" aria-label="删除 ${escapeHtml(task.title)}"><i data-lucide="trash-2"></i></button></div></div>`).join("") : '<p class="muted small">今天先留白。</p>';
+  element("tasks").innerHTML = tasks.length ? tasks.map(task => `<div class="task ${task.done ? "done" : ""}"><input type="checkbox" id="check-${task.id}" data-check="${task.id}" ${task.done ? "checked" : ""}><div class="task-body"><label class="task-heading" for="check-${task.id}">${escapeHtml(task.title)}</label><p class="task-meta ${task.time ? "fixed" : ""}">${task.time || "灵活安排"} · ${escapeHtml(task.category)}${task.status !== "planned" ? ` · ${statuses[task.status]}` : ""}</p>${task.note ? `<p class="task-note">${escapeHtml(task.note)}</p>` : ""}${task.id === "ant-jd-preparation-1029" ? `<p class="task-note"><a href="${ANT_JD_URL}" target="_blank" rel="noopener noreferrer">蚂蚁官网 JD</a></p>` : ""}</div><div class="task-actions"><button class="icon-button" data-edit="${task.id}" title="编辑事项" aria-label="编辑 ${escapeHtml(task.title)}"><i data-lucide="pencil"></i></button><button class="icon-button" data-delete="${task.id}" title="删除事项" aria-label="删除 ${escapeHtml(task.title)}"><i data-lucide="trash-2"></i></button></div></div>`).join("") : '<p class="muted small">今天先留白。</p>';
   const note = state.days[selectedDate] || { flight: false, flightNote: "", note: "" };
   element("flight-check").checked = note.flight;
   element("flight-note").value = note.flightNote;
