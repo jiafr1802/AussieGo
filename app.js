@@ -28,6 +28,7 @@ const seedTasks = [
   { id: "experiment", date: "2026-10-26", title: "尝试把实验跑起来", category: "学业 / 实验", note: "记录启动结果、报错和下一步。" },
   { id: "mentor", date: "2026-10-26", title: "向 MSRA mentor 请周会假", category: "学业 / 实验", note: "确认请假对应的会议日期，并同步本周进度。" },
   { id: "review", date: "2026-10-26", title: "复习项目经历 · 至少 1 小时", category: "求职", note: "建议在面试前安排；梳理背景、个人贡献、技术选择与结果。" },
+  { id: "yin-yoga", date: "2026-10-26", time: "12:10", title: "阴瑜伽", category: "生活", note: "12:10—13:10（北京时间）。\n归位瑜伽·融科馆，团教室。\n已预约。" },
   { id: "ctrip", date: "2026-10-26", time: "19:00", title: "携程面试", category: "求职", note: "提前检查通知、入口与设备。结束时间以面试通知为准。" },
   { id: "eyeshadow", date: "2026-10-26", title: "试试蓝色系眼影", category: "生活", note: "留一点属于自己的时间。" },
   { id: "bank", date: "2026-10-27", title: "银行打印流水", category: "签证", note: "10.27 / 10.29 二选一，暂放 27 日。若改到 29 日，可编辑日期；确认流水时间范围、语言和盖章要求。" },
@@ -59,7 +60,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   const ids = new Set();
   for (const task of value.tasks) {
     if (!task || typeof task.id !== "string" || !/^[a-zA-Z0-9-]{1,100}$/.test(task.id) || ids.has(task.id) || !isDate(task.date) || typeof task.title !== "string" || !task.title.trim() || task.title.length > 160 || !categories.includes(task.category) || !Object.hasOwn(statuses, task.status) || typeof task.done !== "boolean" || typeof task.note !== "string" || task.note.length > 2000 || typeof task.time !== "string" || (task.time !== "" && !/^([01]\d|2[0-3]):[0-5]\d$/.test(task.time))) return false;
@@ -154,6 +155,11 @@ if (!storageWarning && state.version === 6) {
     if (anonymize) { task.title = anonymize(task.title); task.note = anonymize(task.note); }
   }
   state.version = 7;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 7) {
+  if (!state.tasks.some(task => task.id === "yin-yoga")) state.tasks.push({ ...seedTasks.find(task => task.id === "yin-yoga") });
+  state.version = 8;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
