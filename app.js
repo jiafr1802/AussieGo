@@ -28,7 +28,7 @@ const seedTasks = [
   { id: "experiment", date: "2026-10-26", title: "尝试把实验跑起来", category: "学业 / 实验", note: "记录启动结果、报错和下一步。" },
   { id: "mentor", date: "2026-10-26", title: "向 MSRA mentor 请周会假 · 晚上", category: "学业 / 实验", note: "晚上安排，具体时间未定。确认请假对应的会议日期，并同步本周进度。" },
   { id: "experiment-progress-1026", date: "2026-10-26", title: "检查实验进度 · 晚上", category: "学业 / 实验", note: "晚上检查实验运行进度，记录结果、报错和下一步。具体时间未定。" },
-  { id: "revise-report-research", date: "2026-10-26", title: "修改开题报告 · 研究内容", category: "学业 / 实验", note: "修改开题报告中的研究内容部分。" },
+  { id: "revise-report-research", date: "2026-10-26", title: "修改开题 PPT · 突出研究内容 3 与 2 的区别和关系", category: "学业 / 实验", note: "修改开题 PPT 中的研究内容部分。\n修改重点：突出研究内容 3 与研究内容 2 的区别和关系。" },
   { id: "check-references", date: "2026-10-26", title: "检查参考文献格式", category: "学业 / 实验", note: "检查参考文献格式，统一文内引用与文献条目格式。" },
   { id: "review", date: "2026-10-26", title: "复习项目经历 · 至少 1 小时", category: "求职", note: "建议在面试前安排；梳理背景、个人贡献、技术选择与结果。" },
   { id: "insurance-algorithm-apply", date: "2026-10-26", title: "投递保险公司算法岗", category: "求职", note: "参考截图筛选众安、平安、中国人寿、阳光保险、中国太平的算法 / AI 岗位。\n检索：大模型、算法研究员、人工智能开发、寿险 AI 应用开发工程师；截图提及阳光岗位编号 J19660。\n投递前以各公司官网核实岗位有效性、2027 届批次与任职要求，准备简历并记录投递结果。" },
@@ -71,7 +71,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   const ids = new Set();
   for (const task of value.tasks) {
     if (!task || typeof task.id !== "string" || !/^[a-zA-Z0-9-]{1,100}$/.test(task.id) || ids.has(task.id) || !isDate(task.date) || typeof task.title !== "string" || !task.title.trim() || task.title.length > 160 || !categories.includes(task.category) || !Object.hasOwn(statuses, task.status) || typeof task.done !== "boolean" || typeof task.note !== "string" || task.note.length > 2000 || typeof task.time !== "string" || (task.time !== "" && !/^([01]\d|2[0-3]):[0-5]\d$/.test(task.time))) return false;
@@ -208,6 +208,17 @@ if (!storageWarning && state.version === 12) {
     if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
   }
   state.version = 13;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 13) {
+  const report = state.tasks.find(task => task.id === "revise-report-research");
+  if (report) {
+    report.title = seedTasks.find(task => task.id === "revise-report-research").title;
+    const focus = "修改重点：突出研究内容 3 与研究内容 2 的区别和关系。";
+    const note = `${report.note}${report.note ? "\n" : ""}${focus}`;
+    if (!report.note.includes(focus) && note.length <= 2000) report.note = note;
+  }
+  state.version = 14;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
