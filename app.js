@@ -4,8 +4,8 @@ const STORAGE_KEY = "aussiego-planner-v1";
 const categories = ["学业 / 实验", "求职", "签证", "生活"];
 const statuses = { planned: "已安排", tentative: "待定", suggested: "建议安排" };
 const dayInfo = [
-  ["先把重要的事启动", "户口证明、实验、请假与面试。给项目复习留出至少一小时。"],
-  ["材料准备日", "银行流水与七份开题报告，出门前确认材料。"],
+  ["先把重要的事启动", "户口证明、实验与请假。携程面试已改至明天 17:00，今天给项目复习留出至少一小时。"],
+  ["材料准备日", "银行流水与开题材料；17:00 携程面试，提前确认通知与设备。"],
   ["开题答辩", "14:00 的重要节点。报告提前一天打印好。"],
   ["去清华，见一见新机会", "日历记录 Apple 宣讲 19:00—20:00，记得带英文简历；今天也是 H 生日。银行流水备选日。"],
   ["收一收尾，也见见朋友", "和 lyq、dsy 喝酒暂定，等大家确认。"],
@@ -35,7 +35,9 @@ const seedTasks = [
   { id: "fintech-apply", date: "2026-10-26", title: "投递金融科技公司岗位", category: "求职", note: "目标公司：蚂蚁、招银云创、金证科技、度小满、众安、万得、太衍基金。\n度小满关注北京、上海岗位；转发消息称可选两个志愿，投递前以官网要求为准。\n筛选岗位、准备简历并记录投递进度。个人内推链接和内推码不在公开页面展示；此事项不代表已完成投递。" },
   { id: "portfolio-kdd-photos", date: "2026-10-26", title: "在作品集中放入参加 KDD 会议的照片", category: "求职", note: "挑选 KDD 参会照片并加入作品集，补充会议名称、时间及参会经历。发布前检查照片中的他人肖像与隐私信息。" },
   { id: "yin-yoga", date: "2026-10-26", time: "12:10", title: "阴瑜伽", category: "生活", note: "12:10—13:10（北京时间）。\n归位瑜伽·融科馆，团教室。\n已预约。" },
-  { id: "ctrip", date: "2026-10-26", time: "19:00", title: "携程面试", category: "求职", note: "提前检查通知、入口与设备。结束时间以面试通知为准。" },
+  { id: "ctrip", date: "2026-10-27", time: "17:00", title: "携程面试", category: "求职", note: "改期确认：根据最新 Moka 招聘通知，携程校招面试改为 10.27（周二）17:00（北京时间），原 10.26 19:00 安排作废。结束时间未提供，疑问及联系方式见邮箱。提前检查面试通知、入口与设备。" },
+  { id: "bytedance-followup", date: "2026-10-26", title: "跟进字节 HR · 新岗位与转推", category: "求职", note: "询问字节 HR 能否推荐或转推新的岗位；若无法推进，考虑重新联系此前在会议中接触的几个组。\n语音中的“KTD”及“填一下”具体含义待确认，暂不据此新增投递或认定流程状态。跟进事项暂放今天，具体联系时间可调整。" },
+  { id: "huawei-interview-followup", date: "2026-10-26", title: "跟进华为 · 争取面试或转推其他组", category: "求职", note: "联系上周对接的人，询问是否有面试机会；若当前组暂无机会，询问能否将简历转推给其他组。记录回复及下一步，不代表已获得面试。跟进事项暂放今天，具体联系时间可调整。" },
   { id: "eyeshadow", date: "2026-10-26", title: "试试蓝色系眼影", category: "生活", note: "留一点属于自己的时间。" },
   { id: "bank", date: "2026-10-27", title: "银行打印流水", category: "签证", note: "10.27 / 10.29 二选一，暂放 27 日。若改到 29 日，可编辑日期；确认流水时间范围、语言和盖章要求。" },
   { id: "experiment-progress-1027", date: "2026-10-27", title: "检查实验进度", category: "学业 / 实验", note: "检查实验运行进度，记录结果、报错和下一步。" },
@@ -74,7 +76,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   const ids = new Set();
   for (const task of value.tasks) {
     if (!task || typeof task.id !== "string" || !/^[a-zA-Z0-9-]{1,100}$/.test(task.id) || ids.has(task.id) || !isDate(task.date) || typeof task.title !== "string" || !task.title.trim() || task.title.length > 160 || !categories.includes(task.category) || !Object.hasOwn(statuses, task.status) || typeof task.done !== "boolean" || typeof task.note !== "string" || task.note.length > 2000 || typeof task.time !== "string" || (task.time !== "" && !/^([01]\d|2[0-3]):[0-5]\d$/.test(task.time))) return false;
@@ -229,6 +231,19 @@ if (!storageWarning && state.version === 14) {
     if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
   }
   state.version = 15;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 15) {
+  for (const id of ["bytedance-followup", "huawei-interview-followup", "ctrip"]) {
+    if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
+  }
+  const interview = state.tasks.find(task => task.id === "ctrip");
+  interview.date = "2026-10-27";
+  interview.time = "17:00";
+  const latest = seedTasks.find(task => task.id === "ctrip").note;
+  const note = `${latest}${interview.note ? `\n\n${interview.note}` : ""}`;
+  if (!interview.note.includes(latest) && note.length <= 2000) interview.note = note;
+  state.version = 16;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
