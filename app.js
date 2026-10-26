@@ -92,6 +92,7 @@ const seedTasks = [
   { id: "apple", date: "2026-10-29", title: "清华 Apple 开放日 · 带英文简历", category: "求职", note: "晚上参加，具体时间与场地待确认。出门前带好英文简历并核对入校要求。" },
   { id: "ant-interview-1029", date: "2026-10-29", time: "17:00", title: "蚂蚁集团面试 · 大模型智能体优化算法", category: "求职", note: "校园招聘视频面试，10.29（周四）17:00（北京时间）开始，结束时间未提供。面试入口及联系信息见原邮件；私人面试链接不在公开页面保存。提前检查设备、网络和邮件通知。" },
   { id: "ant-interview-review-1029", date: "2026-10-29", title: "复习八股 · 白天 · 准备蚂蚁面试", category: "求职", note: "提醒：千万认真！\n周四白天复习八股，为当天 17:00 的蚂蚁集团面试做准备，在面试前完成。具体复习钟点未定。" },
+  { id: "ant-data-structures-review-1029", date: "2026-10-29", title: "复习数据结构 · 堆和队列 · 白天", category: "求职", note: "周四白天复习数据结构，重点是堆和队列，为当天 17:00 的蚂蚁集团面试做准备，在面试前完成。具体复习钟点未定。" },
   { id: "ant-jd-preparation-1029", date: "2026-10-29", title: "查看蚂蚁官网 JD · 白天 · 针对性准备面试", category: "求职", note: `周四白天去蚂蚁集团招聘官网查看“大模型智能体优化算法”岗位 JD，核对岗位职责与任职要求，再对应梳理项目经历、技术知识和面试准备重点。岗位信息以官网为准，不代表已完成查询或准备。安排在当天 17:00 蚂蚁面试前，具体钟点未定。\n蚂蚁官网 JD：${ANT_JD_URL}` },
   { id: "haiyou-group-meeting", date: "2026-10-29", time: "09:00", title: "海优组小组会", category: "学业 / 实验", note: "周四早上 09:00 参加海优组小组会（北京时间）。地点或会议链接、结束时间待确认。" },
   { id: "large-group-leave-1029", date: "2026-10-29", title: "给大组会请假", category: "学业 / 实验", note: "联系大组会负责人请假，并确认是否获批。具体会议时间待确认。" },
@@ -123,7 +124,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -389,6 +390,14 @@ if (!storageWarning && state.version === 24) {
     task.note = task.note.replaceAll("改为 10.28（周三）上午，", "改为 10.27（周二）上午，").replace("周三上午，打印材料前", "周二上午，打印材料前");
   }
   state.version = 25;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 25) {
+  if (!state.tasks.some(task => task.id === "ant-data-structures-review-1029")) {
+    const index = state.tasks.findIndex(task => task.id === "ant-interview-review-1029");
+    state.tasks.splice(index < 0 ? state.tasks.length : index + 1, 0, { ...seedTasks.find(task => task.id === "ant-data-structures-review-1029") });
+  }
+  state.version = 26;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
