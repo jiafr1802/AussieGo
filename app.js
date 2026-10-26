@@ -31,6 +31,7 @@ const seedTasks = [
   { id: "revise-report-research", date: "2026-10-26", title: "修改开题报告 · 研究内容", category: "学业 / 实验", note: "修改开题报告中的研究内容部分。" },
   { id: "check-references", date: "2026-10-26", title: "检查参考文献格式", category: "学业 / 实验", note: "检查参考文献格式，统一文内引用与文献条目格式。" },
   { id: "review", date: "2026-10-26", title: "复习项目经历 · 至少 1 小时", category: "求职", note: "建议在面试前安排；梳理背景、个人贡献、技术选择与结果。" },
+  { id: "insurance-algorithm-apply", date: "2026-10-26", title: "投递保险公司算法岗", category: "求职", note: "参考截图筛选众安、平安、中国人寿、阳光保险、中国太平的算法 / AI 岗位。\n检索：大模型、算法研究员、人工智能开发、寿险 AI 应用开发工程师；截图提及阳光岗位编号 J19660。\n投递前以各公司官网核实岗位有效性、2027 届批次与任职要求，准备简历并记录投递结果。" },
   { id: "yin-yoga", date: "2026-10-26", time: "12:10", title: "阴瑜伽", category: "生活", note: "12:10—13:10（北京时间）。\n归位瑜伽·融科馆，团教室。\n已预约。" },
   { id: "ctrip", date: "2026-10-26", time: "19:00", title: "携程面试", category: "求职", note: "提前检查通知、入口与设备。结束时间以面试通知为准。" },
   { id: "eyeshadow", date: "2026-10-26", title: "试试蓝色系眼影", category: "生活", note: "留一点属于自己的时间。" },
@@ -40,7 +41,9 @@ const seedTasks = [
   { id: "print-report", date: "2026-10-27", title: "打印开题报告 7 份", category: "学业 / 实验", note: "确认最终版本、页码及学院装订要求。" },
   { id: "defense", date: "2026-10-28", time: "14:00", title: "开题答辩", category: "学业 / 实验", note: "带好开题报告；答辩地点与提前到场时间待补充。" },
   { id: "apple", date: "2026-10-29", title: "清华 Apple 开放日 · 带英文简历", category: "求职", note: "晚上参加，具体时间与场地待确认。出门前带好英文简历并核对入校要求。" },
+  { id: "kdd-submit-1029", date: "2026-10-29", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "打印济州岛 KDD 会议报销材料并交给 Y 老师。材料清单与具体交接时间待确认。" },
   { id: "friends", date: "2026-10-30", title: "和 lyq、dsy 一起喝酒", category: "生活", status: "tentative", note: "周五可能相约，时间与地点待大家确认。" },
+  { id: "kdd-submit-1030", date: "2026-10-30", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "周四未完成则今天提交给 Y 老师；若已提交，确认收件与反馈，按要求补交材料，避免重复提交。" },
   { id: "visa-submit", date: "2026-10-31", title: "本周完成澳大利亚签证线上申请", category: "签证", status: "suggested", note: "本周目标，暂建议安排在周六，并非已确认预约。核对适用签证类别和官方材料清单；上传后复查并保存提交凭证。" },
   { id: "alumni-checkin", date: "2026-11-01", time: "13:00", title: "校友迎新会 · 签到、自由拍照合影", category: "生活", note: "13:00—13:30 签到与合影。\n地点：北京市朝阳区正大中心南塔 18 层。" },
   { id: "alumni-welcome", date: "2026-11-01", time: "13:30", title: "辽宁省实验中学北京校友会2026年迎新会", category: "生活", note: "13:30—17:30 迎新座谈交流。\n地点：北京市朝阳区正大中心南塔 18 层。\n主办单位：辽宁省实验中学北京校友会。\n活动不收取费用，会后聚餐另行收取餐费。" },
@@ -65,7 +68,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   const ids = new Set();
   for (const task of value.tasks) {
     if (!task || typeof task.id !== "string" || !/^[a-zA-Z0-9-]{1,100}$/.test(task.id) || ids.has(task.id) || !isDate(task.date) || typeof task.title !== "string" || !task.title.trim() || task.title.length > 160 || !categories.includes(task.category) || !Object.hasOwn(statuses, task.status) || typeof task.done !== "boolean" || typeof task.note !== "string" || task.note.length > 2000 || typeof task.time !== "string" || (task.time !== "" && !/^([01]\d|2[0-3]):[0-5]\d$/.test(task.time))) return false;
@@ -183,6 +186,13 @@ if (!storageWarning && state.version === 9) {
   mentor.time = "";
   mentor.title = "向 MSRA mentor 请周会假 · 晚上";
   state.version = 10;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 10) {
+  for (const id of ["insurance-algorithm-apply", "kdd-submit-1029", "kdd-submit-1030"]) {
+    if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
+  }
+  state.version = 11;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
