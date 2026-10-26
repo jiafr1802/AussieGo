@@ -36,7 +36,7 @@ const seedTasks = [
   { id: "portfolio-kdd-photos", date: "2026-10-26", title: "在作品集中放入参加 KDD 会议的照片", category: "求职", note: "挑选 KDD 参会照片并加入作品集，补充会议名称、时间及参会经历。发布前检查照片中的他人肖像与隐私信息。" },
   { id: "yin-yoga", date: "2026-10-26", time: "12:10", title: "阴瑜伽", category: "生活", note: "12:10—13:10（北京时间）。\n归位瑜伽·融科馆，团教室。\n已预约。" },
   { id: "ctrip", date: "2026-10-27", time: "17:00", title: "携程面试", category: "求职", note: "改期确认：根据最新 Moka 招聘通知，携程校招面试改为 10.27（周二）17:00（北京时间），原 10.26 19:00 安排作废。结束时间未提供，疑问及联系方式见邮箱。提前检查面试通知、入口与设备。" },
-  { id: "bytedance-followup", date: "2026-10-28", title: "跟进字节 HR · 新岗位与转推", category: "求职", note: "询问字节 HR 能否推荐或转推新的岗位；若无法推进，考虑重新联系此前接触的几个组。\n语音中的“KTD”及“填一下”具体含义待确认，暂不据此新增投递或认定流程状态。安排在 10.28（周三），具体联系时间未定。" },
+  { id: "bytedance-followup", date: "2026-10-28", title: "跟进字节广告方向 · 等待评估结果", category: "求职", note: "10.26 更新：HR 已将简历转发给其他 HR；目前在广告方向等待评估。若评估通过，会有对应 HR 联系。目前尚未确认通过评估或获得面试。\n下一步：等待评估结果及 HR 联系；保留 10.28（周三）的进度跟进，具体时间未定。" },
   { id: "huawei-interview-followup", date: "2026-10-29", title: "跟进华为 · 争取面试或转推其他组", category: "求职", note: "联系上周对接的人，询问是否有面试机会；若当前组暂无机会，询问能否将简历转推给其他组。记录回复及下一步，不代表已获得面试。安排在 10.29（周四），具体联系时间未定。" },
   { id: "eyeshadow", date: "2026-10-27", title: "试试蓝色系眼影 · 携程面试前", category: "生活", note: "安排在 10.27（周二）17:00 的携程面试之前，具体准备时间未定。" },
   { id: "bank", date: "2026-10-27", title: "银行打印流水", category: "签证", note: "10.27 / 10.29 二选一，暂放 27 日。若改到 29 日，可编辑日期；确认流水时间范围、语言和盖章要求。" },
@@ -77,7 +77,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   const ids = new Set();
   for (const task of value.tasks) {
     if (!task || typeof task.id !== "string" || !/^[a-zA-Z0-9-]{1,100}$/.test(task.id) || ids.has(task.id) || !isDate(task.date) || typeof task.title !== "string" || !task.title.trim() || task.title.length > 160 || !categories.includes(task.category) || !Object.hasOwn(statuses, task.status) || typeof task.done !== "boolean" || typeof task.note !== "string" || task.note.length > 2000 || typeof task.time !== "string" || (task.time !== "" && !/^([01]\d|2[0-3]):[0-5]\d$/.test(task.time))) return false;
@@ -266,6 +266,19 @@ if (!storageWarning && state.version === 16) {
     }
   }
   state.version = 17;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 17) {
+  const seed = seedTasks.find(task => task.id === "bytedance-followup");
+  const followup = state.tasks.find(task => task.id === seed.id);
+  if (followup) {
+    followup.title = seed.title;
+    const note = `${seed.note}${followup.note ? `\n\n此前记录（以本次更新为准）：\n${followup.note}` : ""}`;
+    if (!followup.note.includes(seed.note) && note.length <= 2000) followup.note = note;
+  } else {
+    state.tasks.push({ ...seed });
+  }
+  state.version = 18;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
