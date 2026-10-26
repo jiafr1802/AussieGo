@@ -36,9 +36,9 @@ const seedTasks = [
   { id: "portfolio-kdd-photos", date: "2026-10-26", title: "在作品集中放入参加 KDD 会议的照片", category: "求职", note: "挑选 KDD 参会照片并加入作品集，补充会议名称、时间及参会经历。发布前检查照片中的他人肖像与隐私信息。" },
   { id: "yin-yoga", date: "2026-10-26", time: "12:10", title: "阴瑜伽", category: "生活", note: "12:10—13:10（北京时间）。\n归位瑜伽·融科馆，团教室。\n已预约。" },
   { id: "ctrip", date: "2026-10-27", time: "17:00", title: "携程面试", category: "求职", note: "改期确认：根据最新 Moka 招聘通知，携程校招面试改为 10.27（周二）17:00（北京时间），原 10.26 19:00 安排作废。结束时间未提供，疑问及联系方式见邮箱。提前检查面试通知、入口与设备。" },
-  { id: "bytedance-followup", date: "2026-10-26", title: "跟进字节 HR · 新岗位与转推", category: "求职", note: "询问字节 HR 能否推荐或转推新的岗位；若无法推进，考虑重新联系此前在会议中接触的几个组。\n语音中的“KTD”及“填一下”具体含义待确认，暂不据此新增投递或认定流程状态。跟进事项暂放今天，具体联系时间可调整。" },
-  { id: "huawei-interview-followup", date: "2026-10-26", title: "跟进华为 · 争取面试或转推其他组", category: "求职", note: "联系上周对接的人，询问是否有面试机会；若当前组暂无机会，询问能否将简历转推给其他组。记录回复及下一步，不代表已获得面试。跟进事项暂放今天，具体联系时间可调整。" },
-  { id: "eyeshadow", date: "2026-10-26", title: "试试蓝色系眼影", category: "生活", note: "留一点属于自己的时间。" },
+  { id: "bytedance-followup", date: "2026-10-28", title: "跟进字节 HR · 新岗位与转推", category: "求职", note: "询问字节 HR 能否推荐或转推新的岗位；若无法推进，考虑重新联系此前接触的几个组。\n语音中的“KTD”及“填一下”具体含义待确认，暂不据此新增投递或认定流程状态。安排在 10.28（周三），具体联系时间未定。" },
+  { id: "huawei-interview-followup", date: "2026-10-29", title: "跟进华为 · 争取面试或转推其他组", category: "求职", note: "联系上周对接的人，询问是否有面试机会；若当前组暂无机会，询问能否将简历转推给其他组。记录回复及下一步，不代表已获得面试。安排在 10.29（周四），具体联系时间未定。" },
+  { id: "eyeshadow", date: "2026-10-27", title: "试试蓝色系眼影 · 携程面试前", category: "生活", note: "安排在 10.27（周二）17:00 的携程面试之前，具体准备时间未定。" },
   { id: "bank", date: "2026-10-27", title: "银行打印流水", category: "签证", note: "10.27 / 10.29 二选一，暂放 27 日。若改到 29 日，可编辑日期；确认流水时间范围、语言和盖章要求。" },
   { id: "experiment-progress-1027", date: "2026-10-27", title: "检查实验进度", category: "学业 / 实验", note: "检查实验运行进度，记录结果、报错和下一步。" },
   { id: "defense-rehearsal", date: "2026-10-27", title: "开题答辩排练计时", category: "学业 / 实验", note: "完整排练开题答辩并计时，记录总时长及需要调整的部分。" },
@@ -46,6 +46,7 @@ const seedTasks = [
   { id: "print-report-review-form", date: "2026-10-27", title: "打印开题报告审核表", category: "学业 / 实验", note: "确认使用学院要求的审核表版本。" },
   { id: "defense", date: "2026-10-28", time: "14:00", title: "开题答辩", category: "学业 / 实验", note: "带好开题报告；答辩地点与提前到场时间待补充。" },
   { id: "apple", date: "2026-10-29", title: "清华 Apple 开放日 · 带英文简历", category: "求职", note: "晚上参加，具体时间与场地待确认。出门前带好英文简历并核对入校要求。" },
+  { id: "ant-interview-1029", date: "2026-10-29", time: "17:00", title: "蚂蚁集团面试 · 大模型智能体优化算法", category: "求职", note: "校园招聘视频面试，10.29（周四）17:00（北京时间）开始，结束时间未提供。面试入口及联系信息见原邮件；私人面试链接不在公开页面保存。提前检查设备、网络和邮件通知。" },
   { id: "haiyou-group-meeting", date: "2026-10-29", time: "09:00", title: "海优组小组会", category: "学业 / 实验", note: "周四早上 09:00 参加海优组小组会（北京时间）。地点或会议链接、结束时间待确认。" },
   { id: "large-group-leave-1029", date: "2026-10-29", title: "给大组会请假", category: "学业 / 实验", note: "联系大组会负责人请假，并确认是否获批。具体会议时间待确认。" },
   { id: "baidu-followup-1029", date: "2026-10-29", title: "跟进上周百度面试结果 · 推进新流程", category: "求职", note: "跟进上周百度面试的反馈与结果，确认后续安排并推进新的招聘流程，记录回复和下一步。结果与新流程进度均待确认。" },
@@ -76,7 +77,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   const ids = new Set();
   for (const task of value.tasks) {
     if (!task || typeof task.id !== "string" || !/^[a-zA-Z0-9-]{1,100}$/.test(task.id) || ids.has(task.id) || !isDate(task.date) || typeof task.title !== "string" || !task.title.trim() || task.title.length > 160 || !categories.includes(task.category) || !Object.hasOwn(statuses, task.status) || typeof task.done !== "boolean" || typeof task.note !== "string" || task.note.length > 2000 || typeof task.time !== "string" || (task.time !== "" && !/^([01]\d|2[0-3]):[0-5]\d$/.test(task.time))) return false;
@@ -244,6 +245,27 @@ if (!storageWarning && state.version === 15) {
   const note = `${latest}${interview.note ? `\n\n${interview.note}` : ""}`;
   if (!interview.note.includes(latest) && note.length <= 2000) interview.note = note;
   state.version = 16;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 16) {
+  for (const id of ["eyeshadow", "bytedance-followup", "huawei-interview-followup", "ant-interview-1029"]) {
+    const seed = seedTasks.find(task => task.id === id);
+    const task = state.tasks.find(task => task.id === id);
+    if (!task) {
+      state.tasks.push({ ...seed });
+      continue;
+    }
+    task.date = seed.date;
+    if (id === "eyeshadow") {
+      task.title = seed.title;
+      task.time = "";
+      const note = `${seed.note}${task.note ? `\n\n${task.note}` : ""}`;
+      if (!task.note.includes(seed.note) && note.length <= 2000) task.note = note;
+    } else if (id !== "ant-interview-1029") {
+      task.note = task.note.replace("跟进事项暂放今天，具体联系时间可调整。", id === "bytedance-followup" ? "安排在 10.28（周三），具体联系时间未定。" : "安排在 10.29（周四），具体联系时间未定。").replace("此前在会议中接触的几个组", "此前接触的几个组");
+    }
+  }
+  state.version = 17;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());

@@ -41,6 +41,6 @@
   <dialog id="task-dialog"><form id="task-form"><div class="section-head compact"><h2 id="dialog-title">添加事项</h2><button type="button" id="close-dialog" class="icon-button" aria-label="关闭" title="关闭"><i data-lucide="x"></i></button></div><label for="task-title">事项</label><input id="task-title" required maxlength="160"><div class="form-grid"><div><label for="task-date">日期</label><input id="task-date" type="date" min="2026-10-26" max="2026-11-08" required></div><div><label for="task-time">时间（可留空）</label><input id="task-time" type="time"></div><div><label for="task-category">分类</label><select id="task-category"><option>学业 / 实验</option><option>求职</option><option>签证</option><option>生活</option></select></div><div><label for="task-status">安排状态</label><select id="task-status"><option value="planned">已安排</option><option value="tentative">待定</option><option value="suggested">建议安排</option></select></div></div><label for="task-note">备注</label><textarea id="task-note" rows="3" maxlength="2000"></textarea><button class="primary-button" type="submit">保存事项</button></form></dialog>
   <div id="notice" role="status" hidden></div>
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-  <script src="app.js?v=16"></script>
+  <script src="app.js?v=17"></script>
 </body>
 </html>
