@@ -32,6 +32,8 @@ const seedTasks = [
   { id: "check-references", date: "2026-10-26", title: "检查参考文献格式", category: "学业 / 实验", note: "检查参考文献格式，统一文内引用与文献条目格式。" },
   { id: "review", date: "2026-10-26", title: "复习项目经历 · 至少 1 小时", category: "求职", note: "建议在面试前安排；梳理背景、个人贡献、技术选择与结果。" },
   { id: "insurance-algorithm-apply", date: "2026-10-26", title: "投递保险公司算法岗", category: "求职", note: "参考截图筛选众安、平安、中国人寿、阳光保险、中国太平的算法 / AI 岗位。\n检索：大模型、算法研究员、人工智能开发、寿险 AI 应用开发工程师；截图提及阳光岗位编号 J19660。\n投递前以各公司官网核实岗位有效性、2027 届批次与任职要求，准备简历并记录投递结果。" },
+  { id: "fintech-apply", date: "2026-10-26", title: "投递金融科技公司岗位", category: "求职", note: "目标公司：蚂蚁、招银云创、金证科技、度小满、众安、万得、太衍基金。\n度小满关注北京、上海岗位；转发消息称可选两个志愿，投递前以官网要求为准。\n筛选岗位、准备简历并记录投递进度。个人内推链接和内推码不在公开页面展示；此事项不代表已完成投递。" },
+  { id: "portfolio-kdd-photos", date: "2026-10-26", title: "在作品集中放入参加 KDD 会议的照片", category: "求职", note: "挑选 KDD 参会照片并加入作品集，补充会议名称、时间及参会经历。发布前检查照片中的他人肖像与隐私信息。" },
   { id: "yin-yoga", date: "2026-10-26", time: "12:10", title: "阴瑜伽", category: "生活", note: "12:10—13:10（北京时间）。\n归位瑜伽·融科馆，团教室。\n已预约。" },
   { id: "ctrip", date: "2026-10-26", time: "19:00", title: "携程面试", category: "求职", note: "提前检查通知、入口与设备。结束时间以面试通知为准。" },
   { id: "eyeshadow", date: "2026-10-26", title: "试试蓝色系眼影", category: "生活", note: "留一点属于自己的时间。" },
@@ -69,7 +71,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   const ids = new Set();
   for (const task of value.tasks) {
     if (!task || typeof task.id !== "string" || !/^[a-zA-Z0-9-]{1,100}$/.test(task.id) || ids.has(task.id) || !isDate(task.date) || typeof task.title !== "string" || !task.title.trim() || task.title.length > 160 || !categories.includes(task.category) || !Object.hasOwn(statuses, task.status) || typeof task.done !== "boolean" || typeof task.note !== "string" || task.note.length > 2000 || typeof task.time !== "string" || (task.time !== "" && !/^([01]\d|2[0-3]):[0-5]\d$/.test(task.time))) return false;
@@ -199,6 +201,13 @@ if (!storageWarning && state.version === 10) {
 if (!storageWarning && state.version === 11) {
   if (!state.tasks.some(task => task.id === "print-report-review-form")) state.tasks.push({ ...seedTasks.find(task => task.id === "print-report-review-form") });
   state.version = 12;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 12) {
+  for (const id of ["fintech-apply", "portfolio-kdd-photos"]) {
+    if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
+  }
+  state.version = 13;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
