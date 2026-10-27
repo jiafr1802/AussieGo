@@ -83,6 +83,7 @@ const seedTasks = [
   { id: "huawei-interview-followup", date: "2026-10-29", title: "跟进华为 · 争取面试或转推其他组", category: "求职", note: "联系上周对接的人，询问是否有面试机会；若当前组暂无机会，询问能否将简历转推给其他组。记录回复及下一步，不代表已获得面试。安排在 10.29（周四），具体联系时间未定。" },
   { id: "eyeshadow", date: "2026-10-27", title: "试试蓝色系眼影 · 携程面试前", category: "生活", note: "安排在 10.27（周二）17:00 的携程面试之前，具体准备时间未定。" },
   { id: "bank", date: "2026-10-27", title: "银行打印流水", category: "签证", note: "10.27 / 10.29 二选一，暂放 27 日。若改到 29 日，可编辑日期；确认流水时间范围、语言和盖章要求。" },
+  { id: "neurips-invitation-reprint", date: "2026-10-27", title: "重新打印 NeurIPS 邀请函 · 先更正信息", category: "签证", status: "suggested", note: "暂放今天，具体时间可调整。\n1. 在会议账户中核对并更正个人信息，与护照保持一致。\n2. 重新生成并下载官方邀请函；如无法自行更正，联系会议主办方。\n3. 核对个人信息、悉尼会场与会议日期后，再打印并替换签证申请材料中的旧版本。\n不要直接修改原 PDF；此待办不代表已完成更正、打印或上传。" },
   { id: "experiment-progress-1027", date: "2026-10-27", title: "检查实验进度", category: "学业 / 实验", note: "检查实验运行进度，记录结果、报错和下一步。" },
   { id: "defense-rehearsal", date: "2026-10-27", title: "开题答辩排练计时", category: "学业 / 实验", note: "完整排练开题答辩并计时，记录总时长及需要调整的部分。" },
   { id: "report-final-check-1028", date: "2026-10-27", title: "最后检查一下报告内容 · 上午 · 打印前", category: "学业 / 实验", note: "周二上午，打印材料前最后检查一下开题报告内容，确认最终版本后再打印。具体钟点未定。" },
@@ -124,7 +125,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -398,6 +399,13 @@ if (!storageWarning && state.version === 25) {
     state.tasks.splice(index < 0 ? state.tasks.length : index + 1, 0, { ...seedTasks.find(task => task.id === "ant-data-structures-review-1029") });
   }
   state.version = 26;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 26) {
+  if (!state.tasks.some(task => task.id === "neurips-invitation-reprint")) {
+    state.tasks.push({ ...seedTasks.find(task => task.id === "neurips-invitation-reprint") });
+  }
+  state.version = 27;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
