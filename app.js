@@ -50,10 +50,10 @@ const statuses = { planned: "已安排", tentative: "待定", suggested: "建议
 const dayInfo = [
   ["先把重要的事启动", "户口证明、实验与请假。携程面试已改至明天 17:00，今天给项目复习留出至少一小时。"],
   ["材料准备日", "上午最后检查报告内容并打印材料；银行流水与开题准备，17:00 携程面试。"],
-  ["开题答辩", "14:00 开题答辩，带好已打印的报告与审核表。"],
+  ["开题答辩", "上午练习 1–2 遍 PPT 讲解，熟悉整体内容并思考常见问题；14:00 开题答辩，带好已打印的报告与审核表。"],
   ["去清华，见一见新机会", "日历记录 Apple 宣讲 19:00—20:00，记得带英文简历；今天也是 H 生日。银行流水备选日。"],
   ["收一收尾，也见见朋友", "和 lyq、dsy 喝酒暂定，等大家确认。"],
-  ["留给签证的一段时间", "建议今天集中核对材料、完成线上申请；具体办理日可以调整。"],
+  ["签证已提交，等消息", "澳大利亚签证申请已提交，目前等待审理结果；留意邮箱与 ImmiAccount 通知。"],
   ["校友相聚的周日", "辽宁省实验中学北京校友会迎新会 · 正大中心南塔 18 层，13:00 起签到。"],
   ["新一周，LC 与报销", "日历中的“重启 LC”跨 11 月 1—2 日。暂放济州岛 KDD 会议报销：打印材料、交 Y 老师，后续等反馈。"],
   ["把时间留给进展", "暂无已确认安排。"],
@@ -90,6 +90,7 @@ const seedTasks = [
   { id: "report-final-check-1028", date: "2026-10-27", title: "最后检查一下报告内容 · 上午 · 打印前", category: "学业 / 实验", note: "周二上午，打印材料前最后检查一下开题报告内容，确认最终版本后再打印。具体钟点未定。" },
   { id: "print-report", date: "2026-10-27", title: "打印开题报告 7 份 · 上午", category: "学业 / 实验", note: "确认最终版本、页码及学院装订要求。" },
   { id: "print-report-review-form", date: "2026-10-27", title: "打印开题报告审核表 · 上午", category: "学业 / 实验", note: "确认使用学院要求的审核表版本。" },
+  { id: "defense-ppt-practice-1028", date: "2026-10-28", title: "练习开题 PPT 讲解 1–2 遍 · 上午", category: "学业 / 实验", note: "今天上午完整练习 1–2 遍开题答辩 PPT 讲解，熟悉整体内容、研究思路和各部分衔接，为下午 14:00 的答辩与现场 defend 做准备。具体练习钟点未定。\n讲解时留意总时长和不够熟悉的页面，练完后梳理常见问题及回答要点：研究动机与意义、研究内容 2 和 3 的区别与关系、创新点、实验设计与评价指标、可行性、局限及后续计划。" },
   { id: "defense", date: "2026-10-28", time: "14:00", title: "开题答辩", category: "学业 / 实验", note: "带好开题报告；答辩地点与提前到场时间待补充。\n答辩提醒：用东北话人格，即使被喷了也能笑着面对。" },
   { id: "apple", date: "2026-10-29", title: "清华 Apple 开放日 · 带英文简历", category: "求职", note: "晚上参加，具体时间与场地待确认。出门前带好英文简历并核对入校要求。" },
   { id: "ant-interview-1029", date: "2026-10-29", time: "17:00", title: "蚂蚁集团面试 · 大模型智能体优化算法", category: "求职", note: "校园招聘视频面试，10.29（周四）17:00（北京时间）开始，结束时间未提供。面试入口及联系信息见原邮件；私人面试链接不在公开页面保存。提前检查设备、网络和邮件通知。" },
@@ -102,7 +103,7 @@ const seedTasks = [
   { id: "kdd-submit-1029", date: "2026-10-29", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "打印济州岛 KDD 会议报销材料并交给 Y 老师。材料清单与具体交接时间待确认。" },
   { id: "friends", date: "2026-10-30", title: "和 lyq、dsy 一起喝酒", category: "生活", status: "tentative", note: "周五可能相约，时间与地点待大家确认。" },
   { id: "kdd-submit-1030", date: "2026-10-30", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "周四未完成则今天提交给 Y 老师；若已提交，确认收件与反馈，按要求补交材料，避免重复提交。" },
-  { id: "visa-submit", date: "2026-10-31", title: "本周完成澳大利亚签证线上申请", category: "签证", status: "suggested", note: `本周目标，暂建议安排在周六，并非已确认预约。核对适用签证类别和官方材料清单；上传后复查并保存提交凭证。\nImmiAccount 申请列表（登录后选择现有申请继续检查）：${IMMIACCOUNT_URL}` },
+  { id: "visa-submit", date: "2026-10-28", title: "澳大利亚签证申请已提交", category: "签证", done: true, note: `10.28 更新：申请已提交，目前等待审理结果。留意邮箱与 ImmiAccount 通知，如收到补件要求再处理；尚未获知审批结果。\nImmiAccount 申请列表：${IMMIACCOUNT_URL}` },
   { id: "alumni-checkin", date: "2026-11-01", time: "13:00", title: "校友迎新会 · 签到、自由拍照合影", category: "生活", note: "13:00—13:30 签到与合影。\n地点：北京市朝阳区正大中心南塔 18 层。" },
   { id: "alumni-welcome", date: "2026-11-01", time: "13:30", title: "辽宁省实验中学北京校友会2026年迎新会", category: "生活", note: "13:30—17:30 迎新座谈交流。\n地点：北京市朝阳区正大中心南塔 18 层。\n主办单位：辽宁省实验中学北京校友会。\n活动不收取费用，会后聚餐另行收取餐费。" },
   { id: "alumni-dinner", date: "2026-11-01", time: "17:30", title: "校友迎新会 · 会后聚餐", category: "生活", note: "17:30—20:00 会后聚餐。\n餐费：在校校友 50 元/人，工作校友 100 元/人。\n聚餐具体地点待确认。" },
@@ -126,7 +127,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -416,6 +417,30 @@ if (!storageWarning && state.version === 27) {
     if (note.length <= 2000) application.note = note;
   }
   state.version = 28;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 28) {
+  const application = state.tasks.find(task => task.id === "visa-submit");
+  if (application) {
+    const seed = seedTasks.find(task => task.id === "visa-submit");
+    application.title = seed.title;
+    application.date = seed.date;
+    application.time = "";
+    application.status = "planned";
+    application.done = true;
+    const update = seed.note.split("\n")[0];
+    const note = `${application.note}${application.note ? "\n\n" : ""}${update}`;
+    if (!application.note.includes(update) && note.length <= 2000) application.note = note;
+  }
+  state.version = 29;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 29) {
+  if (!state.tasks.some(task => task.id === "defense-ppt-practice-1028")) {
+    const index = state.tasks.findIndex(task => task.id === "defense");
+    state.tasks.splice(index < 0 ? state.tasks.length : index, 0, { ...seedTasks.find(task => task.id === "defense-ppt-practice-1028") });
+  }
+  state.version = 30;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
