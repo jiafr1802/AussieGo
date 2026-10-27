@@ -2,6 +2,7 @@
 
 const STORAGE_KEY = "aussiego-planner-v1";
 const ANT_JD_URL = "https://talent.antgroup.com/campus-position?positionId=260721010991745";
+const IMMIACCOUNT_URL = "https://online.immi.gov.au/ola/app";
 const coreProblems = [
   [236, "二叉树的最近公共祖先", "二叉树", "lowest-common-ancestor-of-a-binary-tree"],
   [79, "单词搜索", "回溯", "word-search"],
@@ -101,7 +102,7 @@ const seedTasks = [
   { id: "kdd-submit-1029", date: "2026-10-29", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "打印济州岛 KDD 会议报销材料并交给 Y 老师。材料清单与具体交接时间待确认。" },
   { id: "friends", date: "2026-10-30", title: "和 lyq、dsy 一起喝酒", category: "生活", status: "tentative", note: "周五可能相约，时间与地点待大家确认。" },
   { id: "kdd-submit-1030", date: "2026-10-30", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "周四未完成则今天提交给 Y 老师；若已提交，确认收件与反馈，按要求补交材料，避免重复提交。" },
-  { id: "visa-submit", date: "2026-10-31", title: "本周完成澳大利亚签证线上申请", category: "签证", status: "suggested", note: "本周目标，暂建议安排在周六，并非已确认预约。核对适用签证类别和官方材料清单；上传后复查并保存提交凭证。" },
+  { id: "visa-submit", date: "2026-10-31", title: "本周完成澳大利亚签证线上申请", category: "签证", status: "suggested", note: `本周目标，暂建议安排在周六，并非已确认预约。核对适用签证类别和官方材料清单；上传后复查并保存提交凭证。\nImmiAccount 申请列表（登录后选择现有申请继续检查）：${IMMIACCOUNT_URL}` },
   { id: "alumni-checkin", date: "2026-11-01", time: "13:00", title: "校友迎新会 · 签到、自由拍照合影", category: "生活", note: "13:00—13:30 签到与合影。\n地点：北京市朝阳区正大中心南塔 18 层。" },
   { id: "alumni-welcome", date: "2026-11-01", time: "13:30", title: "辽宁省实验中学北京校友会2026年迎新会", category: "生活", note: "13:30—17:30 迎新座谈交流。\n地点：北京市朝阳区正大中心南塔 18 层。\n主办单位：辽宁省实验中学北京校友会。\n活动不收取费用，会后聚餐另行收取餐费。" },
   { id: "alumni-dinner", date: "2026-11-01", time: "17:30", title: "校友迎新会 · 会后聚餐", category: "生活", note: "17:30—20:00 会后聚餐。\n餐费：在校校友 50 元/人，工作校友 100 元/人。\n聚餐具体地点待确认。" },
@@ -125,7 +126,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -408,6 +409,15 @@ if (!storageWarning && state.version === 26) {
   state.version = 27;
   needsMigration = true;
 }
+if (!storageWarning && state.version === 27) {
+  const application = state.tasks.find(task => task.id === "visa-submit");
+  if (application && !application.note.includes(IMMIACCOUNT_URL)) {
+    const note = `${application.note}${application.note ? "\n" : ""}ImmiAccount 申请列表（登录后选择现有申请继续检查）：${IMMIACCOUNT_URL}`;
+    if (note.length <= 2000) application.note = note;
+  }
+  state.version = 28;
+  needsMigration = true;
+}
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 let selectedDate = isDate(today) ? today : dates[0].iso;
 let week = "all";
@@ -461,7 +471,7 @@ function renderDetail() {
   element("prev-day").disabled = index === 0;
   element("next-day").disabled = index === 13;
   const tasks = tasksFor(selectedDate);
-  element("tasks").innerHTML = tasks.length ? tasks.map(task => `<div class="task ${task.done ? "done" : ""}"><input type="checkbox" id="check-${task.id}" data-check="${task.id}" ${task.done ? "checked" : ""}><div class="task-body"><label class="task-heading" for="check-${task.id}">${escapeHtml(task.title)}</label><p class="task-meta ${task.time ? "fixed" : ""}">${task.time || "灵活安排"} · ${escapeHtml(task.category)}${task.status !== "planned" ? ` · ${statuses[task.status]}` : ""}</p>${task.note ? `<p class="task-note">${escapeHtml(task.note)}</p>` : ""}${task.id === "ant-jd-preparation-1029" ? `<p class="task-note"><a href="${ANT_JD_URL}" target="_blank" rel="noopener noreferrer">蚂蚁官网 JD</a></p>` : ""}</div><div class="task-actions"><button class="icon-button" data-edit="${task.id}" title="编辑事项" aria-label="编辑 ${escapeHtml(task.title)}"><i data-lucide="pencil"></i></button><button class="icon-button" data-delete="${task.id}" title="删除事项" aria-label="删除 ${escapeHtml(task.title)}"><i data-lucide="trash-2"></i></button></div></div>`).join("") : '<p class="muted small">今天先留白。</p>';
+  element("tasks").innerHTML = tasks.length ? tasks.map(task => `<div class="task ${task.done ? "done" : ""}"><input type="checkbox" id="check-${task.id}" data-check="${task.id}" ${task.done ? "checked" : ""}><div class="task-body"><label class="task-heading" for="check-${task.id}">${escapeHtml(task.title)}</label><p class="task-meta ${task.time ? "fixed" : ""}">${task.time || "灵活安排"} · ${escapeHtml(task.category)}${task.status !== "planned" ? ` · ${statuses[task.status]}` : ""}</p>${task.note ? `<p class="task-note">${escapeHtml(task.note)}</p>` : ""}${task.id === "ant-jd-preparation-1029" ? `<p class="task-note"><a href="${ANT_JD_URL}" target="_blank" rel="noopener noreferrer">蚂蚁官网 JD</a></p>` : ""}${task.id === "visa-submit" ? `<p class="task-note"><a href="${IMMIACCOUNT_URL}" target="_blank" rel="noopener noreferrer">ImmiAccount · 继续检查申请草稿</a></p>` : ""}</div><div class="task-actions"><button class="icon-button" data-edit="${task.id}" title="编辑事项" aria-label="编辑 ${escapeHtml(task.title)}"><i data-lucide="pencil"></i></button><button class="icon-button" data-delete="${task.id}" title="删除事项" aria-label="删除 ${escapeHtml(task.title)}"><i data-lucide="trash-2"></i></button></div></div>`).join("") : '<p class="muted small">今天先留白。</p>';
   const note = state.days[selectedDate] || { flight: false, flightNote: "", note: "" };
   element("flight-check").checked = note.flight;
   element("flight-note").value = note.flightNote;
