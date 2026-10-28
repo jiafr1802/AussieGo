@@ -59,8 +59,8 @@ const dayInfo = [
   ["把时间留给进展", "暂无已确认安排。"],
   ["一周的中点", "暂无已确认安排。"],
   ["继续向前", "暂无已确认安排。"],
-  ["一万零一夜，派对之约", "21:00 开始 · 庆祝出生第 10001 天；按自己的 MBTI 穿对应颜色的衣服。地点与散场时间待确认。"],
-  ["立冬，周末自己的时间", "日历节气：立冬。"],
+  ["一万零一夜，派对之约", "NeurIPS camera-ready 截止日为今天 AoE，对应北京时间明天 19:59；提前检查最终版本。21:00 派对开始，按自己的 MBTI 穿对应颜色的衣服；地点与散场时间待确认。"],
+  ["立冬，camera-ready 截止", "NeurIPS 2026 camera-ready 北京时间 19:59 截止（11 月 6 日 AoE），在 OpenReview author console 提交。日历节气：立冬。"],
   ["下一段之前", "暂无已确认安排。"],
 ];
 const dates = Array.from({ length: 14 }, (_, index) => {
@@ -110,6 +110,7 @@ const seedTasks = [
   { id: "alumni-welcome", date: "2026-11-01", time: "13:30", title: "辽宁省实验中学北京校友会2026年迎新会", category: "生活", note: "13:30—17:30 迎新座谈交流。\n地点：北京市朝阳区正大中心南塔 18 层。\n主办单位：辽宁省实验中学北京校友会。\n活动不收取费用，会后聚餐另行收取餐费。" },
   { id: "alumni-dinner", date: "2026-11-01", time: "17:30", title: "校友迎新会 · 会后聚餐", category: "生活", note: "17:30—20:00 会后聚餐。\n餐费：在校校友 50 元/人，工作校友 100 元/人。\n聚餐具体地点待确认。" },
   { id: "kdd-reimbursement", date: "2026-11-02", title: "报销济州岛 KDD 会议 · 打印材料并交 Y 老师", category: "学业 / 实验", status: "suggested", note: "第二周待办，暂放 11 月 2 日（周一），并非已确认预约，具体办理日可调整。\n1. 先打印报销材料。\n2. 把材料交给 Y 老师。\n3. 等 Y 老师反馈，再按反馈补充或修改材料。\n材料清单、交接时间与反馈日期待确认。" },
+  { id: "neurips-camera-ready-2026", date: "2026-11-07", time: "19:59", title: "NeurIPS 2026 camera-ready DDL · 11.6 AoE", category: "学业 / 实验", note: "邮件通知：最终 camera-ready 版本须于 November 6 (AoE) 前在 OpenReview author console 提交。\nAoE 为 UTC−12：2026 年 11 月 6 日 23:59:59 对应北京时间 2026 年 11 月 7 日 19:59:59；日程按北京时间记为 11 月 7 日 19:59。\n提前检查最终版本，在作者控制台上传并确认提交成功，避免临近截止时操作。具体要求以邮件及作者控制台为准。\nOpenReview：https://openreview.net/" },
 ].map(task => ({ time: "", status: "planned", done: false, ...task }));
 
 const calendarSnapshot = [
@@ -129,7 +130,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -460,6 +461,13 @@ if (!storageWarning && state.version === 31) {
     if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
   }
   state.version = 32;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 32) {
+  if (!state.tasks.some(task => task.id === "neurips-camera-ready-2026")) {
+    state.tasks.push({ ...seedTasks.find(task => task.id === "neurips-camera-ready-2026") });
+  }
+  state.version = 33;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
