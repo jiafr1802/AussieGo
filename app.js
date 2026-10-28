@@ -92,6 +92,8 @@ const seedTasks = [
   { id: "print-report-review-form", date: "2026-10-27", title: "打印开题报告审核表 · 上午", category: "学业 / 实验", note: "确认使用学院要求的审核表版本。" },
   { id: "defense-ppt-practice-1028", date: "2026-10-28", title: "练习开题 PPT 讲解 1–2 遍 · 上午", category: "学业 / 实验", note: "今天上午完整练习 1–2 遍开题答辩 PPT 讲解，熟悉整体内容、研究思路和各部分衔接，为下午 14:00 的答辩与现场 defend 做准备。具体练习钟点未定。\n讲解时留意总时长和不够熟悉的页面，练完后梳理常见问题及回答要点：研究动机与意义、研究内容 2 和 3 的区别与关系、创新点、实验设计与评价指标、可行性、局限及后续计划。" },
   { id: "defense", date: "2026-10-28", time: "14:00", title: "开题答辩", category: "学业 / 实验", note: "带好开题报告；答辩地点与提前到场时间待补充。\n答辩提醒：用东北话人格，即使被喷了也能笑着面对。" },
+  { id: "msra-mentor-leave-1028", date: "2026-10-28", title: "向 MSRA mentor 请假", category: "学业 / 实验", note: "今天联系 MSRA mentor 请假，说明请假安排并确认回复；具体会议与请假时段待确认。此事项不代表已发送或获批。" },
+  { id: "experiment-progress-1028", date: "2026-10-28", title: "跟进实验进度 · 晚上", category: "学业 / 实验", note: "今晚跟进实验运行进度，查看结果与报错，记录当前情况和下一步。具体钟点未定。" },
   { id: "apple", date: "2026-10-29", title: "清华 Apple 开放日 · 带英文简历", category: "求职", note: "晚上参加，具体时间与场地待确认。出门前带好英文简历并核对入校要求。" },
   { id: "ant-interview-1029", date: "2026-10-29", time: "17:00", title: "蚂蚁集团面试 · 大模型智能体优化算法", category: "求职", note: "校园招聘视频面试，10.29（周四）17:00（北京时间）开始，结束时间未提供。面试入口及联系信息见原邮件；私人面试链接不在公开页面保存。提前检查设备、网络和邮件通知。" },
   { id: "ant-interview-review-1029", date: "2026-10-29", title: "复习八股 · 白天 · 准备蚂蚁面试", category: "求职", note: "提醒：千万认真！\n周四白天复习八股，为当天 17:00 的蚂蚁集团面试做准备，在面试前完成。具体复习钟点未定。" },
@@ -127,7 +129,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -451,6 +453,13 @@ if (!storageWarning && state.version === 30) {
     if (!followup.note.includes(reminder) && note.length <= 2000) followup.note = note;
   }
   state.version = 31;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 31) {
+  for (const id of ["msra-mentor-leave-1028", "experiment-progress-1028"]) {
+    if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
+  }
+  state.version = 32;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
