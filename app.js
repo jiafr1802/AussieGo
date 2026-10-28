@@ -97,6 +97,7 @@ const seedTasks = [
   { id: "defense", date: "2026-10-28", time: "14:00", title: "开题答辩", category: "学业 / 实验", note: "带好开题报告；答辩地点与提前到场时间待补充。\n答辩提醒：用东北话人格，即使被喷了也能笑着面对。" },
   { id: "msra-mentor-leave-1028", date: "2026-10-28", title: "向 MSRA mentor 请假", category: "学业 / 实验", note: "今天联系 MSRA mentor 请假，说明请假安排并确认回复；具体会议与请假时段待确认。此事项不代表已发送或获批。" },
   { id: "experiment-progress-1028", date: "2026-10-28", title: "跟进实验进度 · 晚上", category: "学业 / 实验", note: "今晚跟进实验运行进度，查看结果与报错，记录当前情况和下一步。具体钟点未定。" },
+  { id: "opd-math-inference-summary-1029", date: "2026-10-29", title: "阶段性总结 OPD-Math 训练集推理的问题和现状", category: "学业 / 实验", note: "阶段性梳理目前 OPD-Math 训练集推理的现状、主要问题、已有排查结果和下一步；区分已验证结论与待确认问题。安排在 10 月 29 日，具体时间未定。" },
   { id: "apple", date: "2026-10-29", title: "清华 Apple 开放日 · 带英文简历", category: "求职", note: "晚上参加，具体时间与场地待确认。出门前带好英文简历并核对入校要求。" },
   { id: "ant-interview-1029", date: "2026-10-29", time: "17:00", title: "蚂蚁集团面试 · 大模型智能体优化算法", category: "求职", note: "校园招聘视频面试，10.29（周四）17:00（北京时间）开始，结束时间未提供。面试入口及联系信息见原邮件；私人面试链接不在公开页面保存。提前检查设备、网络和邮件通知。" },
   { id: "ant-interview-review-1029", date: "2026-10-29", title: "复习八股 · 白天 · 准备蚂蚁面试", category: "求职", note: "提醒：千万认真！\n周四白天复习八股，为当天 17:00 的蚂蚁集团面试做准备，在面试前完成。具体复习钟点未定。" },
@@ -133,7 +134,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -478,6 +479,13 @@ if (!storageWarning && state.version === 33) {
     if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
   }
   state.version = 34;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 34) {
+  if (!state.tasks.some(task => task.id === "opd-math-inference-summary-1029")) {
+    state.tasks.push({ ...seedTasks.find(task => task.id === "opd-math-inference-summary-1029") });
+  }
+  state.version = 35;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
