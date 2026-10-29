@@ -84,7 +84,7 @@ const seedTasks = [
   { id: "hatha-yoga-1029", date: "2026-10-29", time: "13:00", title: "哈他瑜伽（脊柱）", category: "生活", note: "预约截图：已预约。\n2026 年 10 月 29 日 13:00—14:00（北京时间）。\n归位瑜伽·融科馆，团教室。\n今晚先装好瑜伽训练服，明早出门前再检查。" },
   { id: "ctrip", date: "2026-10-27", time: "17:00", title: "携程面试", category: "求职", note: "改期确认：根据最新 Moka 招聘通知，携程校招面试改为 10.27（周二）17:00（北京时间），原 10.26 19:00 安排作废。结束时间未提供，疑问及联系方式见邮箱。提前检查面试通知、入口与设备。" },
   { id: "bytedance-followup", date: "2026-10-28", title: "跟进字节广告方向 · 等待评估结果", category: "求职", note: "10.26 更新：HR 已将简历转发给其他 HR；目前在广告方向等待评估。若评估通过，会有对应 HR 联系。目前尚未确认通过评估或获得面试。\n下一步：等待评估结果及 HR 联系；保留 10.28（周三）的进度跟进，具体时间未定。\n提醒：猎杀时刻之前不要焦躁，也可以自己主动投递和联系，别急。" },
-  { id: "huawei-interview-followup", date: "2026-10-29", title: "跟进华为 · 争取面试或转推其他组", category: "求职", note: "联系上周对接的人，询问是否有面试机会；若当前组暂无机会，询问能否将简历转推给其他组。记录回复及下一步，不代表已获得面试。安排在 10.29（周四），具体联系时间未定。" },
+  { id: "huawei-interview-followup", date: "2026-10-30", title: "跟进华为 · 争取面试或转推其他组", category: "求职", note: "联系上周对接的人，询问是否有面试机会；若当前组暂无机会，询问能否将简历转推给其他组。记录回复及下一步，不代表已获得面试。安排在 10.30（周五），具体联系时间未定。" },
   { id: "eyeshadow", date: "2026-10-27", title: "试试蓝色系眼影 · 携程面试前", category: "生活", note: "安排在 10.27（周二）17:00 的携程面试之前，具体准备时间未定。" },
   { id: "bank", date: "2026-10-27", title: "银行打印流水", category: "签证", note: "10.27 / 10.29 二选一，暂放 27 日。若改到 29 日，可编辑日期；确认流水时间范围、语言和盖章要求。" },
   { id: "neurips-invitation-reprint", date: "2026-10-27", title: "重新打印 NeurIPS 邀请函 · 先更正信息", category: "签证", status: "suggested", note: "暂放今天，具体时间可调整。\n1. 在会议账户中核对并更正个人信息，与护照保持一致。\n2. 重新生成并下载官方邀请函；如无法自行更正，联系会议主办方。\n3. 核对个人信息、悉尼会场与会议日期后，再打印并替换签证申请材料中的旧版本。\n不要直接修改原 PDF；此待办不代表已完成更正、打印或上传。" },
@@ -105,7 +105,8 @@ const seedTasks = [
   { id: "ant-jd-preparation-1029", date: "2026-10-29", title: "查看蚂蚁官网 JD · 白天 · 针对性准备面试", category: "求职", note: `周四白天去蚂蚁集团招聘官网查看“大模型智能体优化算法”岗位 JD，核对岗位职责与任职要求，再对应梳理项目经历、技术知识和面试准备重点。岗位信息以官网为准，不代表已完成查询或准备。安排在当天 17:00 蚂蚁面试前，具体钟点未定。\n蚂蚁官网 JD：${ANT_JD_URL}` },
   { id: "haiyou-group-meeting", date: "2026-10-29", time: "09:00", title: "海优组小组会", category: "学业 / 实验", note: "周四早上 09:00 参加海优组小组会（北京时间）。地点或会议链接、结束时间待确认。" },
   { id: "large-group-leave-1029", date: "2026-10-29", title: "给大组会请假", category: "学业 / 实验", note: "联系大组会负责人请假，并确认是否获批。具体会议时间待确认。" },
-  { id: "baidu-followup-1029", date: "2026-10-29", title: "跟进上周百度面试结果 · 推进新流程", category: "求职", note: "跟进上周百度面试的反馈与结果，确认后续安排并推进新的招聘流程，记录回复和下一步。结果与新流程进度均待确认。" },
+  { id: "baidu-followup-1029", date: "2026-10-30", title: "跟进上周百度面试结果 · 推进新流程", category: "求职", note: "跟进上周百度面试的反馈与结果，确认后续安排并推进新的招聘流程，记录回复和下一步。结果与新流程进度均待确认。" },
+  { id: "defense-materials-submit-1030", date: "2026-10-30", title: "向教务提交开题材料", category: "学业 / 实验", note: "暂放周五（10 月 30 日），具体钟点未定。先确认教务接收时间及所需材料，整理开题报告、审核表等材料后提交；具体清单及签字要求以教务通知为准。" },
   { id: "kdd-submit-1029", date: "2026-10-29", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "打印济州岛 KDD 会议报销材料并交给 Y 老师。材料清单与具体交接时间待确认。" },
   { id: "friends", date: "2026-10-30", title: "和 lyq、dsy 一起喝酒", category: "生活", status: "tentative", note: "周五可能相约，时间与地点待大家确认。" },
   { id: "kdd-submit-1030", date: "2026-10-30", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "周四未完成则今天提交给 Y 老师；若已提交，确认收件与反馈，按要求补交材料，避免重复提交。" },
@@ -135,7 +136,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -494,6 +495,20 @@ if (!storageWarning && state.version === 35) {
     state.tasks.push({ ...seedTasks.find(task => task.id === "pingan-assessment-1031") });
   }
   state.version = 36;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 36) {
+  for (const id of ["baidu-followup-1029", "huawei-interview-followup"]) {
+    const task = state.tasks.find(task => task.id === id);
+    if (task) {
+      task.date = "2026-10-30";
+      if (id === "huawei-interview-followup") task.note = task.note.replaceAll("10.29（周四）", "10.30（周五）");
+    }
+  }
+  if (!state.tasks.some(task => task.id === "defense-materials-submit-1030")) {
+    state.tasks.push({ ...seedTasks.find(task => task.id === "defense-materials-submit-1030") });
+  }
+  state.version = 37;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
