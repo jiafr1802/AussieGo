@@ -110,6 +110,7 @@ const seedTasks = [
   { id: "defense-materials-submit-1030", date: "2026-10-30", title: "打印一份开题报告 · 交到教务", category: "学业 / 实验", note: "安排在周五（10 月 30 日），具体钟点未定。先确认教务接收时间及所需材料；具体清单及签字要求以教务通知为准。\n本次安排：打印一份开题报告，并交到教务。" },
   { id: "dongsi-cafe-work-1030", date: "2026-10-30", title: "去东四 / 雍和宫咖啡馆工作 · 二选一", category: "学业 / 实验", note: "安排在 10 月 30 日（周五），具体咖啡馆、到店时间及工作时段未定。\n地点：东四 / 雍和宫二选一。\n工作内容：阶段性整理最近的 hiring process，梳理各公司及岗位的当前阶段、已有反馈、待跟进事项和下一步。" },
   { id: "hapi-safe-yolo-1030", date: "2026-10-30", title: "hapi：改成 safe YOLO 模式", category: "学业 / 实验", note: "安排在明天（10 月 30 日，周五），具体时间未定。将 hapi 改成 safe YOLO 模式；此项为待办，尚未修改实际配置。" },
+  { id: "autonomous-driving-apply-1030", date: "2026-10-30", title: "投递自动驾驶相关秋招", category: "求职", note: "安排在明天（10 月 30 日，周五），具体时间未定。筛选匹配岗位后投递，记录各公司的岗位、投递状态与下一步。以下链接与内推码来自你提供的信息，岗位资格及招聘状态以各招聘平台为准。\n\n地平线｜内推码：csfylp\nhttps://wecruit.hotjob.cn/SU62d915040dcad43c775ec12c/mc/position/campus?acotycoCode=csfylp&projectId=103302&recruitType=1&isLimitShowPostScope=1\n\n千里智驾｜内推码：DSZzw2TG\nhttps://app.mokahr.com/m/campus-recruitment/qianli1/147197?recommendCode=DSZzw2TG&hash=%23%2Fjobs#/jobs\n\n文远知行｜内推码：DS5CKs78\nhttps://app.mokahr.com/m/campus_apply/jingchi/2137?recommendCode=DS5CKs78#/jobs\n\nMomenta｜内推码：WD3RR9A\nhttps://momenta.jobs.feishu.cn/s/YW8H-3mF2ik\n\n小鹏集团｜内推码：994GMUS\nhttps://xiaopeng.jobs.feishu.cn/s/zVNs6fEOQbA\n\n滴滴｜内推码：DSrYFP7D\nhttps://app.mokahr.com/m/campus_apply/didiglobal/96064?recommendCode=DSrYFP7D#/jobs\n\n蔚来｜内推码：CV6ASCT\nhttps://nio.jobs.feishu.cn/s/iPsM1EDm\n\n卓驭｜内推码：EZB8HT\n秋招：https://we.zyt.com/campus/jobs\n人才计划：https://we.zyt.com/5/jobs\n\n27 届实习提前批秋招汇总：\nhttps://docs.qq.com/smartsheet/DRHVEc05MbE5CYUZa?tab=sc_JGxFAj" },
   { id: "shanghai-ai-lab-apply-1030", date: "2026-10-30", title: "投递上海人工智能实验室秋招", category: "求职", note: "安排在明天（10 月 30 日，周五），具体时间未定。\n你提供的岗位方向：科研、工程、产品、创新生态、战略、管理支撑；涉及 AI 基础研究、AI for Science、AI 安全可控、技术赋能与产业落地。\n筛选匹配岗位，准备简历并投递，记录岗位与投递结果。具体岗位要求及招聘状态以投递页面为准。\n投递链接：https://ea7i5czp.jsjform.com/f/xNXa1e?x_field_1=wbb" },
   { id: "kdd-submit-1029", date: "2026-10-29", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "打印济州岛 KDD 会议报销材料并交给 Y 老师。材料清单与具体交接时间待确认。" },
   { id: "friends", date: "2026-10-30", title: "和 lyq、dsy 一起喝酒", category: "生活", status: "tentative", note: "周五可能相约，时间与地点待大家确认。" },
@@ -140,7 +141,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -554,6 +555,13 @@ if (!storageWarning && state.version === 40) {
     state.tasks.push({ ...seedTasks.find(task => task.id === "hapi-safe-yolo-1030") });
   }
   state.version = 41;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 41) {
+  if (!state.tasks.some(task => task.id === "autonomous-driving-apply-1030")) {
+    state.tasks.push({ ...seedTasks.find(task => task.id === "autonomous-driving-apply-1030") });
+  }
+  state.version = 42;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
