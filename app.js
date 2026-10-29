@@ -98,6 +98,7 @@ const seedTasks = [
   { id: "msra-mentor-leave-1028", date: "2026-10-28", title: "向 MSRA mentor 请假", category: "学业 / 实验", note: "今天联系 MSRA mentor 请假，说明请假安排并确认回复；具体会议与请假时段待确认。此事项不代表已发送或获批。" },
   { id: "experiment-progress-1028", date: "2026-10-28", title: "跟进实验进度 · 晚上", category: "学业 / 实验", note: "今晚跟进实验运行进度，查看结果与报错，记录当前情况和下一步。具体钟点未定。" },
   { id: "opd-math-inference-summary-1029", date: "2026-10-29", title: "阶段性总结 OPD-Math 训练集推理的问题和现状", category: "学业 / 实验", note: "阶段性梳理目前 OPD-Math 训练集推理的现状、主要问题、已有排查结果和下一步；区分已验证结论与待确认问题。安排在 10 月 29 日，具体时间未定。" },
+  { id: "research-topic-meeting-notes-1029", date: "2026-10-29", title: "整理选题报告会议记录", category: "学业 / 实验", note: "整理选题报告会议中的讨论、反馈意见、修改要求及后续待办。安排在今天（10 月 29 日），具体时间未定。" },
   { id: "apple", date: "2026-10-29", title: "清华 Apple 开放日 · 带英文简历", category: "求职", note: "晚上参加，具体时间与场地待确认。出门前带好英文简历并核对入校要求。" },
   { id: "ant-interview-1029", date: "2026-10-29", time: "17:00", title: "蚂蚁集团面试 · 大模型智能体优化算法", category: "求职", note: "校园招聘视频面试，10.29（周四）17:00（北京时间）开始，结束时间未提供。面试入口及联系信息见原邮件；私人面试链接不在公开页面保存。提前检查设备、网络和邮件通知。" },
   { id: "ant-interview-review-1029", date: "2026-10-29", title: "复习八股 · 白天 · 准备蚂蚁面试", category: "求职", note: "提醒：千万认真！\n周四白天复习八股，为当天 17:00 的蚂蚁集团面试做准备，在面试前完成。具体复习钟点未定。" },
@@ -107,6 +108,8 @@ const seedTasks = [
   { id: "large-group-leave-1029", date: "2026-10-29", title: "给大组会请假", category: "学业 / 实验", note: "联系大组会负责人请假，并确认是否获批。具体会议时间待确认。" },
   { id: "baidu-followup-1029", date: "2026-10-30", title: "跟进上周百度面试结果 · 推进新流程", category: "求职", note: "跟进上周百度面试的反馈与结果，确认后续安排并推进新的招聘流程，记录回复和下一步。结果与新流程进度均待确认。" },
   { id: "defense-materials-submit-1030", date: "2026-10-30", title: "向教务提交开题材料", category: "学业 / 实验", note: "暂放周五（10 月 30 日），具体钟点未定。先确认教务接收时间及所需材料，整理开题报告、审核表等材料后提交；具体清单及签字要求以教务通知为准。" },
+  { id: "dongsi-cafe-work-1030", date: "2026-10-30", title: "去东四咖啡馆工作", category: "学业 / 实验", note: "安排在明天（10 月 30 日，周五），具体咖啡馆、到店时间及工作时段未定。" },
+  { id: "shanghai-ai-lab-apply-1030", date: "2026-10-30", title: "投递上海人工智能实验室秋招", category: "求职", note: "安排在明天（10 月 30 日，周五），具体时间未定。\n你提供的岗位方向：科研、工程、产品、创新生态、战略、管理支撑；涉及 AI 基础研究、AI for Science、AI 安全可控、技术赋能与产业落地。\n筛选匹配岗位，准备简历并投递，记录岗位与投递结果。具体岗位要求及招聘状态以投递页面为准。\n投递链接：https://ea7i5czp.jsjform.com/f/xNXa1e?x_field_1=wbb" },
   { id: "kdd-submit-1029", date: "2026-10-29", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "打印济州岛 KDD 会议报销材料并交给 Y 老师。材料清单与具体交接时间待确认。" },
   { id: "friends", date: "2026-10-30", title: "和 lyq、dsy 一起喝酒", category: "生活", status: "tentative", note: "周五可能相约，时间与地点待大家确认。" },
   { id: "kdd-submit-1030", date: "2026-10-30", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "周四未完成则今天提交给 Y 老师；若已提交，确认收件与反馈，按要求补交材料，避免重复提交。" },
@@ -136,7 +139,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -509,6 +512,13 @@ if (!storageWarning && state.version === 36) {
     state.tasks.push({ ...seedTasks.find(task => task.id === "defense-materials-submit-1030") });
   }
   state.version = 37;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 37) {
+  for (const id of ["research-topic-meeting-notes-1029", "dongsi-cafe-work-1030", "shanghai-ai-lab-apply-1030"]) {
+    if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
+  }
+  state.version = 38;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
