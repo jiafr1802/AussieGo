@@ -116,6 +116,7 @@ const seedTasks = [
   { id: "friends", date: "2026-10-30", title: "和 lyq、dsy 一起喝酒", category: "生活", status: "tentative", note: "周五可能相约，时间与地点待大家确认。" },
   { id: "kdd-submit-1030", date: "2026-10-30", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "周四未完成则今天提交给 Y 老师；若已提交，确认收件与反馈，按要求补交材料，避免重复提交。" },
   { id: "pingan-assessment-1031", date: "2026-10-31", title: "完成中国平安校招测评 · 周末", category: "求职", status: "suggested", note: "本周末完成，暂放 10 月 31 日（周六），具体钟点未定。\n邮件明确截止时间：2026 年 11 月 2 日 12:45（北京时间），逾期视为自动放弃；尽量周末完成，不拖到截止前。\n测评项目：16PF、平安 IQ（新），预计分别耗时 60 分钟、20 分钟，共约 80 分钟。\n先通过原邮件中的链接完善简历信息，再进入测评；使用与简历一致的登录信息。推荐 Chrome、Edge、Safari 或火狐浏览器。\n测评入口与个人登录信息见原邮件，不在公开网页保存。" },
+  { id: "resume-microsoft-experience-1031", date: "2026-10-31", title: "修改简历中的微软经历", category: "求职", note: "安排在 10 月 31 日（周六），具体时间未定。修改简历中微软经历的描述。" },
   { id: "visa-submit", date: "2026-10-28", title: "澳大利亚签证申请已提交", category: "签证", done: true, note: `10.28 更新：申请已提交，目前等待审理结果。留意邮箱与 ImmiAccount 通知，如收到补件要求再处理；尚未获知审批结果。\nImmiAccount 申请列表：${IMMIACCOUNT_URL}` },
   { id: "alumni-checkin", date: "2026-11-01", time: "13:00", title: "校友迎新会 · 签到、自由拍照合影", category: "生活", note: "13:00—13:30 签到与合影。\n地点：北京市朝阳区正大中心南塔 18 层。" },
   { id: "alumni-welcome", date: "2026-11-01", time: "13:30", title: "辽宁省实验中学北京校友会2026年迎新会", category: "生活", note: "13:30—17:30 迎新座谈交流。\n地点：北京市朝阳区正大中心南塔 18 层。\n主办单位：辽宁省实验中学北京校友会。\n活动不收取费用，会后聚餐另行收取餐费。" },
@@ -142,7 +143,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -570,6 +571,13 @@ if (!storageWarning && state.version === 42) {
     state.tasks.push({ ...seedTasks.find(task => task.id === "dji-online-exam-1102") });
   }
   state.version = 43;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 43) {
+  if (!state.tasks.some(task => task.id === "resume-microsoft-experience-1031")) {
+    state.tasks.push({ ...seedTasks.find(task => task.id === "resume-microsoft-experience-1031") });
+  }
+  state.version = 44;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
