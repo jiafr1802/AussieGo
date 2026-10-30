@@ -53,7 +53,7 @@ const dayInfo = [
   ["开题答辩", "上午练习 1–2 遍 PPT 讲解，熟悉整体内容并思考常见问题；14:00 开题答辩，带好已打印的报告与审核表。"],
   ["去清华，见一见新机会", "日历记录 Apple 宣讲 19:00—20:00，记得带英文简历；今天也是 H 生日。银行流水备选日。"],
   ["nothing to lose，【不要快乐，要痛快】", "12:50–13:50 普拉提课，出门前带好瑜伽服；记录明月是草木的视频。和 lyq、dsy 喝酒暂定，等大家确认。"],
-  ["周末主线：复习今年学的所有东西", "按主题梳理今年学过的内容，复习并查漏补缺。澳大利亚签证申请已提交，目前等待审理结果；留意邮箱与 ImmiAccount 通知。"],
+  ["周末双主线：年度复习与 MSRA 调研", "复习今年学过的内容；整理 MSRA 工作 update，比较组会方向，争取形成调研或 proposal，积累面试深度与广度。21:00 与 LYX 相约 TRIO Classic Cocktail Bar。澳大利亚签证申请已提交，留意审理通知。"],
   ["校友相聚的周日", "辽宁省实验中学北京校友会迎新会 · 正大中心南塔 18 层，13:00 起签到。"],
   ["新一周，LC 与报销", "日历中的“重启 LC”跨 11 月 1—2 日。暂放济州岛 KDD 会议报销：打印材料、交 Y 老师，后续等反馈。"],
   ["把时间留给进展", "暂无已确认安排。"],
@@ -132,6 +132,8 @@ const seedTasks = [
   { id: "pingan-assessment-1031", date: "2026-10-31", title: "完成中国平安校招测评 · 周末", category: "求职", status: "suggested", note: "本周末完成，暂放 10 月 31 日（周六），具体钟点未定。\n邮件明确截止时间：2026 年 11 月 2 日 12:45（北京时间），逾期视为自动放弃；尽量周末完成，不拖到截止前。\n测评项目：16PF、平安 IQ（新），预计分别耗时 60 分钟、20 分钟，共约 80 分钟。\n先通过原邮件中的链接完善简历信息，再进入测评；使用与简历一致的登录信息。推荐 Chrome、Edge、Safari 或火狐浏览器。\n测评入口与个人登录信息见原邮件，不在公开网页保存。" },
   { id: "resume-microsoft-experience-1031", date: "2026-10-31", title: "修改简历中的微软经历", category: "求职", note: "安排在 10 月 31 日（周六），具体时间未定。修改简历中微软经历的描述。" },
   { id: "year-learning-review-weekend-1031", date: "2026-10-31", title: "周末主线：复习今年学的所有东西", category: "学业 / 实验", status: "suggested", note: `本周末的主线任务，暂放 10 月 31 日（周六），可延续到周日，具体时段未定。梳理今年学过的内容，按主题复习、查漏补缺，记录需要继续巩固的部分。\n全 Mac 通缉搜查：找出之前记录的关于并行训练、FSDP 的笔记和学习材料，汇总文件位置或链接，作为本周末复习资料。\n\n${weekendReviewMaterialsNote}` },
+  { id: "msra-update-proposal-weekend-1031", date: "2026-10-31", title: "周末主线：MSRA 工作 update · 方向调研 / proposal", category: "学业 / 实验", status: "suggested", note: "周末新增主线，暂放 10 月 31 日（周六），可延续到周日，具体时段未定；保留年度复习主线。\n1. 整理 MSRA 工作 update：已完成的工作、实验进展、问题与下一步。\n2. 复盘上周组会提到的几个方向，补齐会议记录与相关材料；具体候选方向待从记录中整理，不凭空补写。\n3. 让 AI 辅助检索和比较候选方向，从研究价值、新颖性、已有工作、可行性、资源与验证成本等方面给出依据，选出一个最 promising 的方向，人工核对结论与引用。\n4. 争取产出一份调研或 proposal：问题定义、相关工作、核心假设、方法、实验与评估计划、风险和下一步。\n5. 以面试为导向，积累技术深度和知识广度，整理可讲清的技术取舍、项目贡献、局限及追问。\n此项为周末待办，尚未完成方向选择或调研产出；内部材料不上传公开网站。" },
+  { id: "trio-lyx-meet-1031", date: "2026-10-31", time: "21:00", title: "与 LYX 相约 TRIO Classic Cocktail Bar", category: "生活", note: "已约：10 月 31 日（周六）21:00，北京时间；结束时间未定。\n地点：TRIO Classic Cocktail Bar。\n地址（据截图）：将台路乙2号海润国际公寓1号楼商业2层。\n交通参考（据截图）：距地铁将台西站 B 口步行约 430 米。\n截图显示营业时间 18:30—次日 01:30，出发前可再确认。\n公开页面用 LYX 代替同行人姓名；已约见面，不代表已完成店内订位。" },
   { id: "visa-submit", date: "2026-10-28", title: "澳大利亚签证申请已提交", category: "签证", done: true, note: `10.28 更新：申请已提交，目前等待审理结果。留意邮箱与 ImmiAccount 通知，如收到补件要求再处理；尚未获知审批结果。\nImmiAccount 申请列表：${IMMIACCOUNT_URL}` },
   { id: "alumni-checkin", date: "2026-11-01", time: "13:00", title: "校友迎新会 · 签到、自由拍照合影", category: "生活", note: "13:00—13:30 签到与合影。\n地点：北京市朝阳区正大中心南塔 18 层。" },
   { id: "alumni-welcome", date: "2026-11-01", time: "13:30", title: "辽宁省实验中学北京校友会2026年迎新会", category: "生活", note: "13:30—17:30 迎新座谈交流。\n地点：北京市朝阳区正大中心南塔 18 层。\n主办单位：辽宁省实验中学北京校友会。\n活动不收取费用，会后聚餐另行收取餐费。" },
@@ -158,7 +160,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -629,6 +631,13 @@ if (!storageWarning && state.version === 48) {
   const reference = `主要参考资料：Lambda Labs 分布式训练指南（周末年度学习复习）。\n${url}`;
   if (task && !task.note.includes(url) && task.note.length + reference.length + 2 <= 2000) task.note = `${task.note}\n\n${reference}`;
   state.version = 49;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 49) {
+  for (const id of ["msra-update-proposal-weekend-1031", "trio-lyx-meet-1031"]) {
+    if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
+  }
+  state.version = 50;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
