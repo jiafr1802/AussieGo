@@ -67,6 +67,16 @@ const dates = Array.from({ length: 14 }, (_, index) => {
   const date = new Date(Date.UTC(2026, 9, 26 + index));
   return { iso: date.toISOString().slice(0, 10), short: `${date.getUTCMonth() + 1}.${String(date.getUTCDate()).padStart(2, "0")}`, weekday: `周${"日一二三四五六"[date.getUTCDay()]}`, title: dayInfo[index][0], summary: dayInfo[index][1] };
 });
+const weekendReviewMaterialsNote = [
+  "已找到的本机资料（~ 为用户主目录）：",
+  "1. FSDP 笔记（FlatParameter、wrap policy、All-Gather）：\n~/Desktop/Research/2025-09/Summer/FSDP.md",
+  "2. ZeRO 笔记（三阶段切分、显存计算、通信）：\n~/Desktop/Research/2025-09/Summer/学习材料-基础知识-并行-架构/ZeRO.md",
+  "3. FSDP 幻灯片：\n~/Desktop/Research/2025-09/Summer/学习材料-基础知识-并行-架构/Fully Sharded Data Parallel -- Public - Google 幻灯片.pdf",
+  "4. ZeRO 论文：\n~/Desktop/Research/2025-09/Summer/学习材料-基础知识-并行-架构/ZeRO.pdf",
+  "5. verl FSDP 后端与 worker 文档：\n~/Desktop/Research/2025-09/Summer/verl/docs/workers/fsdp_workers.rst",
+  "6. verl FSDP 扩展文档：\n~/Desktop/Research/2025-09/Summer/verl/docs/advance/fsdp_extension.rst",
+  "7. 补充：通用 CPU 并行练习（非 FSDP 训练笔记）：\n~/Desktop/LLM-RL-agent/并行学习.ipynb",
+].join("\n\n");
 const seedTasks = [
   { id: "household", date: "2026-10-26", title: "派出所开户口证明", category: "签证", note: "出发前确认办理网点、办公时间及所需证件。" },
   { id: "experiment", date: "2026-10-26", title: "尝试把实验跑起来", category: "学业 / 实验", note: "记录启动结果、报错和下一步。" },
@@ -120,7 +130,7 @@ const seedTasks = [
   { id: "kdd-submit-1030", date: "2026-10-30", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "周四未完成则今天提交给 Y 老师；若已提交，确认收件与反馈，按要求补交材料，避免重复提交。" },
   { id: "pingan-assessment-1031", date: "2026-10-31", title: "完成中国平安校招测评 · 周末", category: "求职", status: "suggested", note: "本周末完成，暂放 10 月 31 日（周六），具体钟点未定。\n邮件明确截止时间：2026 年 11 月 2 日 12:45（北京时间），逾期视为自动放弃；尽量周末完成，不拖到截止前。\n测评项目：16PF、平安 IQ（新），预计分别耗时 60 分钟、20 分钟，共约 80 分钟。\n先通过原邮件中的链接完善简历信息，再进入测评；使用与简历一致的登录信息。推荐 Chrome、Edge、Safari 或火狐浏览器。\n测评入口与个人登录信息见原邮件，不在公开网页保存。" },
   { id: "resume-microsoft-experience-1031", date: "2026-10-31", title: "修改简历中的微软经历", category: "求职", note: "安排在 10 月 31 日（周六），具体时间未定。修改简历中微软经历的描述。" },
-  { id: "year-learning-review-weekend-1031", date: "2026-10-31", title: "周末主线：复习今年学的所有东西", category: "学业 / 实验", status: "suggested", note: "本周末的主线任务，暂放 10 月 31 日（周六），可延续到周日，具体时段未定。梳理今年学过的内容，按主题复习、查漏补缺，记录需要继续巩固的部分。\n全 Mac 通缉搜查：找出之前记录的关于并行训练、FSDP 的笔记和学习材料，汇总文件位置或链接，作为本周末复习资料。" },
+  { id: "year-learning-review-weekend-1031", date: "2026-10-31", title: "周末主线：复习今年学的所有东西", category: "学业 / 实验", status: "suggested", note: `本周末的主线任务，暂放 10 月 31 日（周六），可延续到周日，具体时段未定。梳理今年学过的内容，按主题复习、查漏补缺，记录需要继续巩固的部分。\n全 Mac 通缉搜查：找出之前记录的关于并行训练、FSDP 的笔记和学习材料，汇总文件位置或链接，作为本周末复习资料。\n\n${weekendReviewMaterialsNote}` },
   { id: "visa-submit", date: "2026-10-28", title: "澳大利亚签证申请已提交", category: "签证", done: true, note: `10.28 更新：申请已提交，目前等待审理结果。留意邮箱与 ImmiAccount 通知，如收到补件要求再处理；尚未获知审批结果。\nImmiAccount 申请列表：${IMMIACCOUNT_URL}` },
   { id: "alumni-checkin", date: "2026-11-01", time: "13:00", title: "校友迎新会 · 签到、自由拍照合影", category: "生活", note: "13:00—13:30 签到与合影。\n地点：北京市朝阳区正大中心南塔 18 层。" },
   { id: "alumni-welcome", date: "2026-11-01", time: "13:30", title: "辽宁省实验中学北京校友会2026年迎新会", category: "生活", note: "13:30—17:30 迎新座谈交流。\n地点：北京市朝阳区正大中心南塔 18 层。\n主办单位：辽宁省实验中学北京校友会。\n活动不收取费用，会后聚餐另行收取餐费。" },
@@ -147,7 +157,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -596,6 +606,12 @@ if (!storageWarning && state.version === 45) {
   const reminder = "全 Mac 通缉搜查：找出之前记录的关于并行训练、FSDP 的笔记和学习材料，汇总文件位置或链接，作为本周末复习资料。";
   if (task && !task.note.includes(reminder)) task.note = `${task.note}\n${reminder}`;
   state.version = 46;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 46) {
+  const task = state.tasks.find(item => item.id === "year-learning-review-weekend-1031");
+  if (task && !task.note.includes(weekendReviewMaterialsNote)) task.note = `${task.note}\n\n${weekendReviewMaterialsNote}`;
+  state.version = 47;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
