@@ -45,6 +45,15 @@ const coreProblems = [
   [21, "合并两个有序链表", "链表", "merge-two-sorted-lists"],
   [3, "无重复字符的最长子串", "滑动窗口", "longest-substring-without-repeating-characters"],
 ].map(([id, title, category, slug]) => ({ id, title, category, slug }));
+const coreProblemGroups = [
+  { title: "数组与窗口", ids: [128, 56, 54, 11, 15, 42, 3, 560, 239] },
+  { title: "链表", ids: [206, 21, 141, 142, 234, 25, 23] },
+  { title: "二叉树", ids: [94, 101, 102, 105, 236, 437] },
+  { title: "搜索与回溯", ids: [200, 46, 39, 22, 79, 131] },
+  { title: "基础 DP", ids: [70, 53, 121, 322, 139, 300] },
+  { title: "二维 DP", ids: [5, 1143, 72] },
+  { title: "综合收尾", ids: [337, 215, 347] },
+];
 const categories = ["学业 / 实验", "求职", "签证", "生活"];
 const statuses = { planned: "已安排", tentative: "待定", suggested: "建议安排" };
 const dayInfo = [
@@ -656,7 +665,17 @@ function renderCore40() {
   const completed = state.core40 || [];
   element("core40-progress-label").textContent = `${completed.length} / 40 已完成`;
   element("core40-progress").value = completed.length;
-  element("core40-rows").innerHTML = coreProblems.map((problem, index) => `<tr class="${completed.includes(problem.id) ? "done" : ""}"><td><input type="checkbox" data-problem="${problem.id}" aria-label="完成 ${escapeHtml(problem.title)}" ${completed.includes(problem.id) ? "checked" : ""}></td><td class="problem-number">${String(index + 1).padStart(2, "0")}</td><th scope="row"><a href="https://leetcode.cn/problems/${problem.slug}/" target="_blank" rel="noopener noreferrer">${escapeHtml(problem.title)}</a><small>LC ${problem.id}</small></th><td>${escapeHtml(problem.category)}</td></tr>`).join("");
+  let number = 0;
+  element("core40-rows").innerHTML = coreProblemGroups.map((group, groupIndex) => {
+    const finished = group.ids.filter(id => completed.includes(id)).length;
+    const heading = `<tr class="core40-group"><th colspan="4"><strong>${groupIndex + 1}. ${escapeHtml(group.title)}</strong><span>${finished} / ${group.ids.length} 已完成</span></th></tr>`;
+    const rows = group.ids.map(id => {
+      const problem = coreProblems.find(item => item.id === id);
+      number += 1;
+      return `<tr class="${completed.includes(problem.id) ? "done" : ""}"><td><input type="checkbox" data-problem="${problem.id}" aria-label="完成 ${escapeHtml(problem.title)}" ${completed.includes(problem.id) ? "checked" : ""}></td><td class="problem-number">${String(number).padStart(2, "0")}</td><th scope="row"><a href="https://leetcode.cn/problems/${problem.slug}/" target="_blank" rel="noopener noreferrer">${escapeHtml(problem.title)}</a><small>LC ${problem.id}</small></th><td>${escapeHtml(problem.category)}</td></tr>`;
+    }).join("");
+    return heading + rows;
+  }).join("");
 }
 element("core40-rows").addEventListener("change", event => {
   const id = Number(event.target.dataset.problem);

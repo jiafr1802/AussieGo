@@ -126,7 +126,9 @@ textarea { resize: vertical; line-height: 1.8; }
 .problem-category-col { width: 110px; }
 .core40-table thead { color: var(--muted); font-size: 11px; }
 .core40-table th, .core40-table td { padding: 13px 8px; border-bottom: 1px solid var(--line); font-weight: 400; line-height: 1.7; overflow-wrap: anywhere; }
-.core40-table tbody tr:nth-child(10n + 1) > * { border-top: 2px solid var(--ink); }
+.core40-table .core40-group th { padding-top: 22px; border-top: 2px solid var(--ink); background: var(--paper); }
+.core40-group strong { font-size: 14px; }
+.core40-group span { display: inline-block; margin-left: 16px; font-size: 11px; color: var(--muted); }
 .core40-table tbody th { font-size: 13px; }
 .core40-table td { font-size: 12px; color: var(--muted); }
 .core40-table small { display: block; font-size: 10px; color: var(--muted); }
