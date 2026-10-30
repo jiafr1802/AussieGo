@@ -52,8 +52,8 @@ const dayInfo = [
   ["材料准备日", "上午最后检查报告内容并打印材料；银行流水与开题准备，17:00 携程面试。"],
   ["开题答辩", "上午练习 1–2 遍 PPT 讲解，熟悉整体内容并思考常见问题；14:00 开题答辩，带好已打印的报告与审核表。"],
   ["去清华，见一见新机会", "日历记录 Apple 宣讲 19:00—20:00，记得带英文简历；今天也是 H 生日。银行流水备选日。"],
-  ["收一收尾，也见见朋友", "和 lyq、dsy 喝酒暂定，等大家确认。"],
-  ["签证已提交，等消息", "澳大利亚签证申请已提交，目前等待审理结果；留意邮箱与 ImmiAccount 通知。"],
+  ["nothing to lose，【不要快乐，要痛快】", "12:50–13:50 普拉提课，出门前带好瑜伽服；记录明月是草木的视频。和 lyq、dsy 喝酒暂定，等大家确认。"],
+  ["周末主线：复习今年学的所有东西", "按主题梳理今年学过的内容，复习并查漏补缺。澳大利亚签证申请已提交，目前等待审理结果；留意邮箱与 ImmiAccount 通知。"],
   ["校友相聚的周日", "辽宁省实验中学北京校友会迎新会 · 正大中心南塔 18 层，13:00 起签到。"],
   ["新一周，LC 与报销", "日历中的“重启 LC”跨 11 月 1—2 日。暂放济州岛 KDD 会议报销：打印材料、交 Y 老师，后续等反馈。"],
   ["把时间留给进展", "暂无已确认安排。"],
@@ -82,6 +82,9 @@ const seedTasks = [
   { id: "yoga-clothes-pack-1028", date: "2026-10-28", title: "带瑜伽训练服 · 今晚先装包", category: "生活", note: "今晚准备好瑜伽训练服并装进明天要带的包里；具体钟点未定。明天 10 月 29 日 13:00—14:00 在归位瑜伽·融科馆上哈他（脊柱）课，明早出门前再检查一次。" },
   { id: "yoga-clothes-check-1029", date: "2026-10-29", title: "带瑜伽训练服 · 早上出门前再检查", category: "生活", note: "早上出门前再次确认瑜伽训练服已带上，避免落在家里；具体钟点未定。今天 13:00—14:00 上课，归位瑜伽·融科馆，团教室。" },
   { id: "hatha-yoga-1029", date: "2026-10-29", time: "13:00", title: "哈他瑜伽（脊柱）", category: "生活", note: "预约截图：已预约。\n2026 年 10 月 29 日 13:00—14:00（北京时间）。\n归位瑜伽·融科馆，团教室。\n今晚先装好瑜伽训练服，明早出门前再检查。" },
+  { id: "mingyueshicaomu-video-1030", date: "2026-10-30", title: "记录明月是草木的视频 · 不要快乐，要痛快", category: "生活", note: "今天记录明月是草木的视频《不要快乐，要痛快》，整理触动自己的内容和感想；具体时间未定。\nhttps://www.bilibili.com/video/BV1zMRcBME1u/" },
+  { id: "yoga-clothes-check-1030", date: "2026-10-30", title: "带瑜伽服 · 出门前检查", category: "生活", note: "今天出门前确认瑜伽服已装包并带上，具体提醒钟点未定。12:50–13:50 在归位瑜伽·融科馆上普拉提课，普拉提团教室。" },
+  { id: "pilates-1030", date: "2026-10-30", time: "12:50", title: "普拉提（多巴胺提升）2级", category: "生活", note: "预约截图：已预约。课程名称：小-普拉提（多巴胺提升）2级。\n2026 年 10 月 30 日（周五）12:50–13:50（北京时间）。\n归位瑜伽·融科馆，普拉提团教室。\n出门前带好瑜伽服。" },
   { id: "ctrip", date: "2026-10-27", time: "17:00", title: "携程面试", category: "求职", note: "改期确认：根据最新 Moka 招聘通知，携程校招面试改为 10.27（周二）17:00（北京时间），原 10.26 19:00 安排作废。结束时间未提供，疑问及联系方式见邮箱。提前检查面试通知、入口与设备。" },
   { id: "bytedance-followup", date: "2026-10-28", title: "跟进字节广告方向 · 等待评估结果", category: "求职", note: "10.26 更新：HR 已将简历转发给其他 HR；目前在广告方向等待评估。若评估通过，会有对应 HR 联系。目前尚未确认通过评估或获得面试。\n下一步：等待评估结果及 HR 联系；保留 10.28（周三）的进度跟进，具体时间未定。\n提醒：猎杀时刻之前不要焦躁，也可以自己主动投递和联系，别急。" },
   { id: "huawei-interview-followup", date: "2026-10-30", title: "跟进华为 · 争取面试或转推其他组", category: "求职", note: "联系上周对接的人，询问是否有面试机会；若当前组暂无机会，询问能否将简历转推给其他组。记录回复及下一步，不代表已获得面试。安排在 10.30（周五），具体联系时间未定。" },
@@ -117,6 +120,7 @@ const seedTasks = [
   { id: "kdd-submit-1030", date: "2026-10-30", title: "提交 KDD 报销材料", category: "学业 / 实验", note: "周四未完成则今天提交给 Y 老师；若已提交，确认收件与反馈，按要求补交材料，避免重复提交。" },
   { id: "pingan-assessment-1031", date: "2026-10-31", title: "完成中国平安校招测评 · 周末", category: "求职", status: "suggested", note: "本周末完成，暂放 10 月 31 日（周六），具体钟点未定。\n邮件明确截止时间：2026 年 11 月 2 日 12:45（北京时间），逾期视为自动放弃；尽量周末完成，不拖到截止前。\n测评项目：16PF、平安 IQ（新），预计分别耗时 60 分钟、20 分钟，共约 80 分钟。\n先通过原邮件中的链接完善简历信息，再进入测评；使用与简历一致的登录信息。推荐 Chrome、Edge、Safari 或火狐浏览器。\n测评入口与个人登录信息见原邮件，不在公开网页保存。" },
   { id: "resume-microsoft-experience-1031", date: "2026-10-31", title: "修改简历中的微软经历", category: "求职", note: "安排在 10 月 31 日（周六），具体时间未定。修改简历中微软经历的描述。" },
+  { id: "year-learning-review-weekend-1031", date: "2026-10-31", title: "周末主线：复习今年学的所有东西", category: "学业 / 实验", status: "suggested", note: "本周末的主线任务，暂放 10 月 31 日（周六），可延续到周日，具体时段未定。梳理今年学过的内容，按主题复习、查漏补缺，记录需要继续巩固的部分。" },
   { id: "visa-submit", date: "2026-10-28", title: "澳大利亚签证申请已提交", category: "签证", done: true, note: `10.28 更新：申请已提交，目前等待审理结果。留意邮箱与 ImmiAccount 通知，如收到补件要求再处理；尚未获知审批结果。\nImmiAccount 申请列表：${IMMIACCOUNT_URL}` },
   { id: "alumni-checkin", date: "2026-11-01", time: "13:00", title: "校友迎新会 · 签到、自由拍照合影", category: "生活", note: "13:00—13:30 签到与合影。\n地点：北京市朝阳区正大中心南塔 18 层。" },
   { id: "alumni-welcome", date: "2026-11-01", time: "13:30", title: "辽宁省实验中学北京校友会2026年迎新会", category: "生活", note: "13:30—17:30 迎新座谈交流。\n地点：北京市朝阳区正大中心南塔 18 层。\n主办单位：辽宁省实验中学北京校友会。\n活动不收取费用，会后聚餐另行收取餐费。" },
@@ -143,7 +147,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -578,6 +582,13 @@ if (!storageWarning && state.version === 43) {
     state.tasks.push({ ...seedTasks.find(task => task.id === "resume-microsoft-experience-1031") });
   }
   state.version = 44;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 44) {
+  for (const id of ["mingyueshicaomu-video-1030", "yoga-clothes-check-1030", "pilates-1030", "year-learning-review-weekend-1031"]) {
+    if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
+  }
+  state.version = 45;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
