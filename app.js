@@ -3,6 +3,7 @@
 const STORAGE_KEY = "aussiego-planner-v1";
 const ANT_JD_URL = "https://talent.antgroup.com/campus-position?positionId=260721010991745";
 const IMMIACCOUNT_URL = "https://online.immi.gov.au/ola/app";
+const KDD_PRINT_PREP_NOTE = "打印前准备：先让 Codex 将所有要打印的报销文件按顺序整合成一个文件（优先 PDF），核对材料是否齐全、页序与清晰度，再拿这一个文件去打印。此项为待办，尚未实际合并文件；报销材料不上传公开网站。";
 const coreProblems = [
   [236, "二叉树的最近公共祖先", "二叉树", "lowest-common-ancestor-of-a-binary-tree"],
   [79, "单词搜索", "回溯", "word-search"],
@@ -147,7 +148,7 @@ const seedTasks = [
   { id: "alumni-checkin", date: "2026-11-01", time: "13:00", title: "校友迎新会 · 签到、自由拍照合影", category: "生活", note: "13:00—13:30 签到与合影。\n地点：北京市朝阳区正大中心南塔 18 层。" },
   { id: "alumni-welcome", date: "2026-11-01", time: "13:30", title: "辽宁省实验中学北京校友会2026年迎新会", category: "生活", note: "13:30—17:30 迎新座谈交流。\n地点：北京市朝阳区正大中心南塔 18 层。\n主办单位：辽宁省实验中学北京校友会。\n活动不收取费用，会后聚餐另行收取餐费。" },
   { id: "alumni-dinner", date: "2026-11-01", time: "17:30", title: "校友迎新会 · 会后聚餐", category: "生活", note: "17:30—20:00 会后聚餐。\n餐费：在校校友 50 元/人，工作校友 100 元/人。\n聚餐具体地点待确认。" },
-  { id: "kdd-reimbursement", date: "2026-11-02", title: "报销济州岛 KDD 会议 · 打印材料并交 Y 老师", category: "学业 / 实验", status: "suggested", note: "第二周待办，暂放 11 月 2 日（周一），并非已确认预约，具体办理日可调整。\n1. 先打印报销材料。\n2. 把材料交给 Y 老师。\n3. 等 Y 老师反馈，再按反馈补充或修改材料。\n材料清单、交接时间与反馈日期待确认。" },
+  { id: "kdd-reimbursement", date: "2026-11-02", title: "报销济州岛 KDD 会议 · 打印材料并交 Y 老师", category: "学业 / 实验", status: "suggested", note: `第二周待办，暂放 11 月 2 日（周一），并非已确认预约，具体办理日可调整。\n${KDD_PRINT_PREP_NOTE}\n1. 打印整合后的这一个文件。\n2. 把材料交给 Y 老师。\n3. 等 Y 老师反馈，再按反馈补充或修改材料。\n材料清单、交接时间与反馈日期待确认。` },
   { id: "dji-online-exam-1102", date: "2026-11-02", time: "19:00", title: "DJI 大疆校招在线笔试 · 媒体算法类", category: "求职", note: "邮件邀请：DJI 大疆 2027“拓疆者”校园招聘在线考试。试卷名称：媒体算法类试题。\n考试时间：2026 年 11 月 2 日（周一）19:00–20:00，北京时间；考试时长 60 分钟。\n收到通知后即可登录进行设备调试和考前练习；务必提前登录，熟悉系统并完成设备准备、调试。\n考试平台：赛码在线考试系统。个人登录入口、账号和密码见原邮件，不在公开网页保存。" },
   { id: "neurips-camera-ready-2026", date: "2026-11-07", time: "19:59", title: "NeurIPS 2026 camera-ready DDL · 11.6 AoE", category: "学业 / 实验", note: "邮件通知：最终 camera-ready 版本须于 November 6 (AoE) 前在 OpenReview author console 提交。\nAoE 为 UTC−12：2026 年 11 月 6 日 23:59:59 对应北京时间 2026 年 11 月 7 日 19:59:59；日程按北京时间记为 11 月 7 日 19:59。\n提前检查最终版本，在作者控制台上传并确认提交成功，避免临近截止时操作。具体要求以邮件及作者控制台为准。\nOpenReview：https://openreview.net/" },
 ].map(task => ({ time: "", status: "planned", done: false, ...task }));
@@ -169,7 +170,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -647,6 +648,17 @@ if (!storageWarning && state.version === 49) {
     if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
   }
   state.version = 50;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 50) {
+  const task = state.tasks.find(item => item.id === "kdd-reimbursement");
+  if (task && !task.note.includes(KDD_PRINT_PREP_NOTE)) {
+    const note = task.note.includes("1. 先打印报销材料。")
+      ? task.note.replace("1. 先打印报销材料。", `${KDD_PRINT_PREP_NOTE}\n1. 打印整合后的这一个文件。`)
+      : `${task.note}\n\n${KDD_PRINT_PREP_NOTE}`;
+    if (note.length <= 2000) task.note = note;
+  }
+  state.version = 51;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
