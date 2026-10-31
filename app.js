@@ -4,6 +4,8 @@ const STORAGE_KEY = "aussiego-planner-v1";
 const ANT_JD_URL = "https://talent.antgroup.com/campus-position?positionId=260721010991745";
 const IMMIACCOUNT_URL = "https://online.immi.gov.au/ola/app";
 const KDD_PRINT_PREP_NOTE = "打印前准备：先让 Codex 将所有要打印的报销文件按顺序整合成一个文件（优先 PDF），核对材料是否齐全、页序与清晰度，再拿这一个文件去打印。此项为待办，尚未实际合并文件；报销材料不上传公开网站。";
+const interviewReferenceUrl = "https://github.com/ninetyhe-90/ai-engineering-interview-questions-company-wise-zh-cn";
+const interviewReferenceNote = `重要参考资源：按公司分类的 AI 工程面试题（中文），用于复习与面试准备。\n${interviewReferenceUrl}`;
 const parallelReviewDoubtsNote = "10 月 31 日复习困惑笔记（待澄清，仅关键词 Hint）：\n1. 我的困惑：DDP 里面的各种 TP 和 PP，包括模型参数的划分，那么优化器参数的划分呢？\nHint：DDP != TP / PP；DP、TP、PP 是不同并行维度；模型参数 / 梯度 / 优化器状态分别看；优化器状态如 Adam 的一阶、二阶矩；ZeRO-1/2/3、distributed optimizer。\n2. 我的困惑：Megatron 和 FSDP 的关系是什么？\nHint：Megatron（训练框架，TP / PP 等）；FSDP（分片数据并行）；不同层次与并行维度，可组合但取决于具体实现。\n两项均为今天记录的疑问，尚未视为理解或掌握，不展开完整解答。";
 const coreProblems = [
   [236, "二叉树的最近公共祖先", "二叉树", "lowest-common-ancestor-of-a-binary-tree"],
@@ -142,7 +144,7 @@ const seedTasks = [
   { id: "multi-node-multi-gpu-prep-1031", date: "2026-10-31", title: "预习多机多卡训练知识点", category: "学业 / 实验", note: `安排在明天（10 月 31 日，周六），具体时间未定。\n预习重点：torchrun 的多机启动参数（nnodes、nproc_per_node、node_rank、master_addr、master_port）；NCCL 与节点通信；全局 batch size、梯度累积和同步；checkpoint 保存恢复；常见网络、端口与通信卡住问题。结合 FSDP / ZeRO 笔记复习，不代表已实际启动训练。\n\n${parallelReviewDoubtsNote}` },
   { id: "pingan-assessment-1031", date: "2026-10-31", title: "完成中国平安校招测评 · 周末", category: "求职", status: "suggested", note: "本周末完成，暂放 10 月 31 日（周六），具体钟点未定。\n邮件明确截止时间：2026 年 11 月 2 日 12:45（北京时间），逾期视为自动放弃；尽量周末完成，不拖到截止前。\n测评项目：16PF、平安 IQ（新），预计分别耗时 60 分钟、20 分钟，共约 80 分钟。\n先通过原邮件中的链接完善简历信息，再进入测评；使用与简历一致的登录信息。推荐 Chrome、Edge、Safari 或火狐浏览器。\n测评入口与个人登录信息见原邮件，不在公开网页保存。" },
   { id: "resume-microsoft-experience-1031", date: "2026-10-31", title: "修改简历中的微软经历", category: "求职", note: "安排在 10 月 31 日（周六），具体时间未定。修改简历中微软经历的描述。" },
-  { id: "year-learning-review-weekend-1031", date: "2026-10-31", title: "周末主线：复习今年学的所有东西", category: "学业 / 实验", status: "suggested", note: `本周末的主线任务，暂放 10 月 31 日（周六），可延续到周日，具体时段未定。梳理今年学过的内容，按主题复习、查漏补缺，记录需要继续巩固的部分。\n全 Mac 通缉搜查：找出之前记录的关于并行训练、FSDP 的笔记和学习材料，汇总文件位置或链接，作为本周末复习资料。\n\n${weekendReviewMaterialsNote}` },
+  { id: "year-learning-review-weekend-1031", date: "2026-10-31", title: "周末主线：复习今年学的所有东西", category: "学业 / 实验", status: "suggested", note: `本周末的主线任务，暂放 10 月 31 日（周六），可延续到周日，具体时段未定。梳理今年学过的内容，按主题复习、查漏补缺，记录需要继续巩固的部分。\n全 Mac 通缉搜查：找出之前记录的关于并行训练、FSDP 的笔记和学习材料，汇总文件位置或链接，作为本周末复习资料。\n\n${weekendReviewMaterialsNote}\n\n${interviewReferenceNote}` },
   { id: "msra-update-proposal-weekend-1031", date: "2026-10-31", title: "周末主线：MSRA 工作 update · 方向调研 / proposal", category: "学业 / 实验", status: "suggested", note: "周末新增主线，暂放 10 月 31 日（周六），可延续到周日，具体时段未定；保留年度复习主线。\n1. 整理 MSRA 工作 update：已完成的工作、实验进展、问题与下一步。\n2. 复盘上周组会提到的几个方向，补齐会议记录与相关材料；具体候选方向待从记录中整理，不凭空补写。\n3. 让 AI 辅助检索和比较候选方向，从研究价值、新颖性、已有工作、可行性、资源与验证成本等方面给出依据，选出一个最 promising 的方向，人工核对结论与引用。\n4. 争取产出一份调研或 proposal：问题定义、相关工作、核心假设、方法、实验与评估计划、风险和下一步。\n5. 以面试为导向，积累技术深度和知识广度，整理可讲清的技术取舍、项目贡献、局限及追问。\n此项为周末待办，尚未完成方向选择或调研产出；内部材料不上传公开网站。" },
   { id: "trio-lyx-meet-1031", date: "2026-10-31", time: "21:00", title: "与 LYX 相约 TRIO Classic Cocktail Bar", category: "生活", note: "已约：10 月 31 日（周六）21:00，北京时间；结束时间未定。\n地点：TRIO Classic Cocktail Bar。\n地址（据截图）：将台路乙2号海润国际公寓1号楼商业2层。\n交通参考（据截图）：距地铁将台西站 B 口步行约 430 米。\n截图显示营业时间 18:30—次日 01:30，出发前可再确认。\n公开页面用 LYX 代替同行人姓名；已约见面，不代表已完成店内订位。" },
   { id: "visa-submit", date: "2026-10-28", title: "澳大利亚签证申请已提交", category: "签证", done: true, note: `10.28 更新：申请已提交，目前等待审理结果。留意邮箱与 ImmiAccount 通知，如收到补件要求再处理；尚未获知审批结果。\nImmiAccount 申请列表：${IMMIACCOUNT_URL}` },
@@ -172,7 +174,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -677,6 +679,14 @@ if (!storageWarning && state.version === 52) {
     if (note.length <= 2000) task.note = note;
   }
   state.version = 53;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 53) {
+  const task = state.tasks.find(item => item.id === "year-learning-review-weekend-1031");
+  if (task && !task.note.includes(interviewReferenceUrl) && task.note.length + interviewReferenceNote.length + 2 <= 2000) {
+    task.note = `${task.note}\n\n${interviewReferenceNote}`;
+  }
+  state.version = 54;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
