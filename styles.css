@@ -103,6 +103,7 @@ svg { width: 17px; height: 17px; flex: 0 0 auto; vertical-align: middle; }
 .routine strong { display: block; font-size: 13px; }
 .routine small { display: block; margin-top: 5px; font-size: 11px; color: var(--muted); line-height: 1.7; }
 .routine a { padding: 4px; }
+.priority-routine { margin-top: 14px; padding: 12px; border-left: 3px solid var(--accent); background: #fff4df; }
 .field-label, form label { display: block; margin: 17px 0 7px; color: var(--muted); font-size: 11px; }
 input:not([type="checkbox"]):not([type="file"]), textarea, form select { display: block; width: 100%; min-width: 0; border: 1px solid var(--line); background: #ffffff80; border-radius: 0; padding: 10px; font-size: 12px; }
 textarea { resize: vertical; line-height: 1.8; }

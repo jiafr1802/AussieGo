@@ -80,9 +80,17 @@ const dayInfo = [
   ["立冬，camera-ready 截止", "NeurIPS 2026 camera-ready 北京时间 19:59 截止（11 月 6 日 AoE），在 OpenReview author console 提交。日历节气：立冬。"],
   ["下一段之前", "暂无已确认安排。"],
 ];
-const dates = Array.from({ length: 14 }, (_, index) => {
+const travelDayInfo = {
+  "2026-12-01": ["酒店取消节点", "优先核对 Quest St Leonards 已订订单的免费取消条款；当前日期来自同房型新查询，不等同于订单确认页。"],
+  "2026-12-06": ["抵达悉尼，入住酒店", "入住 Quest St Leonards，靠近 St Leonards 车站；前往 ICC Sydney 可使用公共交通。"],
+  "2026-12-11": ["退房与返程选择", "10:00 前退房；考虑当天回国，或晚上住朋友家后于 12 月 12 日回国。"],
+  "2026-12-12": ["返程备选日", "若 12 月 11 日晚住朋友家，今天作为回国备选日；航班尚未确定。"],
+};
+const dates = Array.from({ length: 49 }, (_, index) => {
   const date = new Date(Date.UTC(2026, 9, 26 + index));
-  return { iso: date.toISOString().slice(0, 10), short: `${date.getUTCMonth() + 1}.${String(date.getUTCDate()).padStart(2, "0")}`, weekday: `周${"日一二三四五六"[date.getUTCDay()]}`, title: dayInfo[index][0], summary: dayInfo[index][1] };
+  const iso = date.toISOString().slice(0, 10);
+  const info = dayInfo[index] || travelDayInfo[iso] || ["把时间留给进展", "暂无已确认安排。"];
+  return { iso, short: `${date.getUTCMonth() + 1}.${String(date.getUTCDate()).padStart(2, "0")}`, weekday: `周${"日一二三四五六"[date.getUTCDay()]}`, title: info[0], summary: info[1] };
 });
 const weekendReviewMaterialsNote = [
   "已找到的本机资料（~ 为用户主目录）：",
@@ -163,6 +171,12 @@ const seedTasks = [
   { id: "neurips-camera-ready-2026", date: "2026-11-07", time: "19:59", title: "NeurIPS 2026 camera-ready DDL · 11.6 AoE", category: "学业 / 实验", note: "邮件通知：最终 camera-ready 版本须于 November 6 (AoE) 前在 OpenReview author console 提交。\nAoE 为 UTC−12：2026 年 11 月 6 日 23:59:59 对应北京时间 2026 年 11 月 7 日 19:59:59；日程按北京时间记为 11 月 7 日 19:59。\n提前检查最终版本，在作者控制台上传并确认提交成功，避免临近截止时操作。具体要求以邮件及作者控制台为准。\nOpenReview：https://openreview.net/" },
   { id: "funplus-agent-apply-1102", date: "2026-11-02", title: "投递 FunPlus · 27 校招 AI Agent 工程师", category: "求职", note: `周一待办，具体时段未定；先核验资格和开放状态，再投递。\nBOSS 列表可见：FunPlus；岗位标题“27校招-AI Agent 工程师-多…”（后半段截断）；上海；在校/应届，本科；校招标签。\nJD：${campusJdUrls["funplus-agent-apply-1102"]}\n完整职责、毕业时间窗口、岗位是否仍开放待确认，不补写隐藏内容。核对简历中的真实项目贡献，符合条件后投递并记录实际结果；尚未投递。` },
   { id: "xiaomi-agent-harness-apply-1102", date: "2026-11-02", title: "投递小米 · Agent Harness 研发工程师（校招）", category: "求职", note: `周一待办，具体时段未定；先核验资格和开放状态，再投递。\nBOSS 列表可见：小米；岗位标题“Agent Harness 研发工程师…”（后半段截断）；北京；在校/应届，本科；校招标签。\nJD：${campusJdUrls["xiaomi-agent-harness-apply-1102"]}\n具体校招批次、毕业时间窗口、完整职责和岗位是否仍开放待确认。核对 Agent 工程/平台相关真实项目贡献，符合条件后投递并记录实际结果；尚未投递。` },
+  { id: "quest-cancellation-policy-1101", date: "2026-11-01", title: "高优先级：核对 Quest 酒店免费取消截止", category: "生活", note: "当前已预订 Quest St Leonards（圣季奥纳探索酒店）行政一室房。\n高优先级：尽快打开携程已订订单的取消政策，核对免费取消的准确截止日期、当地时区和截止后的费用，并记录确认结果。\n参考信息仅来自另一张同房型新查询截图：当地时间 2026 年 12 月 1 日 12:00 前可免费取消；该截图查询的是 12 月 6—12 日共 6 晚，而已订订单为 12 月 6—11 日共 5 晚，因此不能直接当作已订订单条款。\n订单号及个人联系信息不在公开网站保存。" },
+  { id: "quest-cancellation-node-1201", date: "2026-12-01", title: "暂定节点：Quest 免费取消截止 · 必须核对订单", category: "生活", status: "tentative", note: "同房型新查询截图显示当地时间 12 月 1 日 12:00 前可免费取消，但查询晚数与已订订单不同，不代表订单确认条款。必须在此日期前打开携程已订订单核对，并尽量提前处理。" },
+  { id: "quest-checkin-1206", date: "2026-12-06", time: "14:00", title: "入住 Quest St Leonards · 行政一室房", category: "生活", note: "已预订：2026 年 12 月 6 日入住、12 月 11 日退房，共 5 晚；行政一室房 1 间，不含早餐。入住时间 14:00—23:00，退房时间 10:00 前。\n房型截图：最多 2 位成人；1 张特大床或 2 张单人床（页面称尽量安排特大床）；免费客房 Wi-Fi、空调、吹风机。\n地址据携程页面：10 Atchison St, St Leonards；距 St Leonards 车站步行约 140 米。前往 ICC Sydney 可使用公共交通，此前门到门约 30—40 分钟仅为估计，尚未逐段导航核实。\n免费取消截止与完整订单条款仍需在已订订单页核对；订单号不在公开网站保存。" },
+  { id: "quest-checkout-return-1211", date: "2026-12-11", time: "10:00", title: "Quest 退房 · 确定回国方案", category: "生活", status: "tentative", note: "Quest St Leonards 需在 10:00 前退房。\n当前考虑两种方案：A. 12 月 11 日当天回国；B. 12 月 11 日晚去朋友家住，12 月 12 日回国。\n航班、朋友家住宿及行李安排均未确认；订票前比较两天航班总价、起降时间、行李额度和退房后行李寄存。" },
+  { id: "friend-stay-return-1211", date: "2026-12-11", title: "备选：晚上住朋友家 · 12 月 12 日回国", category: "生活", status: "tentative", note: "仅为备选方案，尚未向朋友确认，也未订 12 月 12 日返程机票。若采用此方案，提前确认住址、到达方式、行李存放和次日前往机场的时间。" },
+  { id: "return-china-option-1212", date: "2026-12-12", title: "备选：从悉尼回国", category: "生活", status: "tentative", note: "若 12 月 11 日晚住朋友家，则考虑今天回国。航班尚未确定；继续与 12 月 11 日返程方案比较总价、起降时间、中转、行李额度和前往机场的安排。" },
 ].map(task => ({ time: "", status: "planned", done: false, ...task }));
 
 const calendarSnapshot = [
@@ -182,14 +196,14 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
     if (!task || typeof task.id !== "string" || !/^[a-zA-Z0-9-]{1,100}$/.test(task.id) || ids.has(task.id) || !isDate(task.date) || typeof task.title !== "string" || !task.title.trim() || task.title.length > 160 || !categories.includes(task.category) || !Object.hasOwn(statuses, task.status) || typeof task.done !== "boolean" || typeof task.note !== "string" || task.note.length > 2000 || typeof task.time !== "string" || (task.time !== "" && !/^([01]\d|2[0-3]):[0-5]\d$/.test(task.time))) return false;
     ids.add(task.id);
   }
-  return Object.entries(value.days).every(([date, note]) => isDate(date) && note && typeof note === "object" && typeof note.flight === "boolean" && typeof note.flightNote === "string" && typeof note.note === "string");
+  return Object.entries(value.days).every(([date, note]) => isDate(date) && note && typeof note === "object" && typeof note.flight === "boolean" && typeof note.flightNote === "string" && (note.hotelCheck === undefined || typeof note.hotelCheck === "boolean") && (note.hotelNote === undefined || typeof note.hotelNote === "string") && typeof note.note === "string");
 }
 let state = { version: 2, tasks: seedTasks, days: {} };
 let storageWarning = "";
@@ -725,9 +739,20 @@ if (!storageWarning && state.version === 56) {
   state.version = 57;
   needsMigration = true;
 }
+if (!storageWarning && state.version === 57) {
+  for (const id of ["quest-cancellation-policy-1101", "quest-cancellation-node-1201", "quest-checkin-1206", "quest-checkout-return-1211", "friend-stay-return-1211", "return-china-option-1212"]) {
+    if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
+  }
+  for (const note of Object.values(state.days)) {
+    if (note.hotelCheck === undefined) note.hotelCheck = false;
+    if (note.hotelNote === undefined) note.hotelNote = "";
+  }
+  state.version = 58;
+  needsMigration = true;
+}
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 let selectedDate = isDate(today) ? today : dates[0].iso;
-let week = "all";
+let period = "all";
 let editingId = null;
 let noticeTimer;
 function icons() { if (window.lucide) window.lucide.createIcons(); }
@@ -767,7 +792,7 @@ function renderDays() {
   element("days").innerHTML = dates.map((day, index) => {
     const tasks = tasksFor(day.iso);
     const visible = tasks.filter(matches);
-    const hidden = (week !== "all" && String(index < 7 ? 1 : 2) !== week) || ((element("category").value !== "all" || element("hide-done").checked) && !visible.length);
+    const hidden = (period !== "all" && day.iso.slice(5, 7) !== period) || ((element("category").value !== "all" || element("hide-done").checked) && !visible.length);
     if (!hidden) count++;
     const complete = tasks.filter(task => task.done).length;
     return `<button class="day-card ${day.iso === selectedDate ? "active" : ""}" data-date="${day.iso}" aria-pressed="${day.iso === selectedDate}" ${hidden ? "hidden" : ""}><div class="date"><b>${day.short}</b><span>${day.weekday} · DAY ${String(index + 1).padStart(2, "0")}</span></div><div class="day-main"><h3>${escapeHtml(day.title)}</h3><p class="day-summary">${escapeHtml(day.summary)}</p>${visible.map(task => `<div class="event ${task.time ? "fixed" : ""} ${task.done ? "done" : ""}"><time>${task.time || (task.id === "apple" || task.id === "friends" ? "晚上" : "灵活")}</time><i class="event-dot"></i><span class="event-title">${escapeHtml(task.title)}${task.status !== "planned" ? `<span class="tag">${statuses[task.status]}</span>` : ""}</span></div>`).join("")}${!tasks.length ? '<p class="small muted">留白 · 暂无已确认安排</p>' : `<p class="day-completion">${complete} / ${tasks.length} 已完成</p>`}</div><i class="chevron" data-lucide="chevron-right"></i></button>`;
@@ -786,12 +811,15 @@ function renderDetail() {
   element("detail-title").textContent = day.title;
   element("detail-summary").textContent = day.summary;
   element("prev-day").disabled = index === 0;
-  element("next-day").disabled = index === 13;
+  element("next-day").disabled = index === dates.length - 1;
   const tasks = tasksFor(selectedDate);
   element("tasks").innerHTML = tasks.length ? tasks.map(task => `<div class="task ${task.done ? "done" : ""}"><input type="checkbox" id="check-${task.id}" data-check="${task.id}" ${task.done ? "checked" : ""}><div class="task-body"><label class="task-heading" for="check-${task.id}">${escapeHtml(task.title)}</label><p class="task-meta ${task.time ? "fixed" : ""}">${task.time || "灵活安排"} · ${escapeHtml(task.category)}${task.status !== "planned" ? ` · ${statuses[task.status]}` : ""}</p>${task.note ? `<p class="task-note">${escapeHtml(task.note)}</p>` : ""}${task.id === "ant-jd-preparation-1029" ? `<p class="task-note"><a href="${ANT_JD_URL}" target="_blank" rel="noopener noreferrer">蚂蚁官网 JD</a></p>` : ""}${campusJdUrls[task.id] ? `<p class="task-note"><a href="${campusJdUrls[task.id]}" target="_blank" rel="noopener noreferrer">BOSS 直聘 · 查看岗位 JD</a></p>` : ""}${task.id === "visa-submit" ? `<p class="task-note"><a href="${IMMIACCOUNT_URL}" target="_blank" rel="noopener noreferrer">ImmiAccount · 继续检查申请草稿</a></p>` : ""}</div><div class="task-actions"><button class="icon-button" data-edit="${task.id}" title="编辑事项" aria-label="编辑 ${escapeHtml(task.title)}"><i data-lucide="pencil"></i></button><button class="icon-button" data-delete="${task.id}" title="删除事项" aria-label="删除 ${escapeHtml(task.title)}"><i data-lucide="trash-2"></i></button></div></div>`).join("") : '<p class="muted small">今天先留白。</p>';
-  const note = state.days[selectedDate] || { flight: false, flightNote: "", note: "" };
+  const note = state.days[selectedDate] || { flight: false, flightNote: "", hotelCheck: false, hotelNote: "", note: "" };
   element("flight-check").checked = note.flight;
   element("flight-note").value = note.flightNote;
+  element("hotel-cancel-routine").hidden = selectedDate > "2026-12-01";
+  element("hotel-cancel-check").checked = note.hotelCheck || false;
+  element("hotel-cancel-note").value = note.hotelNote || "";
   element("day-note").value = note.note;
   element("save-status").textContent = "仅保存在当前浏览器";
   document.querySelector(".detail-panel").scrollTop = 0;
@@ -803,19 +831,17 @@ function selectDay(date, scroll = false) {
   if (scroll && matchMedia("(max-width: 650px)").matches) document.querySelector(".detail-panel").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
 }
 element("days").addEventListener("click", event => { const card = event.target.closest("[data-date]"); if (card) selectDay(card.dataset.date, true); });
-document.querySelectorAll("[data-week]").forEach(button => button.addEventListener("click", () => {
-  week = button.dataset.week;
-  document.querySelectorAll("[data-week]").forEach(tab => { tab.classList.toggle("active", tab === button); tab.setAttribute("aria-pressed", String(tab === button)); });
-  const index = dates.findIndex(day => day.iso === selectedDate);
-  if (week === "1" && index >= 7) selectDay(dates[0].iso);
-  else if (week === "2" && index < 7) selectDay(dates[7].iso);
+document.querySelectorAll("[data-period]").forEach(button => button.addEventListener("click", () => {
+  period = button.dataset.period;
+  document.querySelectorAll("[data-period]").forEach(tab => { tab.classList.toggle("active", tab === button); tab.setAttribute("aria-pressed", String(tab === button)); });
+  if (period !== "all" && selectedDate.slice(5, 7) !== period) selectDay(dates.find(day => day.iso.slice(5, 7) === period).iso);
   else renderDays();
 }));
 ["category", "hide-done"].forEach(id => element(id).addEventListener("change", renderDays));
 for (const [id, offset] of [["prev-day", -1], ["next-day", 1]]) element(id).addEventListener("click", () => {
   const index = dates.findIndex(day => day.iso === selectedDate) + offset;
   if (dates[index]) {
-    if (week !== "all" && String(index < 7 ? 1 : 2) !== week) document.querySelector(`[data-week="${index < 7 ? 1 : 2}"]`).click();
+    if (period !== "all" && dates[index].iso.slice(5, 7) !== period) document.querySelector('[data-period="all"]').click();
     selectDay(dates[index].iso);
   }
 });
@@ -845,19 +871,19 @@ element("task-form").addEventListener("submit", event => {
   event.preventDefault();
   const task = { id: editingId || `task-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`, done: false };
   for (const field of ["title", "date", "time", "category", "status", "note"]) task[field] = element(`task-${field}`).value.trim();
-  if (!task.title || !isDate(task.date)) { notify("请填写事项，并选择这两周内的日期。"); return; }
+  if (!task.title || !isDate(task.date)) { notify("请填写事项，并选择当前计划范围内的日期。"); return; }
   const index = state.tasks.findIndex(item => item.id === editingId);
   if (index >= 0) { task.done = state.tasks[index].done; state.tasks[index] = task; } else state.tasks.push(task);
   persist(); element("task-dialog").close();
-  if (week !== "all" && String(dates.findIndex(day => day.iso === task.date) < 7 ? 1 : 2) !== week) document.querySelector('[data-week="all"]').click();
+  if (period !== "all" && task.date.slice(5, 7) !== period) document.querySelector('[data-period="all"]').click();
   selectDay(task.date);
 });
 function saveDayNote() {
-  state.days[selectedDate] = { flight: element("flight-check").checked, flightNote: element("flight-note").value, note: element("day-note").value };
+  state.days[selectedDate] = { flight: element("flight-check").checked, flightNote: element("flight-note").value, hotelCheck: element("hotel-cancel-check").checked, hotelNote: element("hotel-cancel-note").value, note: element("day-note").value };
   persist();
 }
-["flight-note", "day-note"].forEach(id => element(id).addEventListener("input", saveDayNote));
-element("flight-check").addEventListener("change", saveDayNote);
+["flight-note", "hotel-cancel-note", "day-note"].forEach(id => element(id).addEventListener("input", saveDayNote));
+["flight-check", "hotel-cancel-check"].forEach(id => element(id).addEventListener("change", saveDayNote));
 element("export").addEventListener("click", () => {
   const url = URL.createObjectURL(new Blob([JSON.stringify(state, null, 2)], { type: "application/json" }));
   const link = document.createElement("a"); link.href = url; link.download = `AussieGo-${new Date().toISOString().slice(0, 10)}.json`; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
