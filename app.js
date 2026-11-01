@@ -171,6 +171,13 @@ const seedTasks = [
   { id: "huawei-car-bu-research-contact-1102", date: "2026-11-02", title: "若 BOSS 无消息：联系华为车 BU 研究部 HR", category: "求职", note: `11 月 2 日（周一）条件待办：先检查 BOSS 直聘原联系人；若没有实质回复，再联系智能汽车解决方案研究部 HR。截图显示好友验证已通过，HR 表示欢迎投递；不代表已投递或进入面试。\n\n沟通重点：说明 2027 届应届身份和真实研究/项目方向，询问匹配岗位、岗位编号、工作地点、团队方向及校招下一步。\n研究方向据宣传页：智驾大模型、Agentic AI、座舱大模型、多模态感知与低时延高可靠控制；基础层含 AI 基础模型、AI 系统架构与 AI 安全；底层含训练/推理加速、AI Infra 与数据科学。\n岗位方向可重点询问：AI 模型工程师/研究员（大模型、后训练与强化学习、Agent、评测）、AI Infra 工程师/研究员（AI 训练系统、AI 技术应用）。工作地点列有上海、杭州、深圳、东莞、北京等，具体以岗位为准。\n官网投递：PC 端进入华为招聘官网，选择“校园招聘—应届生”；宣传页要求意向部门选择“智能汽车解决方案BU—智能驾驶解决方案BU研发管理部”。\n${HUAWEI_CAREER_URL}\nHR 姓名、微信和二维码不在公开网站记录。` },
   { id: "dji-online-exam-1102", date: "2026-11-02", time: "19:00", title: "DJI 大疆校招在线笔试 · 媒体算法类", category: "求职", note: "邮件邀请：DJI 大疆 2027“拓疆者”校园招聘在线考试。试卷名称：媒体算法类试题。\n考试时间：2026 年 11 月 2 日（周一）19:00–20:00，北京时间；考试时长 60 分钟。\n收到通知后即可登录进行设备调试和考前练习；务必提前登录，熟悉系统并完成设备准备、调试。\n考试平台：赛码在线考试系统。个人登录入口、账号和密码见原邮件，不在公开网页保存。" },
   { id: "neurips-camera-ready-2026", date: "2026-11-07", time: "19:59", title: "NeurIPS 2026 camera-ready DDL · 11.6 AoE", category: "学业 / 实验", note: "邮件通知：最终 camera-ready 版本须于 November 6 (AoE) 前在 OpenReview author console 提交。\nAoE 为 UTC−12：2026 年 11 月 6 日 23:59:59 对应北京时间 2026 年 11 月 7 日 19:59:59；日程按北京时间记为 11 月 7 日 19:59。\n提前检查最终版本，在作者控制台上传并确认提交成功，避免临近截止时操作。具体要求以邮件及作者控制台为准。\nOpenReview：https://openreview.net/" },
+  { id: "neurips-camera-ready-progress-1102", date: "2026-11-02", title: "NeurIPS camera-ready 进度 · 梳理剩余修改", category: "学业 / 实验", note: "列出尚未完成的正文、实验、图表、引用和格式修改，标注负责人及阻塞项；记录今天实际完成内容。具体要求以 NeurIPS 通知和 OpenReview author console 为准，尚未视为完成。" },
+  { id: "neurips-camera-ready-progress-1103", date: "2026-11-03", title: "NeurIPS camera-ready 进度 · 正文与实验核对", category: "学业 / 实验", note: "检查正文修改与实验结果是否一致，核对结论有没有超出证据；记录待补实验、待确认数字和合作者反馈。尚未视为完成。" },
+  { id: "neurips-camera-ready-progress-1104", date: "2026-11-04", title: "NeurIPS camera-ready 进度 · 图表、引用与格式", category: "学业 / 实验", note: "逐项检查图表编号和正文引用、参考文献、公式与版式；同时对照官方 camera-ready 要求，记录未解决问题。尚未视为完成。" },
+  { id: "neurips-camera-ready-progress-1105", date: "2026-11-05", title: "NeurIPS camera-ready 进度 · 完整编译与通读", category: "学业 / 实验", note: "生成完整版本并通读，检查缺图、交叉引用、排版、明显错字和 PDF 可读性；将问题汇总为提交前清单。尚未视为完成。" },
+  { id: "neurips-camera-ready-progress-1106", date: "2026-11-06", title: "NeurIPS camera-ready 进度 · 合作者确认与预提交", category: "学业 / 实验", note: "汇总合作者最终反馈，确认作者信息和提交材料；在 OpenReview author console 检查上传入口，尽量完成预提交或最终候选版本，避免拖到截止前。尚未视为提交成功。" },
+  { id: "neurips-camera-ready-progress-1107", date: "2026-11-07", title: "NeurIPS camera-ready 进度 · 最终检查并确认提交", category: "学业 / 实验", note: "今天北京时间 19:59:59 截止。核对最终 PDF、页面上的作者与材料信息，上传后确认系统显示提交成功并保存回执；不要只以本地文件完成作为提交完成。" },
+  { id: "neurips-camera-ready-progress-1108", date: "2026-11-08", title: "NeurIPS camera-ready 进度 · 确认状态并归档回执", category: "学业 / 实验", note: "截止已过：检查 OpenReview author console 中的最终提交状态，归档最终 PDF、提交时间和回执。此提醒不代表已经按时提交；若状态异常，按官方渠道处理。" },
   { id: "funplus-agent-apply-1102", date: "2026-11-02", title: "投递 FunPlus · 27 校招 AI Agent 工程师", category: "求职", note: `周一待办，具体时段未定；先核验资格和开放状态，再投递。\nBOSS 列表可见：FunPlus；岗位标题“27校招-AI Agent 工程师-多…”（后半段截断）；上海；在校/应届，本科；校招标签。\nJD：${campusJdUrls["funplus-agent-apply-1102"]}\n完整职责、毕业时间窗口、岗位是否仍开放待确认，不补写隐藏内容。核对简历中的真实项目贡献，符合条件后投递并记录实际结果；尚未投递。` },
   { id: "xiaomi-agent-harness-apply-1102", date: "2026-11-02", title: "投递小米 · Agent Harness 研发工程师（校招）", category: "求职", note: `周一待办，具体时段未定；先核验资格和开放状态，再投递。\nBOSS 列表可见：小米；岗位标题“Agent Harness 研发工程师…”（后半段截断）；北京；在校/应届，本科；校招标签。\nJD：${campusJdUrls["xiaomi-agent-harness-apply-1102"]}\n具体校招批次、毕业时间窗口、完整职责和岗位是否仍开放待确认。核对 Agent 工程/平台相关真实项目贡献，符合条件后投递并记录实际结果；尚未投递。` },
   { id: "quest-cancellation-policy-1101", date: "2026-11-01", title: "高优先级：核对 Quest 酒店免费取消截止", category: "生活", note: "当前已预订 Quest St Leonards（圣季奥纳探索酒店）行政一室房。\n高优先级：尽快打开携程已订订单的取消政策，核对免费取消的准确截止日期、当地时区和截止后的费用，并记录确认结果。\n参考信息仅来自另一张同房型新查询截图：当地时间 2026 年 12 月 1 日 12:00 前可免费取消；该截图查询的是 12 月 6—12 日共 6 晚，而已订订单为 12 月 6—11 日共 5 晚，因此不能直接当作已订订单条款。\n订单号及个人联系信息不在公开网站保存。" },
@@ -198,7 +205,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -762,6 +769,13 @@ if (!storageWarning && state.version === 58) {
   }
   if (!state.tasks.some(task => task.id === "huawei-car-bu-research-contact-1102")) state.tasks.push({ ...seedTasks.find(task => task.id === "huawei-car-bu-research-contact-1102") });
   state.version = 59;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 59) {
+  for (const id of ["neurips-camera-ready-progress-1102", "neurips-camera-ready-progress-1103", "neurips-camera-ready-progress-1104", "neurips-camera-ready-progress-1105", "neurips-camera-ready-progress-1106", "neurips-camera-ready-progress-1107", "neurips-camera-ready-progress-1108"]) {
+    if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
+  }
+  state.version = 60;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
