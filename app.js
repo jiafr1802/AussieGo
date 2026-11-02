@@ -178,6 +178,7 @@ const seedTasks = [
   { id: "neurips-camera-ready-progress-1106", date: "2026-11-06", title: "NeurIPS camera-ready 进度 · 合作者确认与预提交", category: "学业 / 实验", note: "汇总合作者最终反馈，确认作者信息和提交材料；在 OpenReview author console 检查上传入口，尽量完成预提交或最终候选版本，避免拖到截止前。尚未视为提交成功。" },
   { id: "neurips-camera-ready-progress-1107", date: "2026-11-07", title: "NeurIPS camera-ready 进度 · 最终检查并确认提交", category: "学业 / 实验", note: "今天北京时间 19:59:59 截止。核对最终 PDF、页面上的作者与材料信息，上传后确认系统显示提交成功并保存回执；不要只以本地文件完成作为提交完成。" },
   { id: "neurips-camera-ready-progress-1108", date: "2026-11-08", title: "NeurIPS camera-ready 进度 · 确认状态并归档回执", category: "学业 / 实验", note: "截止已过：检查 OpenReview author console 中的最终提交状态，归档最终 PDF、提交时间和回执。此提醒不代表已经按时提交；若状态异常，按官方渠道处理。" },
+  { id: "money-meeting-notes-1102", date: "2026-11-02", title: "整理昨天搞钱开会的笔记", category: "求职", note: "整理 11 月 1 日会议记录：参与者与背景、讨论的机会/岗位、关键信息、待核实事项、可执行的下一步和后续联系人。只记录已确认内容，未知信息标为待补充；尚未整理。" },
   { id: "funplus-agent-apply-1102", date: "2026-11-02", title: "投递 FunPlus · 27 校招 AI Agent 工程师", category: "求职", note: `周一待办，具体时段未定；先核验资格和开放状态，再投递。\nBOSS 列表可见：FunPlus；岗位标题“27校招-AI Agent 工程师-多…”（后半段截断）；上海；在校/应届，本科；校招标签。\nJD：${campusJdUrls["funplus-agent-apply-1102"]}\n完整职责、毕业时间窗口、岗位是否仍开放待确认，不补写隐藏内容。核对简历中的真实项目贡献，符合条件后投递并记录实际结果；尚未投递。` },
   { id: "xiaomi-agent-harness-apply-1102", date: "2026-11-02", title: "投递小米 · Agent Harness 研发工程师（校招）", category: "求职", note: `周一待办，具体时段未定；先核验资格和开放状态，再投递。\nBOSS 列表可见：小米；岗位标题“Agent Harness 研发工程师…”（后半段截断）；北京；在校/应届，本科；校招标签。\nJD：${campusJdUrls["xiaomi-agent-harness-apply-1102"]}\n具体校招批次、毕业时间窗口、完整职责和岗位是否仍开放待确认。核对 Agent 工程/平台相关真实项目贡献，符合条件后投递并记录实际结果；尚未投递。` },
   { id: "quest-cancellation-policy-1101", date: "2026-11-01", title: "高优先级：核对 Quest 酒店免费取消截止", category: "生活", note: "当前已预订 Quest St Leonards（圣季奥纳探索酒店）行政一室房。\n高优先级：尽快打开携程已订订单的取消政策，核对免费取消的准确截止日期、当地时区和截止后的费用，并记录确认结果。\n参考信息仅来自另一张同房型新查询截图：当地时间 2026 年 12 月 1 日 12:00 前可免费取消；该截图查询的是 12 月 6—12 日共 6 晚，而已订订单为 12 月 6—11 日共 5 晚，因此不能直接当作已订订单条款。\n订单号及个人联系信息不在公开网站保存。" },
@@ -205,7 +206,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -776,6 +777,11 @@ if (!storageWarning && state.version === 59) {
     if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
   }
   state.version = 60;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 60) {
+  if (!state.tasks.some(task => task.id === "money-meeting-notes-1102")) state.tasks.push({ ...seedTasks.find(task => task.id === "money-meeting-notes-1102") });
+  state.version = 61;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
