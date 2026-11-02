@@ -155,7 +155,7 @@ const seedTasks = [
   { id: "friends", date: "2026-10-30", title: "和 lyq、dsy 一起喝酒", category: "生活", status: "tentative", note: "周五可能相约，时间与地点待大家确认。" },
   { id: "multi-node-multi-gpu-prep-1030", date: "2026-10-30", title: "预习多机多卡训练知识点", category: "学业 / 实验", note: "安排在今天（10 月 30 日，周五），具体时间未定。\n预习重点：数据并行、张量并行与流水线并行的区别；DDP、FSDP 与 ZeRO 的基本思路；rank、local_rank、world_size 的含义；all-reduce、all-gather、reduce-scatter 的作用。可结合周末主线中已整理的本机学习资料。" },
   { id: "multi-node-multi-gpu-prep-1031", date: "2026-10-31", title: "预习多机多卡训练知识点", category: "学业 / 实验", note: `安排在明天（10 月 31 日，周六），具体时间未定。\n预习重点：torchrun 的多机启动参数（nnodes、nproc_per_node、node_rank、master_addr、master_port）；NCCL 与节点通信；全局 batch size、梯度累积和同步；checkpoint 保存恢复；常见网络、端口与通信卡住问题。结合 FSDP / ZeRO 笔记复习，不代表已实际启动训练。\n\n${parallelReviewDoubtsNote}` },
-  { id: "pingan-assessment-1031", date: "2026-11-01", time: "21:00", title: "完成中国平安校招测评", category: "求职", status: "planned", note: "安排在 11 月 1 日（周日）21:00 开始，预计约 80 分钟。\n邮件明确截止时间：2026 年 11 月 2 日 12:45（北京时间），逾期视为自动放弃；今晚完成，不拖到截止前。\n测评项目：16PF、平安 IQ（新），预计分别耗时 60 分钟、20 分钟，共约 80 分钟。\n先通过原邮件中的链接完善简历信息，再进入测评；使用与简历一致的登录信息。推荐 Chrome、Edge、Safari 或火狐浏览器。\n测评入口与个人登录信息见原邮件，不在公开网页保存。" },
+  { id: "pingan-assessment-1031", date: "2026-11-02", time: "21:00", title: "完成中国平安校招测评", category: "求职", status: "planned", note: "安排在 11 月 2 日（周一）21:00 开始，预计约 80 分钟。\n邮件明确截止时间：2026 年 11 月 2 日 12:45（北京时间），逾期视为自动放弃；今天完成，不再拖延。\n测评项目：16PF、平安 IQ（新），预计分别耗时 60 分钟、20 分钟，共约 80 分钟。\n先通过原邮件中的链接完善简历信息，再进入测评；使用与简历一致的登录信息。推荐 Chrome、Edge、Safari 或火狐浏览器。\n测评入口与个人登录信息见原邮件，不在公开网页保存。" },
   { id: "resume-microsoft-experience-1031", date: "2026-10-31", title: "修改简历中的微软经历", category: "求职", note: "安排在 10 月 31 日（周六），具体时间未定。修改简历中微软经历的描述。" },
   { id: "year-learning-review-weekend-1031", date: "2026-10-31", title: "周末主线：复习今年学的所有东西", category: "学业 / 实验", status: "suggested", note: `本周末的主线任务，暂放 10 月 31 日（周六），可延续到周日，具体时段未定。梳理今年学过的内容，按主题复习、查漏补缺，记录需要继续巩固的部分。\n全 Mac 通缉搜查：找出之前记录的关于并行训练、FSDP 的笔记和学习材料，汇总文件位置或链接，作为本周末复习资料。\n\n${weekendReviewMaterialsNote}\n\n${interviewReferenceNote}` },
   { id: "msra-update-proposal-weekend-1031", date: "2026-10-31", title: "周末主线：MSRA 工作 update · 方向调研 / proposal", category: "学业 / 实验", status: "suggested", note: "周末新增主线，暂放 10 月 31 日（周六），可延续到周日，具体时段未定；保留年度复习主线。\n1. 整理 MSRA 工作 update：已完成的工作、实验进展、问题与下一步。\n2. 复盘上周组会提到的几个方向，补齐会议记录与相关材料；具体候选方向待从记录中整理，不凭空补写。\n3. 让 AI 辅助检索和比较候选方向，从研究价值、新颖性、已有工作、可行性、资源与验证成本等方面给出依据，选出一个最 promising 的方向，人工核对结论与引用。\n4. 争取产出一份调研或 proposal：问题定义、相关工作、核心假设、方法、实验与评估计划、风险和下一步。\n5. 以面试为导向，积累技术深度和知识广度，整理可讲清的技术取舍、项目贡献、局限及追问。\n此项为周末待办，尚未完成方向选择或调研产出；内部材料不上传公开网站。" },
@@ -180,6 +180,7 @@ const seedTasks = [
   { id: "neurips-camera-ready-progress-1108", date: "2026-11-08", title: "NeurIPS camera-ready 进度 · 确认状态并归档回执", category: "学业 / 实验", note: "截止已过：检查 OpenReview author console 中的最终提交状态，归档最终 PDF、提交时间和回执。此提醒不代表已经按时提交；若状态异常，按官方渠道处理。" },
   { id: "money-meeting-notes-1102", date: "2026-11-02", title: "整理昨天搞钱开会的笔记", category: "求职", note: "整理 11 月 1 日会议记录：参与者与背景、讨论的机会/岗位、关键信息、待核实事项、可执行的下一步和后续联系人。只记录已确认内容，未知信息标为待补充；尚未整理。" },
   { id: "amh-check-time-1103", date: "2026-11-03", title: "与实验学姐约查 AMH 的时间", category: "生活", note: "联系实验学姐，约定查 AMH 的具体时间、地点和注意事项；当前尚未确定预约时间。" },
+  { id: "kalodata-ai-selection-1106", date: "2026-11-06", title: "Kalodata AI 选品", category: "求职", note: "周五待办：整理 Kalodata AI 选品相关机会、岗位/合作信息和下一步沟通材料；具体要求与产出待确认，尚未完成。" },
   { id: "funplus-agent-apply-1102", date: "2026-11-02", title: "投递 FunPlus · 27 校招 AI Agent 工程师", category: "求职", note: `周一待办，具体时段未定；先核验资格和开放状态，再投递。\nBOSS 列表可见：FunPlus；岗位标题“27校招-AI Agent 工程师-多…”（后半段截断）；上海；在校/应届，本科；校招标签。\nJD：${campusJdUrls["funplus-agent-apply-1102"]}\n完整职责、毕业时间窗口、岗位是否仍开放待确认，不补写隐藏内容。核对简历中的真实项目贡献，符合条件后投递并记录实际结果；尚未投递。` },
   { id: "xiaomi-agent-harness-apply-1102", date: "2026-11-02", title: "投递小米 · Agent Harness 研发工程师（校招）", category: "求职", note: `周一待办，具体时段未定；先核验资格和开放状态，再投递。\nBOSS 列表可见：小米；岗位标题“Agent Harness 研发工程师…”（后半段截断）；北京；在校/应届，本科；校招标签。\nJD：${campusJdUrls["xiaomi-agent-harness-apply-1102"]}\n具体校招批次、毕业时间窗口、完整职责和岗位是否仍开放待确认。核对 Agent 工程/平台相关真实项目贡献，符合条件后投递并记录实际结果；尚未投递。` },
   { id: "quest-cancellation-policy-1101", date: "2026-11-01", title: "高优先级：核对 Quest 酒店免费取消截止", category: "生活", note: "当前已预订 Quest St Leonards（圣季奥纳探索酒店）行政一室房。\n高优先级：尽快打开携程已订订单的取消政策，核对免费取消的准确截止日期、当地时区和截止后的费用，并记录确认结果。\n参考信息仅来自另一张同房型新查询截图：当地时间 2026 年 12 月 1 日 12:00 前可免费取消；该截图查询的是 12 月 6—12 日共 6 晚，而已订订单为 12 月 6—11 日共 5 晚，因此不能直接当作已订订单条款。\n订单号及个人联系信息不在公开网站保存。" },
@@ -207,7 +208,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -788,6 +789,17 @@ if (!storageWarning && state.version === 60) {
 if (!storageWarning && state.version === 61) {
   if (!state.tasks.some(task => task.id === "amh-check-time-1103")) state.tasks.push({ ...seedTasks.find(task => task.id === "amh-check-time-1103") });
   state.version = 62;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 62) {
+  const task = state.tasks.find(item => item.id === "pingan-assessment-1031");
+  if (task) {
+    task.date = "2026-11-02";
+    task.time = "21:00";
+    task.note = task.note.replaceAll("11 月 1 日（周日）", "11 月 2 日（周一）").replace("今晚完成，不拖到截止前。", "今天完成，不再拖延。");
+  }
+  if (!state.tasks.some(task => task.id === "kalodata-ai-selection-1106")) state.tasks.push({ ...seedTasks.find(task => task.id === "kalodata-ai-selection-1106") });
+  state.version = 63;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
