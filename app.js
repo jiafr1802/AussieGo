@@ -174,6 +174,10 @@ const seedTasks = [
   { id: "ant-referral-reapply-1102", date: "2026-11-02", title: "蚂蚁集团内推 · 核对流程并尝试重新投递", category: "求职", note: "今天待办：通过内推链接查看之前的投递/面试流程，确认当前岗位和账号是否允许重新投递；蚂蚁内推说明为“今天截至、无限复活”，但具体规则以系统页面为准。\n内推链接：https://hrrecommend.antgroup.com/job-list.html?source=campus_external_recommend&code=27xrq1ECkESkdD9hAd5G5%2FmGMiKIYBWHkDCI7lr2Wd0%3D\n点击链接投递，无需填写内推码。尚未重新投递，不记录账号或登录信息。" },
   { id: "minimax-referral-1103", date: "2026-11-03", title: "Minimax 稀宇科技内推 · 投递", category: "求职", note: "明日待办：通过内推链接查看岗位并投递，记录岗位名称、投递结果和下一步。\n内推链接：https://vrfi1sk8a0.jobs.feishu.cn/s/KufNT74XkSk\n内推码：WK6Y2VF。内推码仅用于原招聘页面，不在公开网站单独展示；尚未投递。" },
   { id: "minimax-referral-followup-1104", date: "2026-11-04", title: "继续跟进 Minimax 稀宇科技内推", category: "求职", note: "后天待办：检查 11 月 3 日 Minimax 投递是否成功，补充岗位/流程记录；如未投递或页面有问题，再继续处理。\n内推链接：https://vrfi1sk8a0.jobs.feishu.cn/s/KufNT74XkSk\n内推码：WK6Y2VF；尚未确认投递结果。" },
+  { id: "nvidia-official-apply-1103", date: "2026-11-03", title: "投递英伟达 · 官方招聘网站", category: "求职", note: "明日待办：进入英伟达官方招聘网站，筛选适合的 AI/研究/基础设施岗位，核对资格与截止时间后投递并记录岗位名称和结果。具体岗位尚未确定，不代表已投递。\n官网：https://www.nvidia.com/en-us/about-nvidia/careers/" },
+  { id: "apple-official-apply-1103", date: "2026-11-03", title: "投递苹果 · 官方招聘网站", category: "求职", note: "明日待办：进入 Apple 官方招聘网站，筛选适合的机器学习/软件/研究岗位，核对资格与截止时间后投递并记录岗位名称和结果。具体岗位尚未确定，不代表已投递。\n官网：https://jobs.apple.com/zh-cn/search" },
+  { id: "nvidia-official-followup-1104", date: "2026-11-04", title: "继续处理英伟达官网投递", category: "求职", note: "后天待办：检查 11 月 3 日英伟达岗位筛选/投递是否完成；若前一天未找到合适岗位，继续筛选并记录原因和下一步。\n官网：https://www.nvidia.com/en-us/about-nvidia/careers/" },
+  { id: "apple-official-followup-1104", date: "2026-11-04", title: "继续处理苹果官网投递", category: "求职", note: "后天待办：检查 11 月 3 日 Apple 岗位筛选/投递是否完成；若前一天未找到合适岗位，继续筛选并记录原因和下一步。\n官网：https://jobs.apple.com/zh-cn/search" },
   { id: "kdd-reimbursement", date: "2026-11-02", title: "报销济州岛 KDD 会议 · 打印材料并交 Y 老师", category: "学业 / 实验", status: "suggested", note: `第二周待办，暂放 11 月 2 日（周一），并非已确认预约，具体办理日可调整。\n${KDD_PRINT_PREP_NOTE}\n1. 打印整合后的这一个文件。\n2. 把材料交给 Y 老师。\n3. 等 Y 老师反馈，再按反馈补充或修改材料。\n材料清单、交接时间与反馈日期待确认。` },
   { id: "huawei-agent-contact-1102", date: "2026-11-02", title: "跟进华为 BOSS 联系人 · AI Agent 研发工程师", category: "求职", note: "11 月 2 日（周一）待办，具体时段未定：先查看 BOSS 直聘原聊天是否有新消息；若已通过微信则发送简短跟进，确认是否收到简历、岗位是否仍开放及下一步。截图显示微信交换请求与附件简历已发送，不代表已安排面试。联系人姓名、手机号和私人聊天内容不在公开网站记录。\n\nJD（据用户截图，仅录入可见内容）：\n岗位：AI Agent 研发工程师，华为校招。\n地点：北京·海淀区·西北旺。\n薪资：40–70K·16薪，以招聘方最终确认为准。\n要求：在校/应届，本科；毕业时间 2026 年–2027 年。\n标签：C/C++、大模型算法、Python。\n岗位职责可见部分：AI Agent 系统设计研发；单 Agent / Multi-Agent 架构；任务拆解、协作、状态与上下文管理、动态路由；Tool / Skill 体系；Agentic RAG。截图后续内容被遮挡，不补写。\n\n跟进时确认：所属团队与业务场景、完整 JD、校招流程和下一步；尚未实际跟进。" },
   { id: "huawei-car-bu-research-contact-1102", date: "2026-11-02", title: "若 BOSS 无消息：联系华为车 BU 研究部 HR", category: "求职", note: `11 月 2 日（周一）条件待办：先检查 BOSS 直聘原联系人；若没有实质回复，再联系智能汽车解决方案研究部 HR。截图显示好友验证已通过，HR 表示欢迎投递；不代表已投递或进入面试。\n\n沟通重点：说明 2027 届应届身份和真实研究/项目方向，询问匹配岗位、岗位编号、工作地点、团队方向及校招下一步。\n研究方向据宣传页：智驾大模型、Agentic AI、座舱大模型、多模态感知与低时延高可靠控制；基础层含 AI 基础模型、AI 系统架构与 AI 安全；底层含训练/推理加速、AI Infra 与数据科学。\n岗位方向可重点询问：AI 模型工程师/研究员（大模型、后训练与强化学习、Agent、评测）、AI Infra 工程师/研究员（AI 训练系统、AI 技术应用）。工作地点列有上海、杭州、深圳、东莞、北京等，具体以岗位为准。\n官网投递：PC 端进入华为招聘官网，选择“校园招聘—应届生”；宣传页要求意向部门选择“智能汽车解决方案BU—智能驾驶解决方案BU研发管理部”。\n${HUAWEI_CAREER_URL}\nHR 姓名、微信和二维码不在公开网站记录。` },
@@ -218,7 +222,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -857,6 +861,13 @@ if (!storageWarning && state.version === 71) {
     if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
   }
   state.version = 72;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 72) {
+  for (const id of ["nvidia-official-apply-1103", "apple-official-apply-1103", "nvidia-official-followup-1104", "apple-official-followup-1104"]) {
+    if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
+  }
+  state.version = 73;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
