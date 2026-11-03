@@ -74,7 +74,7 @@ const dayInfo = [
   ["周末双主线：年度复习与 MSRA 调研", "复习今年学过的内容；整理 MSRA 工作 update，比较组会方向，争取形成调研或 proposal，积累面试深度与广度。21:00 与 LYX 相约 TRIO Classic Cocktail Bar。澳大利亚签证申请已提交，留意审理通知。"],
   ["校友相聚的周日", "辽宁省实验中学北京校友会迎新会 · 正大中心南塔 18 层，13:00 起签到。"],
   ["新一周，LC 与报销", "日历中的“重启 LC”跨 11 月 1—2 日。暂放济州岛 KDD 会议报销：打印材料、交 Y 老师，后续等反馈。"],
-  ["把时间留给进展", "暂无已确认安排。"],
+  ["Turning Point", "暂无已确认安排。"],
   ["一周的中点", "暂无已确认安排。"],
   ["继续向前", "暂无已确认安排。"],
   ["一万零一夜，派对之约", "NeurIPS camera-ready 截止日为今天 AoE，对应北京时间明天 19:59；提前检查最终版本。21:00 派对开始，按自己的 MBTI 穿对应颜色的衣服；地点与散场时间待确认。"],
@@ -170,7 +170,7 @@ const seedTasks = [
   { id: "azure-company-permission-1102", date: "2026-11-02", title: "询问 Azure 权限事宜是否与公司一系列操作有关", category: "学业 / 实验", note: "今天待办，具体时段未定：询问 Azure 权限问题是否与公司相关的一系列操作有关，确认影响范围、责任边界和后续处理方式；尚未确认。" },
   { id: "tp2-dp4-visualize-1102", date: "2026-11-02", title: "搞清楚 TP=2、DP=4 的并行画像并可视化", category: "学业 / 实验", note: "今天待办：整理 TP=2、DP=4 时的进程/设备布局、参数与梯度同步关系、通信边界和全局 batch 计算，并查看 AI-Job-Research 中的可视化图。结论先按示意模型理解，具体框架实现和显存/通信细节待继续核对。" },
   { id: "supplementary-materials-1102", date: "2026-11-02", title: "补充材料", category: "学业 / 实验", note: "根据今天记录补充：\n1. 携程酒店发票。\n2. 会议注册费和版面费的信用卡支付记录。\n3. 住宿支付记录。\n4. 远山芙蓉：携程酒店发票。\n5. 护照首页。\n6. 出入境记录（移民局）。\n7. 询问老师使用哪个项目号报销，并将项目号写在第一页（用铅笔）。\n以上材料逐项核对，具体项目号和文件内容以老师/原始材料为准；尚未完成。" },
-  { id: "microsoft-mentor-discussion-1103", date: "2026-11-03", title: "去微软跟 mentor 讨论", category: "学业 / 实验", note: "明日待办，具体会议时间和地点待确认。群聊截图中可见候选时间：yufei 上午 11–12 点、furong 下午 2–3 点、junmei 下午 3–4 点；这些是成员可用时间，不代表最终会议安排。确认后再补充会议链接、地点和讨论议题。" },
+  { id: "microsoft-mentor-discussion-1103", date: "2026-11-03", title: "去微软跟 mentor 讨论 · 聊 OLE 新方向", category: "学业 / 实验", note: "今天待办：与 mentor 讨论 OLE 新方向，重点交流方向定义、研究价值、可行切入点、现有工作基础和下一步验证计划。具体会议时间和地点待确认；群聊截图中可见候选时间：yufei 上午 11–12 点、furong 下午 2–3 点、junmei 下午 3–4 点，这些是成员可用时间，不代表最终会议安排。" },
   { id: "ant-referral-reapply-1102", date: "2026-11-02", title: "蚂蚁集团内推 · 核对流程并尝试重新投递", category: "求职", note: "今天待办：通过内推链接查看之前的投递/面试流程，确认当前岗位和账号是否允许重新投递；蚂蚁内推说明为“今天截至、无限复活”，但具体规则以系统页面为准。\n内推链接：https://hrrecommend.antgroup.com/job-list.html?source=campus_external_recommend&code=27xrq1ECkESkdD9hAd5G5%2FmGMiKIYBWHkDCI7lr2Wd0%3D\n点击链接投递，无需填写内推码。尚未重新投递，不记录账号或登录信息。" },
   { id: "minimax-referral-1103", date: "2026-11-03", title: "Minimax 稀宇科技内推 · 投递", category: "求职", note: "明日待办：通过内推链接查看岗位并投递，记录岗位名称、投递结果和下一步。\n内推链接：https://vrfi1sk8a0.jobs.feishu.cn/s/KufNT74XkSk\n内推码：WK6Y2VF。内推码仅用于原招聘页面，不在公开网站单独展示；尚未投递。" },
   { id: "minimax-referral-followup-1104", date: "2026-11-04", title: "继续跟进 Minimax 稀宇科技内推", category: "求职", note: "后天待办：检查 11 月 3 日 Minimax 投递是否成功，补充岗位/流程记录；如未投递或页面有问题，再继续处理。\n内推链接：https://vrfi1sk8a0.jobs.feishu.cn/s/KufNT74XkSk\n内推码：WK6Y2VF；尚未确认投递结果。" },
@@ -232,7 +232,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -933,6 +933,16 @@ if (!storageWarning && state.version === 81) {
     if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
   }
   state.version = 82;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 82) {
+  const mentorDiscussion = state.tasks.find(task => task.id === "microsoft-mentor-discussion-1103");
+  const updatedMentorDiscussion = seedTasks.find(task => task.id === "microsoft-mentor-discussion-1103");
+  if (mentorDiscussion && updatedMentorDiscussion) {
+    mentorDiscussion.title = updatedMentorDiscussion.title;
+    mentorDiscussion.note = updatedMentorDiscussion.note;
+  }
+  state.version = 83;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
