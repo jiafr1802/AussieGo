@@ -188,6 +188,7 @@ const seedTasks = [
   { id: "xiaohongshu-kv-cache-study-1103", date: "2026-11-03", title: "看小红书 KV Cache 科普短视频 · 学习原理", category: "学业 / 实验", note: "今天待办：在小红书看关于 KV Cache 的科普短视频，重点理解 Transformer 自回归推理中 Key/Value 的缓存与复用、prefill 和 decode 阶段的区别，以及显存占用与推理延迟的权衡。看完后用自己的话记录核心原理和仍不清楚的问题；尚未完成。" },
   { id: "heix-job-experience-comment-1103", date: "2026-11-03", title: "看黑X求职经验贴 · 发布表达困惑的评论", category: "求职", note: "今天待办：在黑X上阅读找工作相关经验贴，结合自己的求职情况梳理真正困惑的地方，再发布一条礼貌、具体、真实表达困惑的评论。不要公开个人联系方式、账号信息或其他敏感信息；尚未阅读或发布。" },
   { id: "follow-up-bytedance-ta-michael-zhao-1103", date: "2026-11-03", title: "跟进字节招聘 TA Michael Zhao · 询问 AI 岗位", category: "求职", note: "今天待办：联系字节跳动招聘 TA Michael Zhao，结合自己的背景询问 2027 届校招机会及合适的 AI 方向。其公开招聘信息涉及大模型算法、多模态生成、Agentic RL；个人简介还列出 AIGC 图像与视频生成、Agent SFT、多模态内容理解、Agent 开发和推理加速等方向。沟通后记录岗位、资格与下一步；尚未发送或收到回复。微信号等私人联系方式不在公开页面保存。" },
+  { id: "core-notes-confusion-discussion-1103", date: "2026-11-03", title: "核心事项：查看手机《手记》里的困惑并深入探讨", category: "生活", note: "今天非常核心的重要环节：打开手机《手记》，逐项查看此前记录的困惑，选出最关键的问题进行深入探讨，并记录新的理解、仍未解决之处和可执行的下一步。手记原文及私人内容不在公开页面保存；尚未开始。" },
   { id: "neurips-camera-ready-progress-1104", date: "2026-11-04", title: "NeurIPS camera-ready 进度 · 图表、引用与格式", category: "学业 / 实验", note: "逐项检查图表编号和正文引用、参考文献、公式与版式；同时对照官方 camera-ready 要求，记录未解决问题。尚未视为完成。" },
   { id: "book-fitness-class-1104", date: "2026-11-04", title: "预约一节周三 / 周四的健身课", category: "生活", note: "周三待办：查看 11 月 4 日（周三）或 11 月 5 日（周四）的可约课程，选择时间合适的一节健身课并完成预约。课程类型、场馆和具体时间尚未确定，不代表已经预约成功。" },
   { id: "neurips-camera-ready-progress-1105", date: "2026-11-05", title: "NeurIPS camera-ready 进度 · 完整编译与通读", category: "学业 / 实验", note: "生成完整版本并通读，检查缺图、交叉引用、排版、明显错字和 PDF 可读性；将问题汇总为提交前清单。尚未视为完成。" },
@@ -229,7 +230,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -918,6 +919,11 @@ if (!storageWarning && state.version === 79) {
     kddOutreach.note = updatedKddOutreach.note;
   }
   state.version = 80;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 80) {
+  if (!state.tasks.some(task => task.id === "core-notes-confusion-discussion-1103")) state.tasks.push({ ...seedTasks.find(task => task.id === "core-notes-confusion-discussion-1103") });
+  state.version = 81;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
