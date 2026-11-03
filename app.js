@@ -191,6 +191,7 @@ const seedTasks = [
   { id: "core-notes-confusion-discussion-1103", date: "2026-11-03", title: "核心事项：查看手机《手记》里的困惑并深入探讨", category: "生活", note: "今天非常核心的重要环节：打开手机《手记》，逐项查看此前记录的困惑，选出最关键的问题进行深入探讨，并记录新的理解、仍未解决之处和可执行的下一步。手记原文及私人内容不在公开页面保存；尚未开始。" },
   { id: "continue-ddp-fsdp-study-1103", date: "2026-11-03", title: "继续学习并攻克 DDP 与 FSDP", category: "学业 / 实验", note: "今天继续学习 DDP 与 FSDP：结合已有笔记和资料，梳理两者在参数、梯度与优化器状态同步或分片上的差异，重点攻克仍不清楚的机制、通信流程和实际使用问题；用自己的话记录结论、待验证点与下一步实验。尚未完成。" },
   { id: "huawei-afternoon-discussion-1103", date: "2026-11-03", time: "15:30", title: "与华为人员线上沟通交流", category: "求职", note: "今天下午 15:30–16:30 线上交流。提前整理个人背景、研究方向、对岗位或团队的关键问题；交流后记录对方介绍、岗位匹配、待补材料与下一步。会议平台、会议 ID、口令、邮箱和私人联系方式不在公开页面保存。" },
+  { id: "taikang-hr-contact-1103", date: "2026-11-03", title: "联系泰康 HR · 面试预计一至两周后安排", category: "求职", done: true, note: "今天已联系泰康 HR。HR 反馈预计一至两周后再约面试；当前尚未确认具体日期、时间、形式或面试轮次，后续留意通知并及时确认。联系人姓名和私人联系方式不在公开页面保存。" },
   { id: "neurips-camera-ready-progress-1104", date: "2026-11-04", title: "NeurIPS camera-ready 进度 · 图表、引用与格式", category: "学业 / 实验", note: "逐项检查图表编号和正文引用、参考文献、公式与版式；同时对照官方 camera-ready 要求，记录未解决问题。尚未视为完成。" },
   { id: "book-fitness-class-1104", date: "2026-11-04", title: "预约一节周三 / 周四的健身课", category: "生活", note: "周三待办：查看 11 月 4 日（周三）或 11 月 5 日（周四）的可约课程，选择时间合适的一节健身课并完成预约。课程类型、场馆和具体时间尚未确定，不代表已经预约成功。" },
   { id: "neurips-camera-ready-progress-1105", date: "2026-11-05", title: "NeurIPS camera-ready 进度 · 完整编译与通读", category: "学业 / 实验", note: "生成完整版本并通读，检查缺图、交叉引用、排版、明显错字和 PDF 可读性；将问题汇总为提交前清单。尚未视为完成。" },
@@ -232,7 +233,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -943,6 +944,11 @@ if (!storageWarning && state.version === 82) {
     mentorDiscussion.note = updatedMentorDiscussion.note;
   }
   state.version = 83;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 83) {
+  if (!state.tasks.some(task => task.id === "taikang-hr-contact-1103")) state.tasks.push({ ...seedTasks.find(task => task.id === "taikang-hr-contact-1103") });
+  state.version = 84;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
