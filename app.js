@@ -192,9 +192,11 @@ const seedTasks = [
   { id: "neurips-camera-ready-progress-1105", date: "2026-11-05", title: "NeurIPS camera-ready 进度 · 完整编译与通读", category: "学业 / 实验", note: "生成完整版本并通读，检查缺图、交叉引用、排版、明显错字和 PDF 可读性；将问题汇总为提交前清单。尚未视为完成。" },
   { id: "neurips-camera-ready-progress-1106", date: "2026-11-06", title: "NeurIPS camera-ready 进度 · 合作者确认与预提交", category: "学业 / 实验", note: "汇总合作者最终反馈，确认作者信息和提交材料；在 OpenReview author console 检查上传入口，尽量完成预提交或最终候选版本，避免拖到截止前。尚未视为提交成功。" },
   { id: "dongchedi-llm-video-interview-1106", date: "2026-11-06", time: "14:00", title: "懂车帝视频面试 · 大模型算法工程师（LLM）", category: "求职", note: "已收到面试邀请：大模型算法工程师（LLM）-校招【27届】。面试形式为视频面试，时间为 2026 年 11 月 6 日 14:00（北京时间，GMT+08:00）；结束时间未提供。提前检查设备、网络和摄像头，并从原邮件进入私人面试链接；链接不在公开网页保存。" },
+  { id: "agent-role-senior-jd-outreach-1106", date: "2026-11-06", title: "Last dance？联系实验学长 · 询问 Agent 岗位", category: "求职", note: "周五待办：先把常见的字节跳动与 TikTok（TT）相关 JD 找出来阅读，重点看 Agent / 大模型方向的职责、要求与自身匹配点；再整理一句简洁、礼貌的信息发给实验学长，询问是否了解 Agent 相关岗位或团队机会。尚未查看 JD，也未发送消息；私人联系方式不在公开页面保存。" },
   { id: "neurips-camera-ready-progress-1107", date: "2026-11-07", title: "NeurIPS camera-ready 进度 · 最终检查并确认提交", category: "学业 / 实验", note: "今天北京时间 19:59:59 截止。核对最终 PDF、页面上的作者与材料信息，上传后确认系统显示提交成功并保存回执；不要只以本地文件完成作为提交完成。" },
   { id: "train-g105-beijing-shenyang-1107", date: "2026-11-07", time: "08:55", title: "G105 · 北京朝阳 → 沈阳北", category: "生活", note: "已购票。2026 年 11 月 7 日（周六）08:55 从北京朝阳站出发，11:24 到达沈阳北站；车次 G105，预计行程 2 小时 29 分。出发前核对检票口、身份证件和车站交通。" },
   { id: "neurips-camera-ready-progress-1108", date: "2026-11-08", title: "NeurIPS camera-ready 进度 · 确认状态并归档回执", category: "学业 / 实验", note: "截止已过：检查 OpenReview author console 中的最终提交状态，归档最终 PDF、提交时间和回执。此提醒不代表已经按时提交；若状态异常，按官方渠道处理。" },
+  { id: "kdd-bytedance-hiring-outreach-1109", date: "2026-11-09", title: "联系 KDD 认识的两位字节同行 · 询问是否招人", category: "求职", note: "下周一待办：不预设结果，分别礼貌联系之前 KDD 开会时加到的两位字节跳动同行，询问他们所在团队或熟悉的团队近期是否招聘，以及是否有适合的岗位方向。根据实际回复记录下一步；尚未发送消息，联系人姓名与私人联系方式不在公开页面保存。" },
   { id: "money-meeting-notes-1102", date: "2026-11-02", title: "整理昨天搞钱开会的笔记", category: "求职", note: "整理 11 月 1 日会议记录：参与者与背景、讨论的机会/岗位、关键信息、待核实事项、可执行的下一步和后续联系人。只记录已确认内容，未知信息标为待补充；尚未整理。" },
   { id: "pilates-strap-control-1102", date: "2026-11-02", time: "17:30", title: "普拉提（肩带灵活控制）1级", category: "生活", note: "预约状态：已预约。\n上课时间：2026 年 11 月 2 日 17:30–18:30。\n预约学校：归位瑜伽·融科馆。\n教室：普拉提团教室。\n上课教练：雷凤茜–岚岚。\n课程码和取消操作以原预约页面为准。" },
   { id: "amh-check-time-1103", date: "2026-11-03", title: "与实验学姐约查 AMH 的时间", category: "生活", note: "联系实验学姐，约定查 AMH 的具体时间、地点和注意事项；当前尚未确定预约时间。" },
@@ -226,7 +228,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -897,6 +899,13 @@ if (!storageWarning && state.version === 76) {
 if (!storageWarning && state.version === 77) {
   if (!state.tasks.some(task => task.id === "book-fitness-class-1104")) state.tasks.push({ ...seedTasks.find(task => task.id === "book-fitness-class-1104") });
   state.version = 78;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 78) {
+  for (const id of ["agent-role-senior-jd-outreach-1106", "kdd-bytedance-hiring-outreach-1109"]) {
+    if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
+  }
+  state.version = 79;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
