@@ -185,6 +185,7 @@ const seedTasks = [
   { id: "neurips-camera-ready-2026", date: "2026-11-07", time: "19:59", title: "NeurIPS 2026 camera-ready DDL · 11.6 AoE", category: "学业 / 实验", note: "邮件通知：最终 camera-ready 版本须于 November 6 (AoE) 前在 OpenReview author console 提交。\nAoE 为 UTC−12：2026 年 11 月 6 日 23:59:59 对应北京时间 2026 年 11 月 7 日 19:59:59；日程按北京时间记为 11 月 7 日 19:59。\n提前检查最终版本，在作者控制台上传并确认提交成功，避免临近截止时操作。具体要求以邮件及作者控制台为准。\nOpenReview：https://openreview.net/" },
   { id: "neurips-camera-ready-progress-1102", date: "2026-11-02", title: "NeurIPS camera-ready 进度 · 梳理剩余修改", category: "学业 / 实验", note: "列出尚未完成的正文、实验、图表、引用和格式修改，标注负责人及阻塞项；记录今天实际完成内容。具体要求以 NeurIPS 通知和 OpenReview author console 为准，尚未视为完成。" },
   { id: "neurips-camera-ready-progress-1103", date: "2026-11-03", title: "NeurIPS camera-ready 进度 · 正文与实验核对", category: "学业 / 实验", note: "检查正文修改与实验结果是否一致，核对结论有没有超出证据；记录待补实验、待确认数字和合作者反馈。尚未视为完成。" },
+  { id: "xiaohongshu-kv-cache-study-1103", date: "2026-11-03", title: "看小红书 KV Cache 科普短视频 · 学习原理", category: "学业 / 实验", note: "今天待办：在小红书看关于 KV Cache 的科普短视频，重点理解 Transformer 自回归推理中 Key/Value 的缓存与复用、prefill 和 decode 阶段的区别，以及显存占用与推理延迟的权衡。看完后用自己的话记录核心原理和仍不清楚的问题；尚未完成。" },
   { id: "neurips-camera-ready-progress-1104", date: "2026-11-04", title: "NeurIPS camera-ready 进度 · 图表、引用与格式", category: "学业 / 实验", note: "逐项检查图表编号和正文引用、参考文献、公式与版式；同时对照官方 camera-ready 要求，记录未解决问题。尚未视为完成。" },
   { id: "neurips-camera-ready-progress-1105", date: "2026-11-05", title: "NeurIPS camera-ready 进度 · 完整编译与通读", category: "学业 / 实验", note: "生成完整版本并通读，检查缺图、交叉引用、排版、明显错字和 PDF 可读性；将问题汇总为提交前清单。尚未视为完成。" },
   { id: "neurips-camera-ready-progress-1106", date: "2026-11-06", title: "NeurIPS camera-ready 进度 · 合作者确认与预提交", category: "学业 / 实验", note: "汇总合作者最终反馈，确认作者信息和提交材料；在 OpenReview author console 检查上传入口，尽量完成预提交或最终候选版本，避免拖到截止前。尚未视为提交成功。" },
@@ -223,7 +224,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -874,6 +875,11 @@ if (!storageWarning && state.version === 72) {
 if (!storageWarning && state.version === 73) {
   if (!state.tasks.some(task => task.id === "train-g105-beijing-shenyang-1107")) state.tasks.push({ ...seedTasks.find(task => task.id === "train-g105-beijing-shenyang-1107") });
   state.version = 74;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 74) {
+  if (!state.tasks.some(task => task.id === "xiaohongshu-kv-cache-study-1103")) state.tasks.push({ ...seedTasks.find(task => task.id === "xiaohongshu-kv-cache-study-1103") });
+  state.version = 75;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
