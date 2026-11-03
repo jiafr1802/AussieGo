@@ -187,6 +187,7 @@ const seedTasks = [
   { id: "neurips-camera-ready-progress-1103", date: "2026-11-03", title: "NeurIPS camera-ready 进度 · 正文与实验核对", category: "学业 / 实验", note: "检查正文修改与实验结果是否一致，核对结论有没有超出证据；记录待补实验、待确认数字和合作者反馈。尚未视为完成。" },
   { id: "xiaohongshu-kv-cache-study-1103", date: "2026-11-03", title: "看小红书 KV Cache 科普短视频 · 学习原理", category: "学业 / 实验", note: "今天待办：在小红书看关于 KV Cache 的科普短视频，重点理解 Transformer 自回归推理中 Key/Value 的缓存与复用、prefill 和 decode 阶段的区别，以及显存占用与推理延迟的权衡。看完后用自己的话记录核心原理和仍不清楚的问题；尚未完成。" },
   { id: "heix-job-experience-comment-1103", date: "2026-11-03", title: "看黑X求职经验贴 · 发布表达困惑的评论", category: "求职", note: "今天待办：在黑X上阅读找工作相关经验贴，结合自己的求职情况梳理真正困惑的地方，再发布一条礼貌、具体、真实表达困惑的评论。不要公开个人联系方式、账号信息或其他敏感信息；尚未阅读或发布。" },
+  { id: "follow-up-bytedance-ta-michael-zhao-1103", date: "2026-11-03", title: "跟进字节招聘 TA Michael Zhao · 询问 AI 岗位", category: "求职", note: "今天待办：联系字节跳动招聘 TA Michael Zhao，结合自己的背景询问 2027 届校招机会及合适的 AI 方向。其公开招聘信息涉及大模型算法、多模态生成、Agentic RL；个人简介还列出 AIGC 图像与视频生成、Agent SFT、多模态内容理解、Agent 开发和推理加速等方向。沟通后记录岗位、资格与下一步；尚未发送或收到回复。微信号等私人联系方式不在公开页面保存。" },
   { id: "neurips-camera-ready-progress-1104", date: "2026-11-04", title: "NeurIPS camera-ready 进度 · 图表、引用与格式", category: "学业 / 实验", note: "逐项检查图表编号和正文引用、参考文献、公式与版式；同时对照官方 camera-ready 要求，记录未解决问题。尚未视为完成。" },
   { id: "book-fitness-class-1104", date: "2026-11-04", title: "预约一节周三 / 周四的健身课", category: "生活", note: "周三待办：查看 11 月 4 日（周三）或 11 月 5 日（周四）的可约课程，选择时间合适的一节健身课并完成预约。课程类型、场馆和具体时间尚未确定，不代表已经预约成功。" },
   { id: "neurips-camera-ready-progress-1105", date: "2026-11-05", title: "NeurIPS camera-ready 进度 · 完整编译与通读", category: "学业 / 实验", note: "生成完整版本并通读，检查缺图、交叉引用、排版、明显错字和 PDF 可读性；将问题汇总为提交前清单。尚未视为完成。" },
@@ -196,7 +197,7 @@ const seedTasks = [
   { id: "neurips-camera-ready-progress-1107", date: "2026-11-07", title: "NeurIPS camera-ready 进度 · 最终检查并确认提交", category: "学业 / 实验", note: "今天北京时间 19:59:59 截止。核对最终 PDF、页面上的作者与材料信息，上传后确认系统显示提交成功并保存回执；不要只以本地文件完成作为提交完成。" },
   { id: "train-g105-beijing-shenyang-1107", date: "2026-11-07", time: "08:55", title: "G105 · 北京朝阳 → 沈阳北", category: "生活", note: "已购票。2026 年 11 月 7 日（周六）08:55 从北京朝阳站出发，11:24 到达沈阳北站；车次 G105，预计行程 2 小时 29 分。出发前核对检票口、身份证件和车站交通。" },
   { id: "neurips-camera-ready-progress-1108", date: "2026-11-08", title: "NeurIPS camera-ready 进度 · 确认状态并归档回执", category: "学业 / 实验", note: "截止已过：检查 OpenReview author console 中的最终提交状态，归档最终 PDF、提交时间和回执。此提醒不代表已经按时提交；若状态异常，按官方渠道处理。" },
-  { id: "kdd-bytedance-hiring-outreach-1109", date: "2026-11-09", title: "联系 KDD 认识的两位字节同行 · 询问是否招人", category: "求职", note: "下周一待办：不预设结果，分别礼貌联系之前 KDD 开会时加到的两位字节跳动同行，询问他们所在团队或熟悉的团队近期是否招聘，以及是否有适合的岗位方向。根据实际回复记录下一步；尚未发送消息，联系人姓名与私人联系方式不在公开页面保存。" },
+  { id: "kdd-bytedance-hiring-outreach-1109", date: "2026-11-09", title: "联系两位 KDD 字节同行和周姐 · 询问是否招人", category: "求职", note: "下周一待办：不预设结果，分别礼貌联系之前 KDD 开会时加到的两位字节跳动同行，以及周姐，询问他们所在团队或熟悉的团队近期是否招聘，并了解适合的岗位方向。根据实际回复记录下一步；三人均尚未联系，私人联系方式不在公开页面保存。" },
   { id: "money-meeting-notes-1102", date: "2026-11-02", title: "整理昨天搞钱开会的笔记", category: "求职", note: "整理 11 月 1 日会议记录：参与者与背景、讨论的机会/岗位、关键信息、待核实事项、可执行的下一步和后续联系人。只记录已确认内容，未知信息标为待补充；尚未整理。" },
   { id: "pilates-strap-control-1102", date: "2026-11-02", time: "17:30", title: "普拉提（肩带灵活控制）1级", category: "生活", note: "预约状态：已预约。\n上课时间：2026 年 11 月 2 日 17:30–18:30。\n预约学校：归位瑜伽·融科馆。\n教室：普拉提团教室。\n上课教练：雷凤茜–岚岚。\n课程码和取消操作以原预约页面为准。" },
   { id: "amh-check-time-1103", date: "2026-11-03", title: "与实验学姐约查 AMH 的时间", category: "生活", note: "联系实验学姐，约定查 AMH 的具体时间、地点和注意事项；当前尚未确定预约时间。" },
@@ -228,7 +229,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -906,6 +907,17 @@ if (!storageWarning && state.version === 78) {
     if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
   }
   state.version = 79;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 79) {
+  if (!state.tasks.some(task => task.id === "follow-up-bytedance-ta-michael-zhao-1103")) state.tasks.push({ ...seedTasks.find(task => task.id === "follow-up-bytedance-ta-michael-zhao-1103") });
+  const kddOutreach = state.tasks.find(task => task.id === "kdd-bytedance-hiring-outreach-1109");
+  const updatedKddOutreach = seedTasks.find(task => task.id === "kdd-bytedance-hiring-outreach-1109");
+  if (kddOutreach && updatedKddOutreach) {
+    kddOutreach.title = updatedKddOutreach.title;
+    kddOutreach.note = updatedKddOutreach.note;
+  }
+  state.version = 80;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
