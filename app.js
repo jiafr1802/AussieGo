@@ -179,6 +179,9 @@ const seedTasks = [
   { id: "nvidia-official-followup-1104", date: "2026-11-04", title: "继续处理英伟达官网投递", category: "求职", note: "后天待办：检查 11 月 3 日英伟达岗位筛选/投递是否完成；若前一天未找到合适岗位，继续筛选并记录原因和下一步。\n官网：https://www.nvidia.com/en-us/about-nvidia/careers/" },
   { id: "apple-official-followup-1104", date: "2026-11-04", title: "继续处理苹果官网投递", category: "求职", note: "后天待办：检查 11 月 3 日 Apple 岗位筛选/投递是否完成；若前一天未找到合适岗位，继续筛选并记录原因和下一步。\n官网：https://jobs.apple.com/zh-cn/search" },
   { id: "book-sydney-flight-1104", date: "2026-11-04", title: "订机票 · 北京往返悉尼", category: "生活", note: "今天待办：确定并预订北京往返悉尼机票。当前重点核对去程 12 月 4 日或 5 日、返程 12 月 11 日或 12 日的方案，并比较总价、起降时间、中转时长、行李额度、退改规则和机场交通。下单前确认姓名与护照一致；尚未购票，不把搜索页临时报价视为最终价格。" },
+  { id: "flight-cz-beijing-sydney-1205", date: "2026-12-05", time: "18:30", title: "南航 CZ3100 / CZ8091 · 北京大兴 → 悉尼", category: "生活", note: "航班行程截图：2026 年 12 月 5 日 18:30 从北京大兴国际机场（PKX）出发，CZ3100 经济舱，波音 777-300，21:40 到达广州白云国际机场 T2；广州中转 3 小时 10 分，无需领取及重新托运行李。12 月 6 日 00:50 乘 CZ8091，经济舱，波音 787-9，13:20 到达悉尼金斯福德史密斯机场 T1。所有时间均为当地时间；出发前以航空公司订单和通知为准。" },
+  { id: "flight-cz-sydney-beijing-1212", date: "2026-12-12", time: "09:20", title: "南航 CZ3072 / CZ3171 · 悉尼 → 北京大兴", category: "生活", note: "航班行程截图：2026 年 12 月 12 日 09:20 从悉尼金斯福德史密斯机场 T1 出发，CZ3072 经济舱，空中客车 A330，16:25 到达深圳宝安国际机场 T3；深圳中转 15 小时 5 分，无需领取及重新托运行李。12 月 13 日 07:30 乘 CZ3171，经济舱，空中客车 A330-300，10:45 到达北京大兴国际机场。所有时间均为当地时间；出发前以航空公司订单和通知为准。" },
+  { id: "neurips-poster-metadata-1115", date: "2026-11-15", title: "NeurIPS poster · 更新 topic 并上传 poster / thumbnail", category: "学业 / 实验", note: "NeurIPS 邮件要求：登录会议网站，进入论文 poster 页面，打开 Event Metadata，为每篇论文选择最合适的 topic area；topic 更新截止日期为 2026 年 11 月 15 日，具体时区未在截图中显示，需提前完成。邮件同时建议上传 poster 和 thumbnail。论文：REVERSE: Reinforcing Evidence Verification and Search for Agentic Image Geolocation。展示者负责打印、运输、安装和撤下海报；会议仅提供批准的固定材料。完成后保存页面状态和上传回执。" },
   { id: "pilates-lower-limb-alignment-1104", date: "2026-11-04", time: "17:30", title: "普拉提（下肢排列正位）1级", category: "生活", note: "预约状态：已预约。\n上课时间：2026 年 11 月 4 日 17:30–18:30。\n预约学校：归位瑜伽·融科馆。\n教室：普拉提团教室。\n上课教练：刘济铭–天骄。\n课程码和取消操作以原预约页面为准。" },
   { id: "lixiang-agent-assessment-1104", date: "2026-11-04", title: "完成理想汽车在线测评 · Agent 算法工程师", category: "求职", note: "已收到理想汽车 2027 校园招聘 Agent 算法工程师岗位在线测评邀请。邮件要求在收到邮件后的 3 个自然日内完成；今天先接受并检查测评入口、电脑浏览器、摄像头、手机拍照和网速要求，尽早完成并记录结果。私人测评链接、HR 邮箱和个人信息不在公开网页保存。" },
   { id: "lixiang-agent-written-test-1104", date: "2026-11-04", title: "完成理想汽车在线笔试 · Agent 算法工程师", category: "求职", note: "已通过理想汽车 2027 校园招聘 Agent 算法工程师岗位简历评估，并收到在线笔试邀请。邮件要求在收到邮件后的 3 个工作日内完成；今天先接受并检查笔试环境，尽早安排作答并记录结果。私人笔试链接、HR 邮箱和二维码不在公开网页保存。" },
@@ -200,7 +203,7 @@ const seedTasks = [
   { id: "book-fitness-class-1104", date: "2026-11-04", title: "预约一节周三 / 周四的健身课", category: "生活", note: "周三待办：查看 11 月 4 日（周三）或 11 月 5 日（周四）的可约课程，选择时间合适的一节健身课并完成预约。课程类型、场馆和具体时间尚未确定，不代表已经预约成功。" },
   { id: "neurips-camera-ready-progress-1105", date: "2026-11-05", title: "NeurIPS camera-ready 进度 · 完整编译与通读", category: "学业 / 实验", note: "生成完整版本并通读，检查缺图、交叉引用、排版、明显错字和 PDF 可读性；将问题汇总为提交前清单。尚未视为完成。" },
   { id: "neurips-camera-ready-progress-1106", date: "2026-11-06", title: "NeurIPS camera-ready 进度 · 合作者确认与预提交", category: "学业 / 实验", note: "汇总合作者最终反馈，确认作者信息和提交材料；在 OpenReview author console 检查上传入口，尽量完成预提交或最终候选版本，避免拖到截止前。尚未视为提交成功。" },
-  { id: "dongchedi-llm-video-interview-1106", date: "2026-11-06", time: "14:00", title: "懂车帝视频面试 · 大模型算法工程师（LLM）", category: "求职", note: "已收到面试邀请：大模型算法工程师（LLM）-校招【27届】。面试形式为视频面试，时间为 2026 年 11 月 6 日 14:00（北京时间，GMT+08:00）；结束时间未提供。提前检查设备、网络和摄像头，并从原邮件进入私人面试链接；链接不在公开网页保存。" },
+  { id: "dongchedi-llm-video-interview-1106", date: "2026-11-06", time: "17:00", title: "懂车帝视频面试 · 大模型算法工程师（LLM）", category: "求职", note: "最新面试邀请：大模型算法工程师（LLM）-校招【27届】。面试形式为视频面试，时间已改为 2026 年 11 月 6 日 17:00（北京时间，GMT+08:00）；结束时间未提供。考察内容包括通用业务问题与过往项目经历、代码实操、算法基础、代码规范、业务逻辑实现，以及价值观和软性技能。提前检查设备、网络和摄像头，并从原邮件进入私人面试链接；链接不在公开网页保存。" },
   { id: "agent-role-senior-jd-outreach-1106", date: "2026-11-06", title: "Last dance？联系实验学长 · 询问 Agent 岗位", category: "求职", note: "周五待办：先把常见的字节跳动与 TikTok（TT）相关 JD 找出来阅读，重点看 Agent / 大模型方向的职责、要求与自身匹配点；再整理一句简洁、礼貌的信息发给实验学长，询问是否了解 Agent 相关岗位或团队机会。尚未查看 JD，也未发送消息；私人联系方式不在公开页面保存。" },
   { id: "neurips-camera-ready-progress-1107", date: "2026-11-07", title: "NeurIPS camera-ready 进度 · 最终检查并确认提交", category: "学业 / 实验", note: "今天北京时间 19:59:59 截止。核对最终 PDF、页面上的作者与材料信息，上传后确认系统显示提交成功并保存回执；不要只以本地文件完成作为提交完成。" },
   { id: "train-g105-beijing-shenyang-1107", date: "2026-11-07", time: "08:55", title: "G105 · 北京朝阳 → 沈阳北", category: "生活", note: "已购票。2026 年 11 月 7 日（周六）08:55 从北京朝阳站出发，11:24 到达沈阳北站；车次 G105，预计行程 2 小时 29 分。出发前核对检票口、身份证件和车站交通。" },
@@ -237,7 +240,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -965,6 +968,19 @@ if (!storageWarning && state.version === 85) {
     if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
   }
   state.version = 86;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 86) {
+  for (const id of ["flight-cz-beijing-sydney-1205", "flight-cz-sydney-beijing-1212", "neurips-poster-metadata-1115"]) {
+    if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
+  }
+  const interview = state.tasks.find(task => task.id === "dongchedi-llm-video-interview-1106");
+  const updatedInterview = seedTasks.find(task => task.id === "dongchedi-llm-video-interview-1106");
+  if (interview && updatedInterview) {
+    interview.time = updatedInterview.time;
+    interview.note = updatedInterview.note;
+  }
+  state.version = 87;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
