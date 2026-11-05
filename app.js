@@ -182,6 +182,8 @@ const seedTasks = [
   { id: "flight-cz-beijing-sydney-1205", date: "2026-12-05", time: "18:30", title: "南航 CZ3100 / CZ8091 · 北京大兴 → 悉尼", category: "生活", note: "航班行程截图：2026 年 12 月 5 日 18:30 从北京大兴国际机场（PKX）出发，CZ3100 经济舱，波音 777-300，21:40 到达广州白云国际机场 T2；广州中转 3 小时 10 分，无需领取及重新托运行李。12 月 6 日 00:50 乘 CZ8091，经济舱，波音 787-9，13:20 到达悉尼金斯福德史密斯机场 T1。所有时间均为当地时间；出发前以航空公司订单和通知为准。" },
   { id: "flight-cz-sydney-beijing-1212", date: "2026-12-12", time: "09:20", title: "南航 CZ3072 / CZ3171 · 悉尼 → 北京大兴", category: "生活", note: "航班行程截图：2026 年 12 月 12 日 09:20 从悉尼金斯福德史密斯机场 T1 出发，CZ3072 经济舱，空中客车 A330，16:25 到达深圳宝安国际机场 T3；深圳中转 15 小时 5 分，无需领取及重新托运行李。12 月 13 日 07:30 乘 CZ3171，经济舱，空中客车 A330-300，10:45 到达北京大兴国际机场。所有时间均为当地时间；出发前以航空公司订单和通知为准。" },
   { id: "neurips-poster-metadata-1115", date: "2026-11-15", title: "NeurIPS poster · 更新 topic 并上传 poster / thumbnail", category: "学业 / 实验", note: "NeurIPS 邮件要求：登录会议网站，进入论文 poster 页面，打开 Event Metadata，为每篇论文选择最合适的 topic area；topic 更新截止日期为 2026 年 11 月 15 日，具体时区未在截图中显示，需提前完成。邮件同时建议上传 poster 和 thumbnail。论文：REVERSE: Reinforcing Evidence Verification and Search for Agentic Image Geolocation。展示者负责打印、运输、安装和撤下海报；会议仅提供批准的固定材料。完成后保存页面状态和上传回执。" },
+  { id: "claude-registration-call-1105", date: "2026-11-05", time: "22:30", title: "与蒋惟一连麦注册 Claude", category: "生活", note: "今晚 22:30 连麦注册 Claude；结束时间、连麦平台和账号准备事项待确认。涉及验证码、密码或付款信息时由本人直接在对应页面操作，不在公开日程或聊天中记录。" },
+  { id: "graduate-image-collection-1106", date: "2026-11-06", title: "去毕业生图像采集 · 上午", category: "生活", note: "明天上午去毕业生图像采集。具体时间、地点、着装要求和所需证件待确认；出发前查看学校通知并带好身份证件。" },
   { id: "pilates-lower-limb-alignment-1104", date: "2026-11-04", time: "17:30", title: "普拉提（下肢排列正位）1级", category: "生活", note: "预约状态：已预约。\n上课时间：2026 年 11 月 4 日 17:30–18:30。\n预约学校：归位瑜伽·融科馆。\n教室：普拉提团教室。\n上课教练：刘济铭–天骄。\n课程码和取消操作以原预约页面为准。" },
   { id: "lixiang-agent-assessment-1104", date: "2026-11-04", title: "完成理想汽车在线测评 · Agent 算法工程师", category: "求职", note: "已收到理想汽车 2027 校园招聘 Agent 算法工程师岗位在线测评邀请。邮件要求在收到邮件后的 3 个自然日内完成；今天先接受并检查测评入口、电脑浏览器、摄像头、手机拍照和网速要求，尽早完成并记录结果。私人测评链接、HR 邮箱和个人信息不在公开网页保存。" },
   { id: "lixiang-agent-written-test-1104", date: "2026-11-04", title: "完成理想汽车在线笔试 · Agent 算法工程师", category: "求职", note: "已通过理想汽车 2027 校园招聘 Agent 算法工程师岗位简历评估，并收到在线笔试邀请。邮件要求在收到邮件后的 3 个工作日内完成；今天先接受并检查笔试环境，尽早安排作答并记录结果。私人笔试链接、HR 邮箱和二维码不在公开网页保存。" },
@@ -240,7 +242,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -981,6 +983,13 @@ if (!storageWarning && state.version === 86) {
     interview.note = updatedInterview.note;
   }
   state.version = 87;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 87) {
+  for (const id of ["claude-registration-call-1105", "graduate-image-collection-1106"]) {
+    if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
+  }
+  state.version = 88;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
