@@ -181,7 +181,7 @@ const seedTasks = [
   { id: "book-sydney-flight-1104", date: "2026-11-04", title: "订机票 · 北京往返悉尼", category: "生活", note: "今天待办：确定并预订北京往返悉尼机票。当前重点核对去程 12 月 4 日或 5 日、返程 12 月 11 日或 12 日的方案，并比较总价、起降时间、中转时长、行李额度、退改规则和机场交通。下单前确认姓名与护照一致；尚未购票，不把搜索页临时报价视为最终价格。" },
   { id: "flight-cz-beijing-sydney-1205", date: "2026-12-05", time: "18:30", title: "南航 CZ3100 / CZ8091 · 北京大兴 → 悉尼", category: "生活", note: "航班行程截图：2026 年 12 月 5 日 18:30 从北京大兴国际机场（PKX）出发，CZ3100 经济舱，波音 777-300，21:40 到达广州白云国际机场 T2；广州中转 3 小时 10 分，无需领取及重新托运行李。12 月 6 日 00:50 乘 CZ8091，经济舱，波音 787-9，13:20 到达悉尼金斯福德史密斯机场 T1。所有时间均为当地时间；出发前以航空公司订单和通知为准。" },
   { id: "flight-cz-sydney-beijing-1212", date: "2026-12-12", time: "09:20", title: "南航 CZ3072 / CZ3171 · 悉尼 → 北京大兴", category: "生活", note: "航班行程截图：2026 年 12 月 12 日 09:20 从悉尼金斯福德史密斯机场 T1 出发，CZ3072 经济舱，空中客车 A330，16:25 到达深圳宝安国际机场 T3；深圳中转 15 小时 5 分，无需领取及重新托运行李。12 月 13 日 07:30 乘 CZ3171，经济舱，空中客车 A330-300，10:45 到达北京大兴国际机场。所有时间均为当地时间；出发前以航空公司订单和通知为准。" },
-  { id: "neurips-poster-metadata-1115", date: "2026-11-15", title: "NeurIPS poster · 更新 topic 并上传 poster / thumbnail", category: "学业 / 实验", note: "NeurIPS 邮件要求：登录会议网站，进入论文 poster 页面，打开 Event Metadata，为每篇论文选择最合适的 topic area；topic 更新截止日期为 2026 年 11 月 15 日，具体时区未在截图中显示，需提前完成。邮件同时建议上传 poster 和 thumbnail。论文：REVERSE: Reinforcing Evidence Verification and Search for Agentic Image Geolocation。展示者负责打印、运输、安装和撤下海报；会议仅提供批准的固定材料。完成后保存页面状态和上传回执。" },
+  { id: "neurips-poster-metadata-1115", date: "2026-11-15", title: "NeurIPS 2026 Poster 内部 DDL · 更新 Topic 并上传海报", category: "学业 / 实验", note: "论文：REVERSE: Reinforcing Evidence Verification and Search for Agentic Image Geolocation。\n\n必做：登录 NeurIPS 论文海报页，进入 Event Metadata，为论文选择一个最匹配的 Topic Area。官方 Topic 截止为 11 月 15 日 AoE，即北京时间 11 月 16 日 19:59；Topic 用于分组，海报位置确定后再修改不会重新分组。\n\n内部目标：11 月 15 日同时上传网页海报和缩略图。网页海报须为横版 PNG，最大 5120 × 2880 px、10 MB；缩略图须为 PNG，最大 320 × 256 px、5 MB；两者使用实色背景。上传后可能需 1–2 小时同步，应检查页面显示是否正确。官方对网页海报上传没有统一硬截止，最晚可在展示前两小时替换，但建议至少提前一天完成。\n\n实体海报需自行打印、运输、安装和撤下；主会板面尺寸以具体海报页或会场通知为准，只能使用会方批准的固定材料。\n海报页：https://neurips.cc/virtual/2026/poster/154894\n上传页：https://neurips.cc/PosterUpload" },
   { id: "claude-registration-call-1105", date: "2026-11-05", time: "22:30", title: "与蒋惟一连麦注册 Claude", category: "生活", note: "今晚 22:30 连麦注册 Claude；结束时间、连麦平台和账号准备事项待确认。涉及验证码、密码或付款信息时由本人直接在对应页面操作，不在公开日程或聊天中记录。" },
   { id: "graduate-image-collection-1106", date: "2026-11-06", title: "去毕业生图像采集 · 上午", category: "生活", note: "明天上午去毕业生图像采集。具体时间、地点、着装要求和所需证件待确认；出发前查看学校通知并带好身份证件。" },
   { id: "pilates-lower-limb-alignment-1104", date: "2026-11-04", time: "17:30", title: "普拉提（下肢排列正位）1级", category: "生活", note: "预约状态：已预约。\n上课时间：2026 年 11 月 4 日 17:30–18:30。\n预约学校：归位瑜伽·融科馆。\n教室：普拉提团教室。\n上课教练：刘济铭–天骄。\n课程码和取消操作以原预约页面为准。" },
@@ -201,6 +201,10 @@ const seedTasks = [
   { id: "continue-ddp-fsdp-study-1103", date: "2026-11-03", title: "继续学习并攻克 DDP 与 FSDP", category: "学业 / 实验", note: "今天继续学习 DDP 与 FSDP：结合已有笔记和资料，梳理两者在参数、梯度与优化器状态同步或分片上的差异，重点攻克仍不清楚的机制、通信流程和实际使用问题；用自己的话记录结论、待验证点与下一步实验。尚未完成。" },
   { id: "huawei-afternoon-discussion-1103", date: "2026-11-03", time: "15:30", title: "与华为人员线上沟通交流", category: "求职", note: "今天下午 15:30–16:30 线上交流。提前整理个人背景、研究方向、对岗位或团队的关键问题；交流后记录对方介绍、岗位匹配、待补材料与下一步。会议平台、会议 ID、口令、邮箱和私人联系方式不在公开页面保存。" },
   { id: "taikang-hr-contact-1103", date: "2026-11-03", title: "联系泰康 HR · 面试预计一至两周后安排", category: "求职", done: true, note: "今天已联系泰康 HR。HR 反馈预计一至两周后再约面试；当前尚未确认具体日期、时间、形式或面试轮次，后续留意通知并及时确认。联系人姓名和私人联系方式不在公开页面保存。" },
+  { id: "modelbest-llm-intern-video-interview-1113", date: "2026-11-13", time: "11:00", title: "面壁智能视频面试 · 语言大模型算法实习生", category: "求职", note: "已收到面试邀请。面试形式：飞书视频面试；时间：2026 年 11 月 13 日 11:00（北京时间，GMT+08:00）。提前 10 分钟检查网络、麦克风和摄像头，并从原邮件进入私人面试链接；链接和 HR 联系方式不在公开页面保存。" },
+  { id: "shanghai-ai-lab-agent-posttraining-interview-1116", date: "2026-11-16", time: "15:00", title: "上海人工智能实验室视频面试 · Agent 后训练算法青年研究员", category: "求职", note: "已收到上海人工智能实验室【校招】Agent 后训练算法青年研究员（智能体系中心）职位的视频面试邀请。时间：2026 年 11 月 16 日 15:00（北京时间，GMT+08:00）。提前 10 分钟检查网络、麦克风和摄像头；私人面试链接与 HR 联系方式不在公开页面保存。" },
+  { id: "dongchedi-llm-video-interview-1117", date: "2026-11-17", time: "15:00", title: "懂车帝视频面试 · 大模型算法工程师（LLM）", category: "求职", note: "已收到懂车帝大模型算法工程师（LLM）-校招【27届】职位的新一场视频面试邀请。时间：2026 年 11 月 17 日 15:00（北京时间，GMT+08:00）。考察内容包括通用业务问题、过往项目经历、代码实操、算法基础、代码规范、业务逻辑实现，以及价值观和软性技能。提前准备电脑与编程环境；私人面试链接和 HR 联系方式不在公开页面保存。" },
+  { id: "alibaba-token-foundry-interview-1119", date: "2026-11-19", time: "17:00", title: "阿里巴巴 Token Foundry 视频面试 · 大模型后训练", category: "求职", note: "已收到阿里巴巴校园招聘视频面试通知。面试职位：算法工程师-大模型后训练（Post-training）；面试部门：Token Foundry-Token Foundry-集团合版；时间：2026 年 11 月 19 日 17:00（北京时间）。提前准备电脑、摄像头、麦克风和稳定网络，并从原邮件进入面试间；私人入口、电话和邮箱不在公开页面保存。" },
   { id: "neurips-camera-ready-progress-1104", date: "2026-11-04", title: "NeurIPS camera-ready 进度 · 图表、引用与格式", category: "学业 / 实验", note: "逐项检查图表编号和正文引用、参考文献、公式与版式；同时对照官方 camera-ready 要求，记录未解决问题。尚未视为完成。" },
   { id: "book-fitness-class-1104", date: "2026-11-04", title: "预约一节周三 / 周四的健身课", category: "生活", note: "周三待办：查看 11 月 4 日（周三）或 11 月 5 日（周四）的可约课程，选择时间合适的一节健身课并完成预约。课程类型、场馆和具体时间尚未确定，不代表已经预约成功。" },
   { id: "neurips-camera-ready-progress-1105", date: "2026-11-05", title: "NeurIPS camera-ready 进度 · 完整编译与通读", category: "学业 / 实验", note: "生成完整版本并通读，检查缺图、交叉引用、排版、明显错字和 PDF 可读性；将问题汇总为提交前清单。尚未视为完成。" },
@@ -242,7 +246,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -990,6 +994,25 @@ if (!storageWarning && state.version === 87) {
     if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
   }
   state.version = 88;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 88) {
+  for (const id of ["modelbest-llm-intern-video-interview-1113", "shanghai-ai-lab-agent-posttraining-interview-1116", "dongchedi-llm-video-interview-1117", "alibaba-token-foundry-interview-1119"]) {
+    if (!state.tasks.some(task => task.id === id)) state.tasks.push({ ...seedTasks.find(task => task.id === id) });
+  }
+  state.version = 89;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 89) {
+  const poster = state.tasks.find(task => task.id === "neurips-poster-metadata-1115");
+  const updatedPoster = seedTasks.find(task => task.id === "neurips-poster-metadata-1115");
+  if (poster && updatedPoster) {
+    poster.title = updatedPoster.title;
+    poster.note = updatedPoster.note;
+  } else if (updatedPoster) {
+    state.tasks.push({ ...updatedPoster });
+  }
+  state.version = 90;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
