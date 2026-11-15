@@ -178,6 +178,15 @@ const seedTasks = [
   { id: "apple-official-apply-1103", date: "2026-11-03", title: "投递苹果 · 官方招聘网站", category: "求职", note: "明日待办：进入 Apple 官方招聘网站，筛选适合的机器学习/软件/研究岗位，核对资格与截止时间后投递并记录岗位名称和结果。具体岗位尚未确定，不代表已投递。\n官网：https://jobs.apple.com/zh-cn/search" },
   { id: "nvidia-official-followup-1104", date: "2026-11-04", title: "继续处理英伟达官网投递", category: "求职", note: "后天待办：检查 11 月 3 日英伟达岗位筛选/投递是否完成；若前一天未找到合适岗位，继续筛选并记录原因和下一步。\n官网：https://www.nvidia.com/en-us/about-nvidia/careers/" },
   { id: "apple-official-followup-1104", date: "2026-11-04", title: "继续处理苹果官网投递", category: "求职", note: "后天待办：检查 11 月 3 日 Apple 岗位筛选/投递是否完成；若前一天未找到合适岗位，继续筛选并记录原因和下一步。\n官网：https://jobs.apple.com/zh-cn/search" },
+  { id: "book-sydney-flight-1104", date: "2026-11-04", title: "订机票 · 北京往返悉尼", category: "生活", note: "今天待办：确定并预订北京往返悉尼机票。当前重点核对去程 12 月 4 日或 5 日、返程 12 月 11 日或 12 日的方案，并比较总价、起降时间、中转时长、行李额度、退改规则和机场交通。下单前确认姓名与护照一致；尚未购票，不把搜索页临时报价视为最终价格。" },
+  { id: "flight-cz-beijing-sydney-1205", date: "2026-12-05", time: "18:30", title: "南航 CZ3100 / CZ8091 · 北京大兴 → 悉尼", category: "生活", note: "航班行程截图：2026 年 12 月 5 日 18:30 从北京大兴国际机场（PKX）出发，CZ3100 经济舱，波音 777-300，21:40 到达广州白云国际机场 T2；广州中转 3 小时 10 分，无需领取及重新托运行李。12 月 6 日 00:50 乘 CZ8091，经济舱，波音 787-9，13:20 到达悉尼金斯福德史密斯机场 T1。所有时间均为当地时间；出发前以航空公司订单和通知为准。" },
+  { id: "flight-cz-sydney-beijing-1212", date: "2026-12-12", time: "09:20", title: "南航 CZ3072 / CZ3171 · 悉尼 → 北京大兴", category: "生活", note: "航班行程截图：2026 年 12 月 12 日 09:20 从悉尼金斯福德史密斯机场 T1 出发，CZ3072 经济舱，空中客车 A330，16:25 到达深圳宝安国际机场 T3；深圳中转 15 小时 5 分，无需领取及重新托运行李。12 月 13 日 07:30 乘 CZ3171，经济舱，空中客车 A330-300，10:45 到达北京大兴国际机场。所有时间均为当地时间；出发前以航空公司订单和通知为准。" },
+  { id: "neurips-poster-metadata-1115", date: "2026-11-15", title: "NeurIPS 2026 Poster 内部 DDL · 更新 Topic 并上传海报", category: "学业 / 实验", note: "论文：REVERSE: Reinforcing Evidence Verification and Search for Agentic Image Geolocation。\n\n必做：登录 NeurIPS 论文海报页，进入 Event Metadata，为论文选择一个最匹配的 Topic Area。官方 Topic 截止为 11 月 15 日 AoE，即北京时间 11 月 16 日 19:59；Topic 用于分组，海报位置确定后再修改不会重新分组。\n\n内部目标：11 月 15 日同时上传网页海报和缩略图。网页海报须为横版 PNG，最大 5120 × 2880 px、10 MB；缩略图须为 PNG，最大 320 × 256 px、5 MB；两者使用实色背景。上传后可能需 1–2 小时同步，应检查页面显示是否正确。官方对网页海报上传没有统一硬截止，最晚可在展示前两小时替换，但建议至少提前一天完成。\n\n实体海报需自行打印、运输、安装和撤下；主会板面尺寸以具体海报页或会场通知为准，只能使用会方批准的固定材料。\n海报页：https://neurips.cc/virtual/2026/poster/154894\n上传页：https://neurips.cc/PosterUpload" },
+  { id: "claude-registration-call-1105", date: "2026-11-05", time: "22:30", title: "与蒋惟一连麦注册 Claude", category: "生活", note: "今晚 22:30 连麦注册 Claude；结束时间、连麦平台和账号准备事项待确认。涉及验证码、密码或付款信息时由本人直接在对应页面操作，不在公开日程或聊天中记录。" },
+  { id: "graduate-image-collection-1106", date: "2026-11-06", title: "去毕业生图像采集 · 上午", category: "生活", note: "明天上午去毕业生图像采集。具体时间、地点、着装要求和所需证件待确认；出发前查看学校通知并带好身份证件。" },
+  { id: "pilates-lower-limb-alignment-1104", date: "2026-11-04", time: "17:30", title: "普拉提（下肢排列正位）1级", category: "生活", note: "预约状态：已预约。\n上课时间：2026 年 11 月 4 日 17:30–18:30。\n预约学校：归位瑜伽·融科馆。\n教室：普拉提团教室。\n上课教练：刘济铭–天骄。\n课程码和取消操作以原预约页面为准。" },
+  { id: "lixiang-agent-assessment-1104", date: "2026-11-04", title: "完成理想汽车在线测评 · Agent 算法工程师", category: "求职", note: "已收到理想汽车 2027 校园招聘 Agent 算法工程师岗位在线测评邀请。邮件要求在收到邮件后的 3 个自然日内完成；今天先接受并检查测评入口、电脑浏览器、摄像头、手机拍照和网速要求，尽早完成并记录结果。私人测评链接、HR 邮箱和个人信息不在公开网页保存。" },
+  { id: "lixiang-agent-written-test-1104", date: "2026-11-04", title: "完成理想汽车在线笔试 · Agent 算法工程师", category: "求职", note: "已通过理想汽车 2027 校园招聘 Agent 算法工程师岗位简历评估，并收到在线笔试邀请。邮件要求在收到邮件后的 3 个工作日内完成；今天先接受并检查笔试环境，尽早安排作答并记录结果。私人笔试链接、HR 邮箱和二维码不在公开网页保存。" },
   { id: "kdd-reimbursement", date: "2026-11-02", title: "报销济州岛 KDD 会议 · 打印材料并交 Y 老师", category: "学业 / 实验", status: "suggested", note: `第二周待办，暂放 11 月 2 日（周一），并非已确认预约，具体办理日可调整。\n${KDD_PRINT_PREP_NOTE}\n1. 打印整合后的这一个文件。\n2. 把材料交给 Y 老师。\n3. 等 Y 老师反馈，再按反馈补充或修改材料。\n材料清单、交接时间与反馈日期待确认。` },
   { id: "huawei-agent-contact-1102", date: "2026-11-02", title: "跟进华为 BOSS 联系人 · AI Agent 研发工程师", category: "求职", note: "11 月 2 日（周一）待办，具体时段未定：先查看 BOSS 直聘原聊天是否有新消息；若已通过微信则发送简短跟进，确认是否收到简历、岗位是否仍开放及下一步。截图显示微信交换请求与附件简历已发送，不代表已安排面试。联系人姓名、手机号和私人聊天内容不在公开网站记录。\n\nJD（据用户截图，仅录入可见内容）：\n岗位：AI Agent 研发工程师，华为校招。\n地点：北京·海淀区·西北旺。\n薪资：40–70K·16薪，以招聘方最终确认为准。\n要求：在校/应届，本科；毕业时间 2026 年–2027 年。\n标签：C/C++、大模型算法、Python。\n岗位职责可见部分：AI Agent 系统设计研发；单 Agent / Multi-Agent 架构；任务拆解、协作、状态与上下文管理、动态路由；Tool / Skill 体系；Agentic RAG。截图后续内容被遮挡，不补写。\n\n跟进时确认：所属团队与业务场景、完整 JD、校招流程和下一步；尚未实际跟进。" },
   { id: "huawei-car-bu-research-contact-1102", date: "2026-11-02", title: "若 BOSS 无消息：联系华为车 BU 研究部 HR", category: "求职", note: `11 月 2 日（周一）条件待办：先检查 BOSS 直聘原联系人；若没有实质回复，再联系智能汽车解决方案研究部 HR。截图显示好友验证已通过，HR 表示欢迎投递；不代表已投递或进入面试。\n\n沟通重点：说明 2027 届应届身份和真实研究/项目方向，询问匹配岗位、岗位编号、工作地点、团队方向及校招下一步。\n研究方向据宣传页：智驾大模型、Agentic AI、座舱大模型、多模态感知与低时延高可靠控制；基础层含 AI 基础模型、AI 系统架构与 AI 安全；底层含训练/推理加速、AI Infra 与数据科学。\n岗位方向可重点询问：AI 模型工程师/研究员（大模型、后训练与强化学习、Agent、评测）、AI Infra 工程师/研究员（AI 训练系统、AI 技术应用）。工作地点列有上海、杭州、深圳、东莞、北京等，具体以岗位为准。\n官网投递：PC 端进入华为招聘官网，选择“校园招聘—应届生”；宣传页要求意向部门选择“智能汽车解决方案BU—智能驾驶解决方案BU研发管理部”。\n${HUAWEI_CAREER_URL}\nHR 姓名、微信和二维码不在公开网站记录。` },
@@ -196,7 +205,6 @@ const seedTasks = [
   { id: "shanghai-ai-lab-agent-posttraining-interview-1116", date: "2026-11-16", time: "15:00", title: "上海人工智能实验室视频面试 · Agent 后训练算法青年研究员", category: "求职", note: "已收到上海人工智能实验室【校招】Agent 后训练算法青年研究员（智能体系中心）职位的视频面试邀请。时间：2026 年 11 月 16 日 15:00（北京时间，GMT+08:00）。提前 10 分钟检查网络、麦克风和摄像头；私人面试链接与 HR 联系方式不在公开页面保存。" },
   { id: "dongchedi-llm-video-interview-1117", date: "2026-11-17", time: "15:00", title: "懂车帝视频面试 · 大模型算法工程师（LLM）", category: "求职", note: "已收到懂车帝大模型算法工程师（LLM）-校招【27届】职位的新一场视频面试邀请。时间：2026 年 11 月 17 日 15:00（北京时间，GMT+08:00）。考察内容包括通用业务问题、过往项目经历、代码实操、算法基础、代码规范、业务逻辑实现，以及价值观和软性技能。提前准备电脑与编程环境；私人面试链接和 HR 联系方式不在公开页面保存。" },
   { id: "alibaba-token-foundry-interview-1119", date: "2026-11-19", time: "17:00", title: "阿里巴巴 Token Foundry 视频面试 · 大模型后训练", category: "求职", note: "已收到阿里巴巴校园招聘视频面试通知。面试职位：算法工程师-大模型后训练（Post-training）；面试部门：Token Foundry-Token Foundry-集团合版；时间：2026 年 11 月 19 日 17:00（北京时间）。提前准备电脑、摄像头、麦克风和稳定网络，并从原邮件进入面试间；私人入口、电话和邮箱不在公开页面保存。" },
-  { id: "neurips-reverse-poster-upload-1115", date: "2026-11-15", title: "NeurIPS 2026 Poster 内部 DDL · 更新 Topic 并上传海报", category: "学业 / 实验", note: "论文：REVERSE: Reinforcing Evidence Verification and Search for Agentic Image Geolocation。\n\n必做：登录 NeurIPS 论文海报页，进入 Event Metadata，为论文选择一个最匹配的 Topic Area。官方 Topic 截止为 11 月 15 日 AoE，即北京时间 11 月 16 日 19:59；Topic 用于分组，海报位置确定后再修改不会重新分组。\n\n内部目标：11 月 15 日同时上传网页海报和缩略图。网页海报须为横版 PNG，最大 5120 × 2880 px、10 MB；缩略图须为 PNG，最大 320 × 256 px、5 MB；两者使用实色背景。上传后可能需 1–2 小时同步，应检查页面显示是否正确。官方对网页海报上传没有统一硬截止，最晚可在展示前两小时替换，但建议至少提前一天完成。\n\n实体海报需自行打印、运输、安装和撤下；主会板面尺寸以具体海报页或会场通知为准，只能使用会方批准的固定材料。\n海报页：https://neurips.cc/virtual/2026/poster/154894\n上传页：https://neurips.cc/PosterUpload" },
   { id: "neurips-camera-ready-progress-1104", date: "2026-11-04", title: "NeurIPS camera-ready 进度 · 图表、引用与格式", category: "学业 / 实验", note: "逐项检查图表编号和正文引用、参考文献、公式与版式；同时对照官方 camera-ready 要求，记录未解决问题。尚未视为完成。" },
   { id: "book-fitness-class-1104", date: "2026-11-04", title: "预约一节周三 / 周四的健身课", category: "生活", note: "周三待办：查看 11 月 4 日（周三）或 11 月 5 日（周四）的可约课程，选择时间合适的一节健身课并完成预约。课程类型、场馆和具体时间尚未确定，不代表已经预约成功。" },
   { id: "neurips-camera-ready-progress-1105", date: "2026-11-05", title: "NeurIPS camera-ready 进度 · 完整编译与通读", category: "学业 / 实验", note: "生成完整版本并通读，检查缺图、交叉引用、排版、明显错字和 PDF 可读性；将问题汇总为提交前清单。尚未视为完成。" },
@@ -964,7 +972,14 @@ if (!storageWarning && [84, 85, 86, 87, 88].includes(state.version)) {
   needsMigration = true;
 }
 if (!storageWarning && state.version === 89) {
-  if (!state.tasks.some(task => task.id === "neurips-reverse-poster-upload-1115")) state.tasks.push({ ...seedTasks.find(task => task.id === "neurips-reverse-poster-upload-1115") });
+  const poster = state.tasks.find(task => task.id === "neurips-poster-metadata-1115");
+  const updatedPoster = seedTasks.find(task => task.id === "neurips-poster-metadata-1115");
+  if (poster && updatedPoster) {
+    poster.title = updatedPoster.title;
+    poster.note = updatedPoster.note;
+  } else if (updatedPoster) {
+    state.tasks.push({ ...updatedPoster });
+  }
   state.version = 90;
   needsMigration = true;
 }
