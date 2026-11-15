@@ -8,12 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=21">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="styles.css?v=23">
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="#"><span class="brand-mark">行</span><strong>AussieGo <span>生活剧本</span></strong></a>
-    <nav class="route-line" aria-label="页面导航"><a href="#workspace">日程安排</a><i></i><a href="#visa">澳洲签证</a><i></i><a href="#core40">核心40题</a><i></i><span>2026 · 北京 / 悉尼</span></nav>
+    <nav class="route-line" aria-label="页面导航"><a href="#workspace">日程安排</a><i></i><a href="#visa">澳洲签证</a><i></i><a href="#sydney-photo">悉尼摄影</a><i></i><a href="#core40">核心40题</a><i></i><span>2026 · 北京 / 悉尼</span></nav>
   </header>
   <main>
     <section class="intro" aria-labelledby="page-title">
@@ -36,9 +37,59 @@
       </aside>
     </section>
     <section class="visa-section" id="visa"><div class="visa-inner"><div><p class="eyebrow">02 / AUSTRALIA AHEAD</p><h2>签证已提交，等消息。</h2><p>澳大利亚签证申请已提交<br><span>目前等待审理结果，尚未获知是否获批。</span></p><a class="official-link" href="https://online.immi.gov.au/ola/app" target="_blank" rel="noopener noreferrer">ImmiAccount · 查看申请进度 <i data-lucide="arrow-up-right"></i></a></div><div class="visa-list"><div><b>SUBMITTED</b><span>线上申请已提交</span></div><div><b>PENDING</b><span>等待签证审理结果</span></div><div><b>NOTICES</b><span>留意邮箱与 ImmiAccount 通知</span></div><div><b>FLIGHTS</b><span>继续关注机票，记录航线与价格</span></div><p>如收到补件要求，按通知处理。<br>审理进度与最终结果以官方通知为准。</p></div></div></section>
+    <section class="photo-section" id="sydney-photo" aria-labelledby="photo-title">
+      <div class="photo-heading">
+        <div><p class="eyebrow section-index">03 / SYDNEY PHOTO WALK</p><h2 id="photo-title">歌剧院晨光机位</h2><p>以 Blues Point Reserve 为主机位，沿北岸补拍水面、桥梁与歌剧院。</p></div>
+        <div class="photo-window"><small>建议拍摄窗口 · AEDT</small><strong>05:05 — 06:45</strong><span>12 月上旬日出约 05:37，出发前再核对当天日出与云量。</span></div>
+      </div>
+      <div class="photo-layout">
+        <div class="photo-stops" role="group" aria-label="摄影点位">
+          <button class="photo-stop active" type="button" data-map-query="Blues Point Reserve, McMahons Point NSW" data-map-title="Blues Point Reserve" aria-pressed="true">
+            <span class="stop-number">01 · 首选</span><strong>Blues Point Reserve</strong><small>McMahons Point · 远景主机位</small><p>桥拱框住歌剧院，右侧带入 CBD，前景可纳入海面与帆船。先用 23mm 左右拍全景，再用 115mm 左右压缩大桥与歌剧院。</p>
+          </button>
+          <button class="photo-stop" type="button" data-map-query="Henry Lawson Reserve, McMahons Point NSW" data-map-title="Henry Lawson Reserve" aria-pressed="false">
+            <span class="stop-number">02 · 顺路</span><strong>Henry Lawson Reserve</strong><small>McMahons Point · 水面与城市</small><p>离主机位不远，适合换一个沿海湾的视角，把船只、水面和城市建筑放进同一画面。</p>
+          </button>
+          <button class="photo-stop" type="button" data-map-query="Bradfield Park, Milsons Point NSW" data-map-title="Bradfield Park" aria-pressed="false">
+            <span class="stop-number">03 · 延伸</span><strong>Bradfield Park</strong><small>Milsons Point · 桥下建筑细节</small><p>位于海港大桥北侧桥脚，适合近距离拍桥梁结构，并寻找大桥、歌剧院与海港的层次关系。</p>
+          </button>
+        </div>
+        <div class="photo-map-panel">
+          <div class="map-toolbar"><div><span>GOOGLE MAPS</span><strong id="map-location-title">Blues Point Reserve</strong></div><a id="map-open-link" href="https://www.google.com/maps/search/?api=1&amp;query=Blues%20Point%20Reserve%2C%20McMahons%20Point%20NSW" target="_blank" rel="noopener noreferrer">打开地图 <i data-lucide="arrow-up-right"></i></a></div>
+          <iframe id="photo-map" title="Blues Point Reserve Google 地图" src="https://www.google.com/maps?q=Blues%20Point%20Reserve%2C%20McMahons%20Point%20NSW&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="photo-plan">
+        <div class="route-card"><span class="stop-number">FROM QUEST ST LEONARDS</span><h3>清晨去程</h3><p>酒店位于 10 Atchison Street。全程步行约 4–4.5 km，建议按实时导航预留 50–60 分钟；若独自赶蓝调时刻，优先考虑打车，天亮后再步行返回。</p><div class="route-actions"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Quest+St+Leonards%2C+10+Atchison+Street%2C+St+Leonards+NSW&amp;destination=Blues+Point+Reserve%2C+McMahons+Point+NSW&amp;travelmode=walking" target="_blank" rel="noopener noreferrer"><i data-lucide="footprints"></i> 步行导航</a><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Quest+St+Leonards%2C+10+Atchison+Street%2C+St+Leonards+NSW&amp;destination=Blues+Point+Reserve%2C+McMahons+Point+NSW&amp;travelmode=driving" target="_blank" rel="noopener noreferrer"><i data-lucide="car-taxi-front"></i> 驾车路线</a></div></div>
+        <ol class="shoot-timeline" aria-label="建议拍摄时间线"><li><time>05:05</time><div><strong>蓝调时刻</strong><span>抵达、找构图，先架长焦。</span></div></li><li><time>05:25</time><div><strong>日出前后</strong><span>拍桥、歌剧院与天空的剪影。</span></div></li><li><time>05:50</time><div><strong>晨光展开</strong><span>切换广角，加入海湾、帆船与 CBD。</span></div></li><li><time>06:20</time><div><strong>沿岸补拍</strong><span>步行前往 Henry Lawson Reserve。</span></div></li></ol>
+        <div class="weather-note"><i data-lucide="cloud-sun"></i><div><strong>火烧云不能预约</strong><p>粉橙色云层取决于当天的大气条件。前一晚查看中高云、低云遮挡和降雨；东方天空被厚云封住时，及时调整预期。</p></div></div>
+      </div>
+      <div class="route-divider"><span>ROUTE 02</span></div>
+      <section class="long-reef-route" aria-labelledby="long-reef-title">
+        <div class="long-reef-heading">
+          <div><p class="eyebrow section-index">NORTHERN BEACHES / HALF DAY</p><h2 id="long-reef-title">Long Reef 海岬环线</h2><p>Griffith Park → Fisherman's Beach → Long Reef Headland → Boardwalk → Long Reef Beach</p></div>
+          <div class="route-stats"><div><strong>3.5 km</strong><span>攻略路线</span></div><div><strong>52 min</strong><span>纯步行</span></div><div><strong>2–2.5 h</strong><span>建议游览</span></div><div><strong>4–5 h</strong><span>含酒店往返</span></div></div>
+        </div>
+        <div class="long-reef-map-wrap">
+          <div class="long-reef-map-toolbar"><div><span>INTERACTIVE ROUTE MAP</span><strong>点击下方点位，地图会自动定位</strong></div><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Griffith+Park%2C+Collaroy+NSW&amp;destination=Long+Reef+Beach%2C+Collaroy+NSW&amp;travelmode=walking&amp;waypoints=Fishermans+Beach%2C+Collaroy+NSW%7CLong+Reef+Headland%2C+Collaroy+NSW" target="_blank" rel="noopener noreferrer">Google Maps 路线 <i data-lucide="arrow-up-right"></i></a></div>
+          <div id="long-reef-map" aria-label="Long Reef 五个点位的交互地图"><p>地图加载中…</p></div>
+        </div>
+        <div class="long-reef-stops" role="group" aria-label="Long Reef 路线点位">
+          <button type="button" data-long-reef-point="0"><span>1</span><div><small>N · 起点</small><strong>Griffith Park</strong><p>先拍草地、高尔夫球场与海湾。顺路留意历史渔民小屋和旧式船只绞盘，停留约 15–20 分钟。</p></div></button>
+          <button type="button" data-long-reef-point="1"><span>2</span><div><small>N+20 · 海湾</small><strong>Fisherman's Beach</strong><p>相对避风的沙滩，适合拍船只、海鸟和水上活动，也可回望绿色海岬。</p></div></button>
+          <button type="button" data-long-reef-point="2"><span>3</span><div><small>N+55 · 核心机位</small><strong>Long Reef Headland</strong><p>重点拍礁石浅滩、潮池、红褐色岩层和太平洋全景。低潮前后停留约 25–35 分钟。</p></div></button>
+          <button type="button" data-long-reef-point="3"><span>4</span><div><small>N+95 · 南侧步道</small><strong>Long Reef Boardwalk</strong><p>以木栈道作引导线，把草地、高尔夫球场和海面叠在同一构图中。</p></div></button>
+          <button type="button" data-long-reef-point="4"><span>5</span><div><small>N+120 · 收尾</small><strong>Long Reef Beach</strong><p>拍白色沙滩、海浪与冲浪者；可在 Butterbox Cafe 休息，再前往公交站返程。</p></div></button>
+        </div>
+        <div class="long-reef-notes">
+          <div class="transit-note"><i data-lucide="bus-front"></i><div><span class="stop-number">FROM QUEST ST LEONARDS</span><h3>公交往返</h3><p>去程建议 Quest → St Leonards Station → <b>144</b> 至 Spit Junction → <b>B1</b> 至 Collaroy → <b>199</b> 至 Griffith Park。返程从 Pittwater Rd before Hay St 反向换乘，单程预留约 60–75 分钟。</p><p class="small">班次以出行当天 Transport for NSW 为准；181X 主要是工作日通勤线路，不作为默认方案。</p><div class="route-actions"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=Quest+St+Leonards%2C+10+Atchison+Street%2C+St+Leonards+NSW&amp;destination=Griffith+Park%2C+Collaroy+NSW&amp;travelmode=transit" target="_blank" rel="noopener noreferrer"><i data-lucide="map-pinned"></i> 实时公交导航</a></div></div></div>
+          <div class="tide-note"><i data-lucide="waves"></i><div><span class="stop-number">BEFORE YOU GO</span><h3>潮汐与安全</h3><p>优先选择低潮前后，让礁石平台、潮池和海藻显露；同时查看风力与浪高。大浪时不要进入湿滑岩台，也不要采集或伤害保护区内的海洋生物。</p><p>Long Reef Beach 可能有离岸流；若下水，只在救生员巡逻的红黄旗之间活动。高尔夫球场只在公共步道或访客区域观看，不进入正在使用的球道。</p></div></div>
+        </div>
+      </section>
+    </section>
     <section class="core40-section" id="core40" aria-labelledby="core40-title">
       <div class="core40-inner">
-        <div class="section-head"><div><p class="eyebrow section-index">03 / INTERVIEW PRACTICE</p><h2 id="core40-title">核心40题</h2></div><div class="progress-wrap"><span id="core40-progress-label" role="status">0 / 40 已完成</span><progress id="core40-progress" max="40" value="0" aria-label="核心40题完成进度"></progress></div></div>
+        <div class="section-head"><div><p class="eyebrow section-index">04 / INTERVIEW PRACTICE</p><h2 id="core40-title">核心40题</h2></div><div class="progress-wrap"><span id="core40-progress-label" role="status">0 / 40 已完成</span><progress id="core40-progress" max="40" value="0" aria-label="核心40题完成进度"></progress></div></div>
         <table class="core40-table"><colgroup><col class="problem-check-col"><col class="problem-number-col"><col><col class="problem-category-col"></colgroup><thead><tr><th scope="col">完成</th><th scope="col">序号</th><th scope="col">题目</th><th scope="col">类型</th></tr></thead><tbody id="core40-rows"></tbody></table>
       </div>
     </section>
@@ -47,6 +98,7 @@
   <dialog id="task-dialog"><form id="task-form"><div class="section-head compact"><h2 id="dialog-title">添加事项</h2><button type="button" id="close-dialog" class="icon-button" aria-label="关闭" title="关闭"><i data-lucide="x"></i></button></div><label for="task-title">事项</label><input id="task-title" required maxlength="160"><div class="form-grid"><div><label for="task-date">日期</label><input id="task-date" type="date" min="2026-10-26" max="2026-12-13" required></div><div><label for="task-time">时间（可留空）</label><input id="task-time" type="time"></div><div><label for="task-category">分类</label><select id="task-category"><option>学业 / 实验</option><option>求职</option><option>签证</option><option>生活</option></select></div><div><label for="task-status">安排状态</label><select id="task-status"><option value="planned">已安排</option><option value="tentative">待定</option><option value="suggested">建议安排</option></select></div></div><label for="task-note">备注</label><textarea id="task-note" rows="3" maxlength="2000"></textarea><button class="primary-button" type="submit">保存事项</button></form></dialog>
   <div id="notice" role="status" hidden></div>
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-  <script src="app.js?v=89"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="app.js?v=93"></script>
 </body>
 </html>
