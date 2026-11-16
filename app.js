@@ -82,10 +82,9 @@ const dayInfo = [
   ["下一段之前", "暂无已确认安排。"],
 ];
 const travelDayInfo = {
-  "2026-12-01": ["酒店取消节点", "优先核对 Quest St Leonards 已订订单的免费取消条款；当前日期来自同房型新查询，不等同于订单确认页。"],
-  "2026-12-06": ["抵达悉尼，入住酒店", "入住 Quest St Leonards，靠近 St Leonards 车站；前往 ICC Sydney 可使用公共交通。"],
-  "2026-12-11": ["退房与返程选择", "10:00 前退房；考虑当天回国，或晚上住朋友家后于 12 月 12 日回国。"],
-  "2026-12-12": ["返程备选日", "若 12 月 11 日晚住朋友家，今天作为回国备选日；航班尚未确定。"],
+  "2026-12-05": ["飞往悉尼，酒店取消节点", "18:30 从北京大兴出发；Meriton 房型页显示当地时间 15:00 前为暂定免费取消节点，最终以订单条款为准。"],
+  "2026-12-06": ["抵达悉尼，入住 Meriton", "13:20 抵达悉尼 T1；前往 Mascot 的 Meriton Suites Sydney Airport，预计 15:00 后办理入住。"],
+  "2026-12-12": ["退房并从悉尼回国", "09:20 从悉尼 T1 出发；建议约 05:45 退房，目标 06:20 前抵达国际航站楼。"],
 };
 const dates = Array.from({ length: 49 }, (_, index) => {
   const date = new Date(Date.UTC(2026, 9, 26 + index));
@@ -222,12 +221,10 @@ const seedTasks = [
   { id: "kalodata-ai-selection-1106", date: "2026-11-06", title: "Kalodata AI 选品", category: "求职", note: "周五待办：整理 Kalodata AI 选品相关机会、岗位/合作信息和下一步沟通材料；具体要求与产出待确认，尚未完成。" },
   { id: "funplus-agent-apply-1102", date: "2026-11-02", title: "投递 FunPlus · 27 校招 AI Agent 工程师", category: "求职", note: `周一待办，具体时段未定；先核验资格和开放状态，再投递。\nBOSS 列表可见：FunPlus；岗位标题“27校招-AI Agent 工程师-多…”（后半段截断）；上海；在校/应届，本科；校招标签。\nJD：${campusJdUrls["funplus-agent-apply-1102"]}\n完整职责、毕业时间窗口、岗位是否仍开放待确认，不补写隐藏内容。核对简历中的真实项目贡献，符合条件后投递并记录实际结果；尚未投递。` },
   { id: "xiaomi-agent-harness-apply-1102", date: "2026-11-02", title: "投递小米 · Agent Harness 研发工程师（校招）", category: "求职", note: `周一待办，具体时段未定；先核验资格和开放状态，再投递。\nBOSS 列表可见：小米；岗位标题“Agent Harness 研发工程师…”（后半段截断）；北京；在校/应届，本科；校招标签。\nJD：${campusJdUrls["xiaomi-agent-harness-apply-1102"]}\n具体校招批次、毕业时间窗口、完整职责和岗位是否仍开放待确认。核对 Agent 工程/平台相关真实项目贡献，符合条件后投递并记录实际结果；尚未投递。` },
-  { id: "quest-cancellation-policy-1101", date: "2026-11-01", title: "高优先级：核对 Quest 酒店免费取消截止", category: "生活", note: "当前已预订 Quest St Leonards（圣季奥纳探索酒店）行政一室房。\n高优先级：尽快打开携程已订订单的取消政策，核对免费取消的准确截止日期、当地时区和截止后的费用，并记录确认结果。\n参考信息仅来自另一张同房型新查询截图：当地时间 2026 年 12 月 1 日 12:00 前可免费取消；该截图查询的是 12 月 6—12 日共 6 晚，而已订订单为 12 月 6—11 日共 5 晚，因此不能直接当作已订订单条款。\n订单号及个人联系信息不在公开网站保存。" },
-  { id: "quest-cancellation-node-1201", date: "2026-12-01", title: "暂定节点：Quest 免费取消截止 · 必须核对订单", category: "生活", status: "tentative", note: "同房型新查询截图显示当地时间 12 月 1 日 12:00 前可免费取消，但查询晚数与已订订单不同，不代表订单确认条款。必须在此日期前打开携程已订订单核对，并尽量提前处理。" },
-  { id: "quest-checkin-1206", date: "2026-12-06", time: "14:00", title: "入住 Quest St Leonards · 行政一室房", category: "生活", note: "已预订：2026 年 12 月 6 日入住、12 月 11 日退房，共 5 晚；行政一室房 1 间，不含早餐。入住时间 14:00—23:00，退房时间 10:00 前。\n房型截图：最多 2 位成人；1 张特大床或 2 张单人床（页面称尽量安排特大床）；免费客房 Wi-Fi、空调、吹风机。\n地址据携程页面：10 Atchison St, St Leonards；距 St Leonards 车站步行约 140 米。前往 ICC Sydney 可使用公共交通，此前门到门约 30—40 分钟仅为估计，尚未逐段导航核实。\n免费取消截止与完整订单条款仍需在已订订单页核对；订单号不在公开网站保存。" },
-  { id: "quest-checkout-return-1211", date: "2026-12-11", time: "10:00", title: "Quest 退房 · 确定回国方案", category: "生活", status: "tentative", note: "Quest St Leonards 需在 10:00 前退房。\n当前考虑两种方案：A. 12 月 11 日当天回国；B. 12 月 11 日晚去朋友家住，12 月 12 日回国。\n航班、朋友家住宿及行李安排均未确认；订票前比较两天航班总价、起降时间、行李额度和退房后行李寄存。" },
-  { id: "friend-stay-return-1211", date: "2026-12-11", title: "备选：晚上住朋友家 · 12 月 12 日回国", category: "生活", status: "tentative", note: "仅为备选方案，尚未向朋友确认，也未订 12 月 12 日返程机票。若采用此方案，提前确认住址、到达方式、行李存放和次日前往机场的时间。" },
-  { id: "return-china-option-1212", date: "2026-12-12", title: "备选：从悉尼回国", category: "生活", status: "tentative", note: "若 12 月 11 日晚住朋友家，则考虑今天回国。航班尚未确定；继续与 12 月 11 日返程方案比较总价、起降时间、中转、行李额度和前往机场的安排。" },
+  { id: "meriton-cancellation-policy-1116", date: "2026-11-16", title: "住宿改为 Meriton Sydney Airport · 核对订单", category: "生活", note: "当前住宿方案已改为 Meriton Suites Sydney Airport，地址 200 Coward St, Mascot NSW 2020。\n房型截图：两卧室套房，2 张特大床，最多 4 人，约 74 平方米，1–8 层，带阳台、厨房、室内洗衣、无限 Wi-Fi、制冷与供暖；页面会员价为 2,355 澳元，共 6 晚，含消费税。\n页面显示入住前一天 15:00 前可免费取消、预订需信用卡担保；是否已完成预订、实际床型、入住退房时间和最终取消条款必须以订单确认页为准。订单号及个人信息不在公开网站保存。" },
+  { id: "meriton-cancellation-node-1205", date: "2026-12-05", time: "12:00", title: "暂定节点：Meriton 免费取消截止 · 悉尼 15:00 AEDT / 北京 12:00", category: "生活", status: "tentative", note: "按 12 月 6 日入住及房型页“入住前一天 15:00 前免费取消”推算，暂记悉尼当地时间 12 月 5 日 15:00（AEDT），对应北京时间 12:00。必须以订单确认页的日期、时区和费用条款为准，建议提前一天完成决定。" },
+  { id: "meriton-checkin-1206", date: "2026-12-06", time: "15:00", title: "入住 Meriton Suites Sydney Airport · 两卧室套房", category: "生活", note: "当前方案：2026 年 12 月 6 日入住、12 月 12 日退房，共 6 晚。地址：200 Coward St, Mascot NSW 2020。\n航班 13:20 抵达悉尼 T1；预留入境、取行李和机场交通后，预计 15:00 左右到店，实际入住时间以酒店确认为准。\nMascot Station 步行约 8 分钟 / 450 米；前往 ICC Sydney 约 32 分钟，歌剧院约 35–45 分钟，Bondi Beach 约 45–60 分钟，Taronga Zoo 约 50–65 分钟，Long Reef 约 75–95 分钟。上述均为公共交通估计，出发时查看实时导航。" },
+  { id: "meriton-checkout-flight-1212", date: "2026-12-12", time: "05:45", title: "Meriton 退房 · 前往悉尼 T1 乘返程航班", category: "生活", note: "返程航班 09:20 从悉尼国际航站楼 T1 出发。建议约 05:45 退房并优先打车，目标 06:20 前抵达 T1，预留国际航班值机、托运和安检时间。具体退房规定、车辆时间和航班状态需前一晚再次确认。" },
 ].map(task => ({ time: "", status: "planned", done: false, ...task }));
 
 const calendarSnapshot = [
@@ -247,7 +244,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -1006,6 +1003,16 @@ if (!storageWarning && state.version === 91) {
   state.version = 92;
   needsMigration = true;
 }
+if (!storageWarning && state.version === 92) {
+  const obsoleteHotelIds = new Set(["quest-cancellation-policy-1101", "quest-cancellation-node-1201", "quest-checkin-1206", "quest-checkout-return-1211", "friend-stay-return-1211", "return-china-option-1212"]);
+  state.tasks = state.tasks.filter(task => !obsoleteHotelIds.has(task.id));
+  for (const id of ["meriton-cancellation-policy-1116", "meriton-cancellation-node-1205", "meriton-checkin-1206", "meriton-checkout-flight-1212"]) {
+    const task = seedTasks.find(item => item.id === id);
+    if (task && !state.tasks.some(item => item.id === id)) state.tasks.push({ ...task });
+  }
+  state.version = 93;
+  needsMigration = true;
+}
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 let selectedDate = isDate(today) ? today : dates[0].iso;
 let period = "all";
@@ -1073,7 +1080,7 @@ function renderDetail() {
   const note = state.days[selectedDate] || { flight: false, flightNote: "", hotelCheck: false, hotelNote: "", note: "" };
   element("flight-check").checked = note.flight;
   element("flight-note").value = note.flightNote;
-  element("hotel-cancel-routine").hidden = selectedDate > "2026-12-01";
+  element("hotel-cancel-routine").hidden = selectedDate > "2026-12-05";
   element("hotel-cancel-check").checked = note.hotelCheck || false;
   element("hotel-cancel-note").value = note.hotelNote || "";
   element("day-note").value = note.note;
