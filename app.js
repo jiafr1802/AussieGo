@@ -216,6 +216,9 @@ const seedTasks = [
   { id: "neurips-camera-ready-progress-1108", date: "2026-11-08", title: "NeurIPS camera-ready 进度 · 确认状态并归档回执", category: "学业 / 实验", note: "截止已过：检查 OpenReview author console 中的最终提交状态，归档最终 PDF、提交时间和回执。此提醒不代表已经按时提交；若状态异常，按官方渠道处理。" },
   { id: "kdd-bytedance-hiring-outreach-1109", date: "2026-11-09", title: "联系两位 KDD 字节同行和周姐 · 询问是否招人", category: "求职", note: "下周一待办：不预设结果，分别礼貌联系之前 KDD 开会时加到的两位字节跳动同行，以及周姐，询问他们所在团队或熟悉的团队近期是否招聘，并了解适合的岗位方向。根据实际回复记录下一步；三人均尚未联系，私人联系方式不在公开页面保存。" },
   { id: "bytedance-advancement-plan-1117", date: "2026-11-17", title: "本周研究：字节流程如何推进", category: "求职", note: "本周新增推进事项，先研究和形成行动方案，不代表已有新进展或已完成联系。\n1. 复盘现有四条线：广告方向评估、招聘 TA、实验学长、KDD 认识的同行与周姐；逐条标记已联系 / 待联系 / 待回复。\n2. 检索当前匹配的字节与 TikTok 岗位，重点比较 Agent、大模型、多模态、后训练和推理加速方向，筛出 2–3 个优先岗位。\n3. 对照岗位补齐针对性材料：一句话匹配说明、相关项目证据、个人贡献、可量化结果和可能追问。\n4. 为每位联系人确定下一条消息、发送时间和未回复后的跟进间隔，避免重复打扰。\n5. 最终产出一页推进表：机会 / 团队 / 联系人渠道 / 当前状态 / 下一步 / 截止时间。私人联系方式和聊天原文不在公开页面保存。" },
+  { id: "review-step-3-5-technical-report-1117", date: "2026-11-17", title: "复盘 Step 3.5 技术报告", category: "学业 / 实验", note: "重新通读 Step 3.5 技术报告，按问题定义、方法与关键设计、实验和证据、主要结论、局限与遗留问题整理复盘。标出仍不理解或证据不足的地方，最后用自己的话写一版可口述的要点和下一步；此项尚未完成。" },
+  { id: "select-paper-to-reproduce-1117", date: "2026-11-17", title: "选一篇要复现的论文", category: "学业 / 实验", note: "从当前候选论文中选定一篇作为复现目标。比较与现有研究的相关性、代码与数据可得性、环境和算力要求、评测是否清晰、预期复现周期及失败风险。最终记录论文、代码仓库、依赖、首个可验证里程碑和选择理由；尚未完成选择。" },
+  { id: "research-gui-code-agent-opd-1117", date: "2026-11-17", title: "继续调研 GUI Agent / Code Agent 的 OPD 工作", category: "学业 / 实验", note: "继续调研 GUI Agent / Code Agent 方向的 OPD 工作，不预设 OPD 的具体展开或已有结论。重点比较问题定义、环境与动作空间、数据和轨迹来源、训练信号、评测基准、代表性方法及与当前工作的关系。整理一张工作对照表，并列出最值得继续验证的问题和候选切入点；尚未完成。" },
   { id: "money-meeting-notes-1102", date: "2026-11-02", title: "整理昨天搞钱开会的笔记", category: "求职", note: "整理 11 月 1 日会议记录：参与者与背景、讨论的机会/岗位、关键信息、待核实事项、可执行的下一步和后续联系人。只记录已确认内容，未知信息标为待补充；尚未整理。" },
   { id: "pilates-strap-control-1102", date: "2026-11-02", time: "17:30", title: "普拉提（肩带灵活控制）1级", category: "生活", note: "预约状态：已预约。\n上课时间：2026 年 11 月 2 日 17:30–18:30。\n预约学校：归位瑜伽·融科馆。\n教室：普拉提团教室。\n上课教练：雷凤茜–岚岚。\n课程码和取消操作以原预约页面为准。" },
   { id: "amh-check-time-1103", date: "2026-11-03", title: "与实验学姐约查 AMH 的时间", category: "生活", note: "联系实验学姐，约定查 AMH 的具体时间、地点和注意事项；当前尚未确定预约时间。" },
@@ -245,7 +248,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -1020,6 +1023,14 @@ if (!storageWarning && state.version === 93) {
     state.tasks.push({ ...advancementPlan });
   }
   state.version = 94;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 94) {
+  for (const id of ["review-step-3-5-technical-report-1117", "select-paper-to-reproduce-1117", "research-gui-code-agent-opd-1117"]) {
+    const task = seedTasks.find(item => item.id === id);
+    if (task && !state.tasks.some(item => item.id === id)) state.tasks.push({ ...task });
+  }
+  state.version = 95;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
