@@ -215,7 +215,7 @@ const seedTasks = [
   { id: "train-g105-beijing-shenyang-1107", date: "2026-11-07", time: "08:55", title: "G105 · 北京朝阳 → 沈阳北", category: "生活", note: "已购票。2026 年 11 月 7 日（周六）08:55 从北京朝阳站出发，11:24 到达沈阳北站；车次 G105，预计行程 2 小时 29 分。出发前核对检票口、身份证件和车站交通。" },
   { id: "neurips-camera-ready-progress-1108", date: "2026-11-08", title: "NeurIPS camera-ready 进度 · 确认状态并归档回执", category: "学业 / 实验", note: "截止已过：检查 OpenReview author console 中的最终提交状态，归档最终 PDF、提交时间和回执。此提醒不代表已经按时提交；若状态异常，按官方渠道处理。" },
   { id: "kdd-bytedance-hiring-outreach-1109", date: "2026-11-09", title: "联系两位 KDD 字节同行和周姐 · 询问是否招人", category: "求职", note: "下周一待办：不预设结果，分别礼貌联系之前 KDD 开会时加到的两位字节跳动同行，以及周姐，询问他们所在团队或熟悉的团队近期是否招聘，并了解适合的岗位方向。根据实际回复记录下一步；三人均尚未联系，私人联系方式不在公开页面保存。" },
-  { id: "bytedance-advancement-plan-1117", date: "2026-11-17", title: "本周研究：字节流程如何推进", category: "求职", note: "本周新增推进事项，先研究和形成行动方案，不代表已有新进展或已完成联系。\n1. 复盘现有四条线：广告方向评估、招聘 TA、实验学长、KDD 认识的同行与周姐；逐条标记已联系 / 待联系 / 待回复。\n2. 检索当前匹配的字节与 TikTok 岗位，重点比较 Agent、大模型、多模态、后训练和推理加速方向，筛出 2–3 个优先岗位。\n3. 对照岗位补齐针对性材料：一句话匹配说明、相关项目证据、个人贡献、可量化结果和可能追问。\n4. 为每位联系人确定下一条消息、发送时间和未回复后的跟进间隔，避免重复打扰。\n5. 最终产出一页推进表：机会 / 团队 / 联系人渠道 / 当前状态 / 下一步 / 截止时间。私人联系方式和聊天原文不在公开页面保存。" },
+  { id: "bytedance-advancement-plan-1117", date: "2026-11-17", title: "研究：字节流程如何推进 · 联系人表与 reconnect 对策", category: "求职", note: "本周先研究并形成行动方案，不代表已有新进展或已完成联系。联系人姓名、微信号和聊天原文只在私人表格中整理，不写入公开网页。\n\n第一步｜盘点微信联系人\n把此前微信里与字节 / TikTok 机会有关的人全部列出，包括广告方向 HR / TA、实验学长、KDD 认识的同行、周姐及其他可能联系人。每行记录：联系人代号、认识渠道与关系强度、公司 / 团队、可推进职位及 JD、地点与招聘批次、上次联系时间和上下文、当前状态。\n\n第二步｜评估职位匹配\n对每个“联系人 × 职位”组合按 1–5 分评估匹配程度，并写证据：研究方向、Agent / 大模型 / 多模态 / 后训练 / 推理加速能力、工程栈、项目贡献和量化结果。另列硬性缺口、待补材料、流程风险和是否值得优先推进，筛出 2–3 个高优先级组合。\n\n第三步｜逐个设计 reconnect 对策\nA. 关系较强且岗位高匹配：带具体 JD 和一句话匹配依据，询问团队现状、合适对接人或是否方便转交简历。\nB. 曾有交流但较久未联系：先用共同经历恢复上下文，简短更新近况，再提出一个低负担、可明确回答的问题。\nC. 关系较弱或岗位不确定：先做信息咨询，不直接要求内推；请对方判断方向或推荐更合适的团队。\n每条消息采用“共同上下文 → 近况更新 → 为什么找对方 → 一个具体小请求 → 给对方退出空间”的结构，避免群发模板。\n\n第四步｜建立推进节奏\n为每个人写好消息草稿、发送日期、期望结果和下一步；无回复时至少等待 5–7 个工作日再礼貌跟进一次，仍无回复则暂停。最终形成私人推进表：联系人代号 / 职位 / 匹配分 / 证据 / 关系强度 / 当前状态 / reconnect 策略 / 发送时间 / 跟进节点 / 结果。" },
   { id: "review-step-3-5-technical-report-1117", date: "2026-11-17", title: "复盘 Step 3.5 技术报告", category: "学业 / 实验", note: "重新通读 Step 3.5 技术报告，按问题定义、方法与关键设计、实验和证据、主要结论、局限与遗留问题整理复盘。标出仍不理解或证据不足的地方，最后用自己的话写一版可口述的要点和下一步；此项尚未完成。" },
   { id: "select-paper-to-reproduce-1117", date: "2026-11-17", title: "选一篇要复现的论文", category: "学业 / 实验", note: "从当前候选论文中选定一篇作为复现目标。比较与现有研究的相关性、代码与数据可得性、环境和算力要求、评测是否清晰、预期复现周期及失败风险。最终记录论文、代码仓库、依赖、首个可验证里程碑和选择理由；尚未完成选择。" },
   { id: "research-gui-code-agent-opd-1117", date: "2026-11-17", title: "继续调研 GUI Agent / Code Agent 的 OPD 工作", category: "学业 / 实验", note: "继续调研 GUI Agent / Code Agent 方向的 OPD 工作，不预设 OPD 的具体展开或已有结论。重点比较问题定义、环境与动作空间、数据和轨迹来源、训练信号、评测基准、代表性方法及与当前工作的关系。整理一张工作对照表，并列出最值得继续验证的问题和候选切入点；尚未完成。" },
@@ -248,7 +248,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -1031,6 +1031,18 @@ if (!storageWarning && state.version === 94) {
     if (task && !state.tasks.some(item => item.id === id)) state.tasks.push({ ...task });
   }
   state.version = 95;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 95) {
+  const advancementPlan = state.tasks.find(task => task.id === "bytedance-advancement-plan-1117");
+  const updatedPlan = seedTasks.find(task => task.id === "bytedance-advancement-plan-1117");
+  if (advancementPlan && updatedPlan) {
+    advancementPlan.title = updatedPlan.title;
+    advancementPlan.note = updatedPlan.note;
+  } else if (updatedPlan) {
+    state.tasks.push({ ...updatedPlan });
+  }
+  state.version = 96;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
