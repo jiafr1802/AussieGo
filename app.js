@@ -4,6 +4,7 @@ const STORAGE_KEY = "aussiego-planner-v1";
 const ANT_JD_URL = "https://talent.antgroup.com/campus-position?positionId=260721010991745";
 const IMMIACCOUNT_URL = "https://online.immi.gov.au/ola/app";
 const HUAWEI_CAREER_URL = "https://career.huawei.com/";
+const BYTEDANCE_PROGRESS_SHEET_URL = "https://docs.google.com/spreadsheets/d/1pg1cb_cLQGDuk1NOQBBlvCMb_yuVPC3l3quELld7LCU/edit";
 const campusJdUrls = {
   "funplus-agent-apply-1102": "https://www.zhipin.com/job_detail/49269e1162a4942a0nN-2Ni4FVFS.html",
   "xiaomi-agent-harness-apply-1102": "https://www.zhipin.com/job_detail/912d5b015e48a4860nN-2t68EVRV.html",
@@ -215,7 +216,9 @@ const seedTasks = [
   { id: "train-g105-beijing-shenyang-1107", date: "2026-11-07", time: "08:55", title: "G105 · 北京朝阳 → 沈阳北", category: "生活", note: "已购票。2026 年 11 月 7 日（周六）08:55 从北京朝阳站出发，11:24 到达沈阳北站；车次 G105，预计行程 2 小时 29 分。出发前核对检票口、身份证件和车站交通。" },
   { id: "neurips-camera-ready-progress-1108", date: "2026-11-08", title: "NeurIPS camera-ready 进度 · 确认状态并归档回执", category: "学业 / 实验", note: "截止已过：检查 OpenReview author console 中的最终提交状态，归档最终 PDF、提交时间和回执。此提醒不代表已经按时提交；若状态异常，按官方渠道处理。" },
   { id: "kdd-bytedance-hiring-outreach-1109", date: "2026-11-09", title: "联系两位 KDD 字节同行和周姐 · 询问是否招人", category: "求职", note: "下周一待办：不预设结果，分别礼貌联系之前 KDD 开会时加到的两位字节跳动同行，以及周姐，询问他们所在团队或熟悉的团队近期是否招聘，并了解适合的岗位方向。根据实际回复记录下一步；三人均尚未联系，私人联系方式不在公开页面保存。" },
-  { id: "bytedance-advancement-plan-1117", date: "2026-11-17", title: "研究：字节流程如何推进 · 联系人表与 reconnect 对策", category: "求职", note: "本周先研究并形成行动方案，不代表已有新进展或已完成联系。联系人姓名、微信号和聊天原文只在私人表格中整理，不写入公开网页。\n\n第一步｜盘点微信联系人\n把此前微信里与字节 / TikTok 机会有关的人全部列出，包括广告方向 HR / TA、实验学长、KDD 认识的同行、周姐及其他可能联系人。每行记录：联系人代号、认识渠道与关系强度、公司 / 团队、可推进职位及 JD、地点与招聘批次、上次联系时间和上下文、当前状态。\n\n第二步｜评估职位匹配\n对每个“联系人 × 职位”组合按 1–5 分评估匹配程度，并写证据：研究方向、Agent / 大模型 / 多模态 / 后训练 / 推理加速能力、工程栈、项目贡献和量化结果。另列硬性缺口、待补材料、流程风险和是否值得优先推进，筛出 2–3 个高优先级组合。\n\n第三步｜逐个设计 reconnect 对策\nA. 关系较强且岗位高匹配：带具体 JD 和一句话匹配依据，询问团队现状、合适对接人或是否方便转交简历。\nB. 曾有交流但较久未联系：先用共同经历恢复上下文，简短更新近况，再提出一个低负担、可明确回答的问题。\nC. 关系较弱或岗位不确定：先做信息咨询，不直接要求内推；请对方判断方向或推荐更合适的团队。\n每条消息采用“共同上下文 → 近况更新 → 为什么找对方 → 一个具体小请求 → 给对方退出空间”的结构，避免群发模板。\n\n第四步｜建立推进节奏\n为每个人写好消息草稿、发送日期、期望结果和下一步；无回复时至少等待 5–7 个工作日再礼貌跟进一次，仍无回复则暂停。最终形成私人推进表：联系人代号 / 职位 / 匹配分 / 证据 / 关系强度 / 当前状态 / reconnect 策略 / 发送时间 / 跟进节点 / 结果。" },
+  { id: "bytedance-advancement-plan-1117", date: "2026-11-21", title: "周末研究：字节流程如何推进 · 联系人表与 reconnect 对策", category: "求职", note: "本周末先研究并形成行动方案，不代表已有新进展或已完成联系。联系人姓名、微信号和聊天原文只在私人 Google Sheets 中整理，不写入公开网页。\n\n第一步｜盘点微信联系人\n把此前微信里与字节 / TikTok 机会有关的人全部列出，包括广告方向 HR / TA、实验学长、KDD 认识的同行、周姐及其他可能联系人。每行记录：联系人代号、认识渠道与关系强度、公司 / 团队、可推进职位及 JD、地点与招聘批次、上次联系时间和上下文、当前状态。\n\n第二步｜评估职位匹配\n对每个“联系人 × 职位”组合按 1–5 分评估匹配程度，并写证据：研究方向、Agent / 大模型 / 多模态 / 后训练 / 推理加速能力、工程栈、项目贡献和量化结果。另列硬性缺口、待补材料、流程风险和是否值得优先推进，筛出 2–3 个高优先级组合。\n\n第三步｜逐个设计 reconnect 对策\nA. 关系较强且岗位高匹配：带具体 JD 和一句话匹配依据，询问团队现状、合适对接人或是否方便转交简历。\nB. 曾有交流但较久未联系：先用共同经历恢复上下文，简短更新近况，再提出一个低负担、可明确回答的问题。\nC. 关系较弱或岗位不确定：先做信息咨询，不直接要求内推；请对方判断方向或推荐更合适的团队。\n每条消息采用“共同上下文 → 近况更新 → 为什么找对方 → 一个具体小请求 → 给对方退出空间”的结构，避免群发模板。\n\n第四步｜建立推进节奏\n为每个人写好消息草稿、发送日期、期望结果和下一步；无回复时至少等待 5–7 个工作日再礼貌跟进一次，仍无回复则暂停。最终形成私人推进表：联系人代号 / 职位 / 匹配分 / 证据 / 关系强度 / 当前状态 / reconnect 策略 / 发送时间 / 跟进节点 / 结果。工作表入口见事项下方链接。" },
+  { id: "review-for-alibaba-interview-1118", date: "2026-11-18", title: "按照复习计划复习明天的面试", category: "求职", note: "按已有复习计划逐项准备 11 月 19 日 17:00 的阿里巴巴 Token Foundry 大模型后训练面试，标记已完成内容和仍薄弱的部分。重点回到计划本身，不临时扩张范围；结束前确认项目讲述、核心知识、代码环境、面试设备和明天的时间安排。尚未完成复习。" },
+  { id: "withdraw-aud-campus-bank-1119", date: "2026-11-19", title: "去学校里的银行取澳元", category: "生活", note: "明天去学校里的银行取澳元。出发前确认网点营业时间、是否需要预约、澳元现钞库存、可取金额、汇率与手续费，并带好身份证件、银行卡及银行要求的材料；取款金额尚未提供，不自行补写。" },
   { id: "review-step-3-5-technical-report-1117", date: "2026-11-17", title: "复盘 Step 3.5 技术报告", category: "学业 / 实验", note: "重新通读 Step 3.5 技术报告，按问题定义、方法与关键设计、实验和证据、主要结论、局限与遗留问题整理复盘。标出仍不理解或证据不足的地方，最后用自己的话写一版可口述的要点和下一步；此项尚未完成。" },
   { id: "select-paper-to-reproduce-1117", date: "2026-11-17", title: "选一篇要复现的论文", category: "学业 / 实验", note: "从当前候选论文中选定一篇作为复现目标。比较与现有研究的相关性、代码与数据可得性、环境和算力要求、评测是否清晰、预期复现周期及失败风险。最终记录论文、代码仓库、依赖、首个可验证里程碑和选择理由；尚未完成选择。" },
   { id: "research-gui-code-agent-opd-1117", date: "2026-11-17", title: "继续调研 GUI Agent / Code Agent 的 OPD 工作", category: "学业 / 实验", note: "继续调研 GUI Agent / Code Agent 方向的 OPD 工作，不预设 OPD 的具体展开或已有结论。重点比较问题定义、环境与动作空间、数据和轨迹来源、训练信号、评测基准、代表性方法及与当前工作的关系。整理一张工作对照表，并列出最值得继续验证的问题和候选切入点；尚未完成。" },
@@ -248,7 +251,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -1045,6 +1048,23 @@ if (!storageWarning && state.version === 95) {
   state.version = 96;
   needsMigration = true;
 }
+if (!storageWarning && state.version === 96) {
+  const advancementPlan = state.tasks.find(task => task.id === "bytedance-advancement-plan-1117");
+  const updatedPlan = seedTasks.find(task => task.id === "bytedance-advancement-plan-1117");
+  if (advancementPlan && updatedPlan) {
+    advancementPlan.date = updatedPlan.date;
+    advancementPlan.title = updatedPlan.title;
+    advancementPlan.note = updatedPlan.note;
+  } else if (updatedPlan) {
+    state.tasks.push({ ...updatedPlan });
+  }
+  for (const id of ["review-for-alibaba-interview-1118", "withdraw-aud-campus-bank-1119"]) {
+    const task = seedTasks.find(item => item.id === id);
+    if (task && !state.tasks.some(item => item.id === id)) state.tasks.push({ ...task });
+  }
+  state.version = 97;
+  needsMigration = true;
+}
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 let selectedDate = isDate(today) ? today : dates[0].iso;
 let period = "all";
@@ -1108,7 +1128,7 @@ function renderDetail() {
   element("prev-day").disabled = index === 0;
   element("next-day").disabled = index === dates.length - 1;
   const tasks = tasksFor(selectedDate);
-  element("tasks").innerHTML = tasks.length ? tasks.map(task => `<div class="task ${task.done ? "done" : ""}"><input type="checkbox" id="check-${task.id}" data-check="${task.id}" ${task.done ? "checked" : ""}><div class="task-body"><label class="task-heading" for="check-${task.id}">${escapeHtml(task.title)}</label><p class="task-meta ${task.time ? "fixed" : ""}">${task.time || "灵活安排"} · ${escapeHtml(task.category)}${task.status !== "planned" ? ` · ${statuses[task.status]}` : ""}</p>${task.note ? `<p class="task-note">${escapeHtml(task.note)}</p>` : ""}${task.id === "ant-jd-preparation-1029" ? `<p class="task-note"><a href="${ANT_JD_URL}" target="_blank" rel="noopener noreferrer">蚂蚁官网 JD</a></p>` : ""}${campusJdUrls[task.id] ? `<p class="task-note"><a href="${campusJdUrls[task.id]}" target="_blank" rel="noopener noreferrer">BOSS 直聘 · 查看岗位 JD</a></p>` : ""}${task.id === "huawei-car-bu-research-contact-1102" ? `<p class="task-note"><a href="${HUAWEI_CAREER_URL}" target="_blank" rel="noopener noreferrer">华为招聘官网 · 校园招聘</a></p>` : ""}${task.id === "visa-submit" ? `<p class="task-note"><a href="${IMMIACCOUNT_URL}" target="_blank" rel="noopener noreferrer">ImmiAccount · 继续检查申请草稿</a></p>` : ""}</div><div class="task-actions"><button class="icon-button" data-edit="${task.id}" title="编辑事项" aria-label="编辑 ${escapeHtml(task.title)}"><i data-lucide="pencil"></i></button><button class="icon-button" data-delete="${task.id}" title="删除事项" aria-label="删除 ${escapeHtml(task.title)}"><i data-lucide="trash-2"></i></button></div></div>`).join("") : '<p class="muted small">今天先留白。</p>';
+  element("tasks").innerHTML = tasks.length ? tasks.map(task => `<div class="task ${task.done ? "done" : ""}"><input type="checkbox" id="check-${task.id}" data-check="${task.id}" ${task.done ? "checked" : ""}><div class="task-body"><label class="task-heading" for="check-${task.id}">${escapeHtml(task.title)}</label><p class="task-meta ${task.time ? "fixed" : ""}">${task.time || "灵活安排"} · ${escapeHtml(task.category)}${task.status !== "planned" ? ` · ${statuses[task.status]}` : ""}</p>${task.note ? `<p class="task-note">${escapeHtml(task.note)}</p>` : ""}${task.id === "bytedance-advancement-plan-1117" ? `<p class="task-note"><a href="${BYTEDANCE_PROGRESS_SHEET_URL}" target="_blank" rel="noopener noreferrer">Google Sheets · 字节推进联系人表</a></p>` : ""}${task.id === "ant-jd-preparation-1029" ? `<p class="task-note"><a href="${ANT_JD_URL}" target="_blank" rel="noopener noreferrer">蚂蚁官网 JD</a></p>` : ""}${campusJdUrls[task.id] ? `<p class="task-note"><a href="${campusJdUrls[task.id]}" target="_blank" rel="noopener noreferrer">BOSS 直聘 · 查看岗位 JD</a></p>` : ""}${task.id === "huawei-car-bu-research-contact-1102" ? `<p class="task-note"><a href="${HUAWEI_CAREER_URL}" target="_blank" rel="noopener noreferrer">华为招聘官网 · 校园招聘</a></p>` : ""}${task.id === "visa-submit" ? `<p class="task-note"><a href="${IMMIACCOUNT_URL}" target="_blank" rel="noopener noreferrer">ImmiAccount · 继续检查申请草稿</a></p>` : ""}</div><div class="task-actions"><button class="icon-button" data-edit="${task.id}" title="编辑事项" aria-label="编辑 ${escapeHtml(task.title)}"><i data-lucide="pencil"></i></button><button class="icon-button" data-delete="${task.id}" title="删除事项" aria-label="删除 ${escapeHtml(task.title)}"><i data-lucide="trash-2"></i></button></div></div>`).join("") : '<p class="muted small">今天先留白。</p>';
   const note = state.days[selectedDate] || { flight: false, flightNote: "", hotelCheck: false, hotelNote: "", note: "" };
   element("flight-check").checked = note.flight;
   element("flight-note").value = note.flightNote;
