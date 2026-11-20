@@ -239,6 +239,7 @@ const seedTasks = [
   { id: "meriton-cancellation-node-1205", date: "2026-12-05", time: "12:00", title: "暂定节点：Meriton 免费取消截止 · 悉尼 15:00 AEDT / 北京 12:00", category: "生活", status: "tentative", note: "按 12 月 6 日入住及房型页“入住前一天 15:00 前免费取消”推算，暂记悉尼当地时间 12 月 5 日 15:00（AEDT），对应北京时间 12:00。必须以订单确认页的日期、时区和费用条款为准，建议提前一天完成决定。" },
   { id: "meriton-checkin-1206", date: "2026-12-06", time: "15:00", title: "入住 Meriton Suites Sydney Airport · 两卧室套房", category: "生活", note: "当前方案：2026 年 12 月 6 日入住、12 月 12 日退房，共 6 晚。地址：200 Coward St, Mascot NSW 2020。\n航班 13:20 抵达悉尼 T1；预留入境、取行李和机场交通后，预计 15:00 左右到店，实际入住时间以酒店确认为准。\nMascot Station 步行约 8 分钟 / 450 米；前往 ICC Sydney 约 32 分钟，歌剧院约 35–45 分钟，Bondi Beach 约 45–60 分钟，Taronga Zoo 约 50–65 分钟，Long Reef 约 75–95 分钟。上述均为公共交通估计，出发时查看实时导航。" },
   { id: "meriton-checkout-flight-1212", date: "2026-12-12", time: "05:45", title: "Meriton 退房 · 前往悉尼 T1 乘返程航班", category: "生活", note: "返程航班 09:20 从悉尼国际航站楼 T1 出发。建议约 05:45 退房并优先打车，目标 06:20 前抵达 T1，预留国际航班值机、托运和安检时间。具体退房规定、车辆时间和航班状态需前一晚再次确认。" },
+  { id: "wiml-neurips-sydney-1208", date: "2026-12-08", time: "08:00", title: "WiML Workshop · 悉尼 · 开始时间待确认", category: "学业 / 实验", status: "tentative", note: "21st Women in Machine Learning Workshop，2026 年 12 月 8 日，ICC Sydney。主题包括技术分享、poster、mentoring 和学术/工业界职业交流；重点支持女性与非二元性别研究者，报名页欢迎 ML 社群各阶段、各方向参与者。\n\n时间存在来源差异：NeurIPS 悉尼官方日程为 08:00–17:00；Luma 为 09:00–17:00 GMT+11（AEDT），描述仍称具体时间待公布。当前仅暂按较早的官方 08:00 排程，不能视为最终开始时间；对应北京时间为 05:00/06:00–14:00。NeurIPS 会场名为 Grand Ballroom 1，Luma 写 Grand Ballroom B1，需确认房间命名。\n\n主办方要求 NeurIPS Conference Sessions & Tutorials 完整票及 WiML 参与登记；参与表免费不等于主会免票。尚未报名或确认入场。行前确认开始时间、房间及名额，并避开本人论文展示。\n悉尼报名：https://luma.com/4qq0pvil\n官方日程：https://neurips.cc/virtual/2026/affinity-event/137772\n主办方：https://sites.google.com/wimlworkshop.org/wimlworkshopneurips2026/home\n信息核验日期：2026-11-20。" },
 ].map(task => ({ time: "", status: "planned", done: false, ...task }));
 
 const calendarSnapshot = [
@@ -258,7 +259,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -1092,6 +1093,14 @@ if (!storageWarning && state.version === 98) {
     if (task && !state.tasks.some(item => item.id === id)) state.tasks.push({ ...task });
   }
   state.version = 99;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 99) {
+  const workshop = seedTasks.find(task => task.id === "wiml-neurips-sydney-1208");
+  if (workshop && !state.tasks.some(task => task.id === workshop.id)) {
+    state.tasks.push({ ...workshop });
+  }
+  state.version = 100;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());

@@ -30,3 +30,11 @@ GitHub 仓库：https://github.com/jiafr1802/AussieGo 。网站在 Pages 部署�
 仓库仅提交网页资源、说明和配置，不上传浏览器备份或上级目录中的签证材料。`.nojekyll` 使 Pages 直接提供静态文件。`app.js` 本身包含个人日程与日历快照。
 
 手机和电脑各自使用独立的浏览器存储。部署后仍需通过“备份 / 恢复”迁移现有勾选与笔记；GitHub Pages 不提供实时数据同步。
+
+## WiML 悉尼日程
+
+2026-11-20 加入 12/8 的 WiML Workshop，任务 ID 为 `wiml-neurips-sydney-1208`。版本 99 → 100 只在缺少该 ID 时添加一次，保留已有勾选、备注、日期和其他事项；删除后刷新不会恢复。
+
+时间待确认：NeurIPS 悉尼日程写 08:00–17:00、Grand Ballroom 1；[主办方报名页](https://luma.com/4qq0pvil)写 09:00–17:00 GMT+11、Grand Ballroom B1，描述仍称具体时间待公布。网页暂按较早的官方 08:00 排程并标为待定，备注保留两种来源及北京时间 05:00/06:00–14:00。报名、名额和会场须以确认通知为准；当前未报名或确认入场。主办方要求完整 Conference Sessions & Tutorials 票及 WiML 参与登记，免费参与表不等于主会免票。
+
+公开页面仅记录活动日程与公开报名链接，不记录个人性别、性取向或注册答案，也没有向 Apple Calendar 写入事件。
