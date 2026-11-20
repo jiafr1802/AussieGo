@@ -5,6 +5,7 @@ const ANT_JD_URL = "https://talent.antgroup.com/campus-position?positionId=26072
 const IMMIACCOUNT_URL = "https://online.immi.gov.au/ola/app";
 const HUAWEI_CAREER_URL = "https://career.huawei.com/";
 const BYTEDANCE_PROGRESS_SHEET_URL = "https://docs.google.com/spreadsheets/d/1pg1cb_cLQGDuk1NOQBBlvCMb_yuVPC3l3quELld7LCU/edit";
+const NVIDIA_CELEBRATION_URL = "https://luma.com/neurips-research-celebration";
 const campusJdUrls = {
   "funplus-agent-apply-1102": "https://www.zhipin.com/job_detail/49269e1162a4942a0nN-2Ni4FVFS.html",
   "xiaomi-agent-harness-apply-1102": "https://www.zhipin.com/job_detail/912d5b015e48a4860nN-2t68EVRV.html",
@@ -201,6 +202,12 @@ const seedTasks = [
   { id: "continue-ddp-fsdp-study-1103", date: "2026-11-03", title: "继续学习并攻克 DDP 与 FSDP", category: "学业 / 实验", note: "今天继续学习 DDP 与 FSDP：结合已有笔记和资料，梳理两者在参数、梯度与优化器状态同步或分片上的差异，重点攻克仍不清楚的机制、通信流程和实际使用问题；用自己的话记录结论、待验证点与下一步实验。尚未完成。" },
   { id: "huawei-afternoon-discussion-1103", date: "2026-11-03", time: "15:30", title: "与华为人员线上沟通交流", category: "求职", note: "今天下午 15:30–16:30 线上交流。提前整理个人背景、研究方向、对岗位或团队的关键问题；交流后记录对方介绍、岗位匹配、待补材料与下一步。会议平台、会议 ID、口令、邮箱和私人联系方式不在公开页面保存。" },
   { id: "taikang-hr-contact-1103", date: "2026-11-03", title: "联系泰康 HR · 面试预计一至两周后安排", category: "求职", done: true, note: "今天已联系泰康 HR。HR 反馈预计一至两周后再约面试；当前尚未确认具体日期、时间、形式或面试轮次，后续留意通知并及时确认。联系人姓名和私人联系方式不在公开页面保存。" },
+  { id: "taikang-online-interview-1122", date: "2026-11-22", time: "13:00", title: "泰康科技线上面试 · 13:00–13:30 时间窗口", category: "求职", note: "已确认可以参加 2026 年 11 月 22 日（周日）下午的线上面试。HR 提供的安排时间窗口为 13:00–13:30（北京时间）；具体开始时间与面试时长以后续通知为准。岗位、面试轮次和平台尚未提供，提前检查网络、摄像头与麦克风，并留意原沟通渠道的面试入口。联系人姓名、私人链接及聊天原文不在公开页面保存。" },
+  { id: "pilates-strength-curve-1121", date: "2026-11-21", time: "18:00", title: "小-普拉提（力量曲线）2级 · 待预约", category: "生活", status: "tentative", note: "拟参加 2026 年 11 月 21 日（周六）18:00–19:00 的健身课（北京时间）。场馆：归位瑜伽·环宇荟馆；教室：教室1；教练：张凌薇-凌薇。截图显示“去预约”，不代表预约成功；先核对当天课程、名额与取消规则并完成预约，再确认出发安排。" },
+  { id: "jwy-business-session-1121", date: "2026-11-21", title: "和 jwy 一起搞事业", category: "求职", note: "周六和 jwy 一起搞事业；具体时间、地点、讨论主题及产出待双方确认，不预设已有进展。" },
+  { id: "apple-resume-apply-1121", date: "2026-11-21", title: "投简历 Apple", category: "求职", note: "周六待办：确认 Apple 的目标岗位、地点、申请资格和正式投递入口，准备对应简历，投递后记录实际状态。具体岗位和入口尚未提供，当前尚未投递。" },
+  { id: "nvidia-neurips-register-1121", date: "2026-11-21", title: "报名 NVIDIA · NeurIPS Researcher Celebration", category: "学业 / 实验", note: `周六待办：通过下方 Luma 活动页申请报名，提交后留意主办方审核结果；尚未报名或获批。\n官方页面：NVIDIA Researcher Celebration at NeurIPS；活动时间为 2026 年 12 月 10 日 18:00–22:00，GMT+11（悉尼当地时间），地点 Hay Street Market。这是活动时间，不是周六报名任务的时间；行前再次核对页面与确认邮件。\n${NVIDIA_CELEBRATION_URL}` },
+  { id: "naiveai-talent-apply-1121", date: "2026-11-21", title: "投递 NaiveAI · N次方人才计划", category: "求职", note: "周六待办：核验 NaiveAI「N次方人才计划」的官方申请入口与资格，准备简历和代表作品后投递。截图说明面向应届毕业生及实习生，强调 AI 协作、自驱力和判断力；研究者负责方向、约束与判断，AI 协助写代码、跑实验和分析结果。截图未显示投递网址或邮箱，不自行补写；当前尚未投递。" },
   { id: "modelbest-llm-intern-video-interview-1113", date: "2026-11-13", time: "11:00", title: "面壁智能视频面试 · 语言大模型算法实习生", category: "求职", note: "已收到面试邀请。面试形式：飞书视频面试；时间：2026 年 11 月 13 日 11:00（北京时间，GMT+08:00）。提前 10 分钟检查网络、麦克风和摄像头，并从原邮件进入私人面试链接；链接和 HR 联系方式不在公开页面保存。" },
   { id: "shanghai-ai-lab-agent-posttraining-original-1116", date: "2026-11-16", time: "15:00", title: "上海人工智能实验室视频面试 · 原邀约待确认", category: "求职", status: "tentative", note: "11 月 12 日收到的原邀约：上海人工智能实验室【校招】Agent 后训练算法青年研究员（智能体系中心），视频面试时间为 2026 年 11 月 16 日 15:00（北京时间，GMT+08:00）。11 月 16 日收到的最新邀请将同一岗位安排在 11 月 18 日 15:00；这条保留为今天的日程记录，是否已改期需以最新邮件或 HR 确认为准。私人面试链接、HR 电话与联系方式不在公开页面保存。" },
   { id: "shanghai-ai-lab-agent-posttraining-interview-1116", date: "2026-11-20", time: "16:00", title: "上海人工智能实验室视频面试 · Agent 后训练算法青年研究员", category: "求职", note: "已收到上海人工智能实验室【校招】Agent 后训练算法青年研究员（智能体系中心）职位的视频面试邀请。最新安排时间：2026 年 11 月 20 日（周五）16:00（北京时间，GMT+08:00）。使用飞书视频面试；提前 10 分钟检查网络、麦克风、摄像头并确认飞书可用。私人面试链接与 HR 联系方式不在公开页面保存。" },
@@ -251,7 +258,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -1079,6 +1086,14 @@ if (!storageWarning && state.version === 97) {
   state.version = 98;
   needsMigration = true;
 }
+if (!storageWarning && state.version === 98) {
+  for (const id of ["taikang-online-interview-1122", "pilates-strength-curve-1121", "jwy-business-session-1121", "apple-resume-apply-1121", "nvidia-neurips-register-1121", "naiveai-talent-apply-1121"]) {
+    const task = seedTasks.find(item => item.id === id);
+    if (task && !state.tasks.some(item => item.id === id)) state.tasks.push({ ...task });
+  }
+  state.version = 99;
+  needsMigration = true;
+}
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 let selectedDate = isDate(today) ? today : dates[0].iso;
 let period = "all";
@@ -1142,7 +1157,7 @@ function renderDetail() {
   element("prev-day").disabled = index === 0;
   element("next-day").disabled = index === dates.length - 1;
   const tasks = tasksFor(selectedDate);
-  element("tasks").innerHTML = tasks.length ? tasks.map(task => `<div class="task ${task.done ? "done" : ""}"><input type="checkbox" id="check-${task.id}" data-check="${task.id}" ${task.done ? "checked" : ""}><div class="task-body"><label class="task-heading" for="check-${task.id}">${escapeHtml(task.title)}</label><p class="task-meta ${task.time ? "fixed" : ""}">${task.time || "灵活安排"} · ${escapeHtml(task.category)}${task.status !== "planned" ? ` · ${statuses[task.status]}` : ""}</p>${task.note ? `<p class="task-note">${escapeHtml(task.note)}</p>` : ""}${task.id === "bytedance-advancement-plan-1117" ? `<p class="task-note"><a href="${BYTEDANCE_PROGRESS_SHEET_URL}" target="_blank" rel="noopener noreferrer">Google Sheets · 字节推进联系人表</a></p>` : ""}${task.id === "ant-jd-preparation-1029" ? `<p class="task-note"><a href="${ANT_JD_URL}" target="_blank" rel="noopener noreferrer">蚂蚁官网 JD</a></p>` : ""}${campusJdUrls[task.id] ? `<p class="task-note"><a href="${campusJdUrls[task.id]}" target="_blank" rel="noopener noreferrer">BOSS 直聘 · 查看岗位 JD</a></p>` : ""}${task.id === "huawei-car-bu-research-contact-1102" ? `<p class="task-note"><a href="${HUAWEI_CAREER_URL}" target="_blank" rel="noopener noreferrer">华为招聘官网 · 校园招聘</a></p>` : ""}${task.id === "visa-submit" ? `<p class="task-note"><a href="${IMMIACCOUNT_URL}" target="_blank" rel="noopener noreferrer">ImmiAccount · 继续检查申请草稿</a></p>` : ""}</div><div class="task-actions"><button class="icon-button" data-edit="${task.id}" title="编辑事项" aria-label="编辑 ${escapeHtml(task.title)}"><i data-lucide="pencil"></i></button><button class="icon-button" data-delete="${task.id}" title="删除事项" aria-label="删除 ${escapeHtml(task.title)}"><i data-lucide="trash-2"></i></button></div></div>`).join("") : '<p class="muted small">今天先留白。</p>';
+  element("tasks").innerHTML = tasks.length ? tasks.map(task => `<div class="task ${task.done ? "done" : ""}"><input type="checkbox" id="check-${task.id}" data-check="${task.id}" ${task.done ? "checked" : ""}><div class="task-body"><label class="task-heading" for="check-${task.id}">${escapeHtml(task.title)}</label><p class="task-meta ${task.time ? "fixed" : ""}">${task.time || "灵活安排"} · ${escapeHtml(task.category)}${task.status !== "planned" ? ` · ${statuses[task.status]}` : ""}</p>${task.note ? `<p class="task-note">${escapeHtml(task.note)}</p>` : ""}${task.id === "bytedance-advancement-plan-1117" ? `<p class="task-note"><a href="${BYTEDANCE_PROGRESS_SHEET_URL}" target="_blank" rel="noopener noreferrer">Google Sheets · 字节推进联系人表</a></p>` : ""}${task.id === "nvidia-neurips-register-1121" ? `<p class="task-note"><a href="${NVIDIA_CELEBRATION_URL}" target="_blank" rel="noopener noreferrer">Luma · NVIDIA 活动报名</a></p>` : ""}${task.id === "ant-jd-preparation-1029" ? `<p class="task-note"><a href="${ANT_JD_URL}" target="_blank" rel="noopener noreferrer">蚂蚁官网 JD</a></p>` : ""}${campusJdUrls[task.id] ? `<p class="task-note"><a href="${campusJdUrls[task.id]}" target="_blank" rel="noopener noreferrer">BOSS 直聘 · 查看岗位 JD</a></p>` : ""}${task.id === "huawei-car-bu-research-contact-1102" ? `<p class="task-note"><a href="${HUAWEI_CAREER_URL}" target="_blank" rel="noopener noreferrer">华为招聘官网 · 校园招聘</a></p>` : ""}${task.id === "visa-submit" ? `<p class="task-note"><a href="${IMMIACCOUNT_URL}" target="_blank" rel="noopener noreferrer">ImmiAccount · 继续检查申请草稿</a></p>` : ""}</div><div class="task-actions"><button class="icon-button" data-edit="${task.id}" title="编辑事项" aria-label="编辑 ${escapeHtml(task.title)}"><i data-lucide="pencil"></i></button><button class="icon-button" data-delete="${task.id}" title="删除事项" aria-label="删除 ${escapeHtml(task.title)}"><i data-lucide="trash-2"></i></button></div></div>`).join("") : '<p class="muted small">今天先留白。</p>';
   const note = state.days[selectedDate] || { flight: false, flightNote: "", hotelCheck: false, hotelNote: "", note: "" };
   element("flight-check").checked = note.flight;
   element("flight-note").value = note.flightNote;
