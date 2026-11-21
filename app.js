@@ -204,6 +204,7 @@ const seedTasks = [
   { id: "taikang-hr-contact-1103", date: "2026-11-03", title: "联系泰康 HR · 面试预计一至两周后安排", category: "求职", done: true, note: "今天已联系泰康 HR。HR 反馈预计一至两周后再约面试；当前尚未确认具体日期、时间、形式或面试轮次，后续留意通知并及时确认。联系人姓名和私人联系方式不在公开页面保存。" },
   { id: "taikang-online-interview-1122", date: "2026-11-22", time: "13:00", title: "泰康科技线上面试 · 13:00–13:30 时间窗口", category: "求职", note: "已确认可以参加 2026 年 11 月 22 日（周日）下午的线上面试。HR 提供的安排时间窗口为 13:00–13:30（北京时间）；具体开始时间与面试时长以后续通知为准。岗位、面试轮次和平台尚未提供，提前检查网络、摄像头与麦克风，并留意原沟通渠道的面试入口。联系人姓名、私人链接及聊天原文不在公开页面保存。" },
   { id: "resume-microsoft-tencent-reapply-1122", date: "2026-11-22", title: "加班更新简历：补充微软新工作，再投腾讯", category: "求职", note: "周日加班改出一版包含微软新工作经历的简历，再重新投递腾讯。先核对实际贡献与成果，避免写入保密信息；完成简历后确认目标岗位与重新投递规则，投递后记录实际状态。具体时间与岗位未定，尚未完成简历修改或重新投递；简历内容及工作细节不在公开页面保存。" },
+  { id: "wjy-salary-discussion-1122", date: "2026-11-22", title: "和 wjy 讨论工作谈薪问题", category: "求职", note: "周日与 wjy 讨论工作谈薪问题，梳理关心的问题与沟通思路；具体时间和方式待确认，讨论后记录结论与下一步。尚未讨论；私人薪资信息及沟通原文不在公开页面保存。" },
   { id: "pilates-strength-curve-1121", date: "2026-11-21", time: "18:00", title: "小-普拉提（力量曲线）2级 · 待预约", category: "生活", status: "tentative", note: "拟参加 2026 年 11 月 21 日（周六）18:00–19:00 的健身课（北京时间）。场馆：归位瑜伽·环宇荟馆；教室：教室1；教练：张凌薇-凌薇。截图显示“去预约”，不代表预约成功；先核对当天课程、名额与取消规则并完成预约，再确认出发安排。" },
   { id: "jwy-business-session-1121", date: "2026-11-21", title: "和 jwy 一起搞事业", category: "求职", note: "周六和 jwy 一起搞事业；具体时间、地点、讨论主题及产出待双方确认，不预设已有进展。" },
   { id: "apple-resume-apply-1121", date: "2026-11-21", title: "投简历 Apple", category: "求职", note: "周六待办：确认 Apple 的目标岗位、地点、申请资格和正式投递入口，准备对应简历，投递后记录实际状态。具体岗位和入口尚未提供，当前尚未投递。" },
@@ -260,7 +261,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -1108,6 +1109,12 @@ if (!storageWarning && state.version === 100) {
   const task = seedTasks.find(item => item.id === "resume-microsoft-tencent-reapply-1122");
   if (task && !state.tasks.some(item => item.id === task.id)) state.tasks.push({ ...task });
   state.version = 101;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 101) {
+  const task = seedTasks.find(item => item.id === "wjy-salary-discussion-1122");
+  if (task && !state.tasks.some(item => item.id === task.id)) state.tasks.push({ ...task });
+  state.version = 102;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
