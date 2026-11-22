@@ -213,6 +213,7 @@ const seedTasks = [
   { id: "modelbest-llm-intern-video-interview-1113", date: "2026-11-13", time: "11:00", title: "面壁智能视频面试 · 语言大模型算法实习生", category: "求职", note: "已收到面试邀请。面试形式：飞书视频面试；时间：2026 年 11 月 13 日 11:00（北京时间，GMT+08:00）。提前 10 分钟检查网络、麦克风和摄像头，并从原邮件进入私人面试链接；链接和 HR 联系方式不在公开页面保存。" },
   { id: "shanghai-ai-lab-agent-posttraining-original-1116", date: "2026-11-16", time: "15:00", title: "上海人工智能实验室视频面试 · 原邀约待确认", category: "求职", status: "tentative", note: "11 月 12 日收到的原邀约：上海人工智能实验室【校招】Agent 后训练算法青年研究员（智能体系中心），视频面试时间为 2026 年 11 月 16 日 15:00（北京时间，GMT+08:00）。11 月 16 日收到的最新邀请将同一岗位安排在 11 月 18 日 15:00；这条保留为今天的日程记录，是否已改期需以最新邮件或 HR 确认为准。私人面试链接、HR 电话与联系方式不在公开页面保存。" },
   { id: "shanghai-ai-lab-agent-posttraining-interview-1116", date: "2026-11-20", time: "16:00", title: "上海人工智能实验室视频面试 · Agent 后训练算法青年研究员", category: "求职", note: "已收到上海人工智能实验室【校招】Agent 后训练算法青年研究员（智能体系中心）职位的视频面试邀请。最新安排时间：2026 年 11 月 20 日（周五）16:00（北京时间，GMT+08:00）。使用飞书视频面试；提前 10 分钟检查网络、麦克风、摄像头并确认飞书可用。私人面试链接与 HR 联系方式不在公开页面保存。" },
+  { id: "dongchedi-llm-video-interview-1123", date: "2026-11-23", time: "14:00", title: "懂车帝视频面试 · 大模型算法工程师（LLM）", category: "求职", note: "已收到懂车帝大模型算法工程师（LLM）-校招【27届】职位的视频面试邀请。时间：2026 年 11 月 23 日（周一）14:00，北京时间（GMT+08:00）；结束时间未提供。考察通用业务问题、过往项目经历，以及代码实操中的编码功底、工程落地、问题排查、算法基础、代码规范和业务逻辑实现能力；同时关注价值观与软性技能。提前检查电脑、网络、摄像头、麦克风与编程环境，从原邮件进入飞书面试；私人面试链接和 HR 联系方式不在公开页面保存。" },
   { id: "dongchedi-llm-video-interview-1117", date: "2026-11-17", time: "15:00", title: "懂车帝视频面试 · 大模型算法工程师（LLM）", category: "求职", note: "已收到懂车帝大模型算法工程师（LLM）-校招【27届】职位的新一场视频面试邀请。时间：2026 年 11 月 17 日 15:00（北京时间，GMT+08:00）。考察内容包括通用业务问题、过往项目经历、代码实操、算法基础、代码规范、业务逻辑实现，以及价值观和软性技能。提前准备电脑与编程环境；私人面试链接和 HR 联系方式不在公开页面保存。" },
   { id: "alibaba-token-foundry-interview-1119", date: "2026-11-19", time: "17:00", title: "阿里巴巴 Token Foundry 视频面试 · 大模型后训练", category: "求职", note: "已收到阿里巴巴校园招聘视频面试通知。面试职位：算法工程师-大模型后训练（Post-training）；面试部门：Token Foundry-Token Foundry-集团合版；时间：2026 年 11 月 19 日 17:00（北京时间）。提前准备电脑、摄像头、麦克风和稳定网络，并从原邮件进入面试间；私人入口、电话和邮箱不在公开页面保存。" },
   { id: "neurips-camera-ready-progress-1104", date: "2026-11-04", title: "NeurIPS camera-ready 进度 · 图表、引用与格式", category: "学业 / 实验", note: "逐项检查图表编号和正文引用、参考文献、公式与版式；同时对照官方 camera-ready 要求，记录未解决问题。尚未视为完成。" },
@@ -261,7 +262,7 @@ const element = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
 const isDate = value => dates.some(day => day.iso === value);
 function validState(value) {
-  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
+  if (!value || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103].includes(value.version) || !Array.isArray(value.tasks) || value.tasks.length > 2000 || !value.days || typeof value.days !== "object" || Array.isArray(value.days)) return false;
   if (value.core40 !== undefined && (!Array.isArray(value.core40) || value.core40.length > 40 || new Set(value.core40).size !== value.core40.length || !value.core40.every(id => coreProblems.some(problem => problem.id === id)))) return false;
   const ids = new Set();
   for (const task of value.tasks) {
@@ -1115,6 +1116,12 @@ if (!storageWarning && state.version === 101) {
   const task = seedTasks.find(item => item.id === "wjy-salary-discussion-1122");
   if (task && !state.tasks.some(item => item.id === task.id)) state.tasks.push({ ...task });
   state.version = 102;
+  needsMigration = true;
+}
+if (!storageWarning && state.version === 102) {
+  const task = seedTasks.find(item => item.id === "dongchedi-llm-video-interview-1123");
+  if (task && !state.tasks.some(item => item.id === task.id)) state.tasks.push({ ...task });
+  state.version = 103;
   needsMigration = true;
 }
 const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
